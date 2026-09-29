@@ -2,7 +2,7 @@ window.VOCABSCAPE_SCENES = [
   {
     "id": "garden",
     "name": "Garden",
-    "image": "assets/garden.png",
+    "image": "garden.png",
     "credit": "Original generated scene",
     "objects": [
       {
