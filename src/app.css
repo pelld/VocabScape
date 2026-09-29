@@ -205,6 +205,8 @@ button { color: inherit; }
 }
 
 .flashcard {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   border: 1px solid rgba(16, 36, 62, 0.09);
   border-radius: 26px;
@@ -213,10 +215,13 @@ button { color: inherit; }
 }
 
 .flashcard-media {
+  width: 100%;
   height: clamp(340px, 50vh, 500px);
   display: grid;
   place-items: center;
   padding: 0;
+  flex: 0 0 auto;
+  overflow: hidden;
   background:
     radial-gradient(circle at 50% 85%, rgba(84, 135, 72, 0.14), transparent 32%),
     linear-gradient(180deg, #f7fafb, #edf3f0);
@@ -230,8 +235,12 @@ button { color: inherit; }
 }
 
 .flashcard-body {
+  position: relative;
+  z-index: 2;
+  width: 100%;
   padding: clamp(20px, 3vw, 30px);
   border-top: 1px solid var(--line);
+  background: #ffffff;
 }
 
 .card-prompt {
