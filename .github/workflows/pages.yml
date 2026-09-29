@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build Svelte app
+      - name: Build production Svelte app
         run: npm run build
 
       - name: Copy scene artwork
