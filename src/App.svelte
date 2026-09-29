@@ -8,11 +8,10 @@
   type CardState = { correct: number; wrong: number };
 
   const languages: Record<string, any> = LANGUAGES;
-  const actionDeck: any = SCENES.find((scene: any) => scene.id === "action-garden");
+  const actionDecks: any[] = SCENES.filter((scene: any) => scene.kind === "action");
   const exploreScenes: any[] = SCENES.filter((scene: any) => scene.id === "garden" || scene.id === "kitchen");
 
   const progressKey = "vocabscape-card-progress-v2";
-  const languageKey = "vocabscape-language";
 
   let memory: Record<string, CardState> = {};
   try {
@@ -24,6 +23,8 @@
   let language = "fr";
 
   let view: View = "cards";
+  let deckIndex = 0;
+  let currentDeck = actionDecks[deckIndex];
   let currentIndex = 0;
   let queue: number[] = [];
   let position = 1;
@@ -36,12 +37,13 @@
   let exploreIndex = 0;
   let showOutlines = false;
 
-  $: currentCard = actionDeck.objects[currentIndex];
+  $: currentCard = currentDeck.objects[currentIndex];
   $: currentTerm = currentCard.terms[language];
   $: currentExploreScene = exploreScenes[exploreIndex];
-  $: roundProgress = Math.round((position / actionDeck.objects.length) * 100);
+  $: roundProgress = Math.round((position / currentDeck.objects.length) * 100);
 
-  const asset = (file: string) => `${import.meta.env.BASE_URL}action-garden/${file}`;
+  const asset = (file: string) =>
+    file.startsWith("http") ? file : `${import.meta.env.BASE_URL}${currentDeck.id}/${file}`;
 
   function normalise(value: string) {
     return value
@@ -88,7 +90,7 @@
   }
 
   function resetDeck() {
-    const order = shuffledIndices(actionDeck.objects.length);
+    const order = shuffledIndices(currentDeck.objects.length);
     currentIndex = order.shift() ?? 0;
     queue = order;
     position = 1;
@@ -102,7 +104,7 @@
 
   function nextCard() {
     if (queue.length === 0) {
-      queue = shuffledIndices(actionDeck.objects.length, currentIndex);
+      queue = shuffledIndices(currentDeck.objects.length, currentIndex);
       position = 0;
       round += 1;
     }
@@ -159,6 +161,12 @@
     resetDeck();
   }
 
+  function switchDeck(index: number) {
+    deckIndex = index;
+    currentDeck = actionDecks[index];
+    resetDeck();
+  }
+
   function switchView(nextView: View) {
     view = nextView;
     if (view === "cards") focusAnswer();
@@ -210,12 +218,17 @@
 
         <div class="flashcard-body">
           <div class="card-meta">
-            <div>
-              <span class="eyebrow">{languages[language].name} · Garden actions</span>
-              <span class="round-label">Round {round}</span>
+            <div class="deck-switcher" aria-label="Flashcard topic">
+              {#each actionDecks as deck, index}
+                <button class:active={index === deckIndex} onclick={() => switchDeck(index)}>
+                  {deck.name}
+                </button>
+              {/each}
             </div>
-            <strong>Card {position} / {actionDeck.objects.length}</strong>
+            <strong>Card {position} / {currentDeck.objects.length}</strong>
           </div>
+
+          <span class="round-label">{languages[language].name} · Round {round}</span>
 
           <div class="card-progress" aria-hidden="true">
             <div class="card-progress-fill" style={`width:${roundProgress}%`}></div>
