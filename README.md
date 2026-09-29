@@ -1,87 +1,76 @@
 # VocabScape
 
-Learn vocabulary by exploring visual scenes.
+VocabScape is a visual vocabulary-learning app. It uses real scenes with clickable SVG hotspots so learners connect words to objects in context.
 
-VocabScape is a small static web app for learning concrete vocabulary through images. Objects in each scene are mapped with polygons, then used in three practice modes:
+The app is built with **Svelte + TypeScript + Vite** and deployed to **GitHub Pages**.
 
-- **Type** — an object is highlighted; type its name in the target language.
-- **Click** — a target-language word is shown; click the matching object.
-- **Explore** — click objects to reveal their vocabulary.
-
-Current target languages:
+## Current languages
 
 - French
 - Spanish
 
-Current scenes:
+The language system is data-driven, so more languages can be added without rebuilding the learning interface.
+
+## Current scenes
 
 - Garden
 - Kitchen
 
+## Practice modes
+
+- **Type** — a scene object is highlighted; type its target-language name.
+- **Click** — a target-language word is shown; click the matching object.
+- **Explore** — click objects to reveal their vocabulary.
+
+Overlapping hotspots are ordered by area so smaller objects sit above larger regions and remain clickable.
+
 ## Run locally
 
-No build step is required.
-
-Open `index.html` directly, or serve the folder with any static server, for example:
-
 ```bash
-python -m http.server 8000
+npm install
+npm run dev
 ```
 
-Then visit `http://localhost:8000`.
+Production checks:
 
-## GitHub Pages
-
-1. Push this folder to a GitHub repository.
-2. In **Settings → Pages**, choose **Deploy from a branch**.
-3. Select the `main` branch and `/ (root)`.
-4. Save.
+```bash
+npm run check
+npm run build
+```
 
 ## Project structure
 
 ```text
-vocabscape/
+VocabScape/
+├── .github/workflows/pages.yml
+├── src/
+│   ├── data/
+│   │   ├── languages.js
+│   │   └── scenes.js
+│   ├── lib/
+│   │   └── SceneView.svelte
+│   ├── App.svelte
+│   ├── app.css
+│   └── main.ts
+├── garden.png
 ├── index.html
-├── styles.css
-├── app.js
-├── assets/
-│   └── garden.png
-└── data/
-    ├── languages.js
-    └── scenes.js
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
 ```
 
-## Add another language
+## GitHub Pages
 
-1. Add the language in `data/languages.js`.
-2. Add a matching `terms.<language-code>` entry to every object in `data/scenes.js`.
-3. Each term supplies:
-   - `display`: the answer shown to the learner.
-   - `strictAnswers`: answers accepted in strict mode.
-   - `looseAnswers`: answers accepted when strict mode is off.
+Every push to `main` runs the Pages workflow. It builds the Svelte app, copies the local Garden artwork into the production bundle, and deploys `dist`.
 
-The engine itself does not contain French- or Spanish-specific vocabulary.
+The Vite base path is `/VocabScape/`.
 
-## Add another scene
+## Adding a language
 
-Add a new scene object in `data/scenes.js` with:
+Add the language in `src/data/languages.js`, then add a matching `terms.<language-code>` entry to every object in `src/data/scenes.js`.
 
-- an image path or URL,
-- a list of objects,
-- polygon coordinates normalized from `0` to `1`,
-- translations for each supported language.
+## Adding a scene
 
-Polygon coordinates are independent of display size as long as the image keeps its natural aspect ratio.
+Add another scene in `src/data/scenes.js` with an image, vocabulary objects, normalized polygon coordinates, and terms for each language.
 
-## Progress
-
-Progress is saved in browser `localStorage` and is stored separately for each language.
-
-## Image credits
-
-- Garden: generated for this project.
-- Kitchen: EddieRider, *Kitchen interior design.jpg*, released to the public domain via Wikimedia Commons.
-
-## Status
-
-Early prototype. Scene geometry is intentionally data-driven so new rooms, objects and languages can be added without rewriting the learning engine.
+Progress is stored locally in the learner's browser.
