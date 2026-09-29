@@ -1,6 +1,6 @@
 <script lang="ts">
   import SceneView from "./lib/SceneView.svelte";
-  import GardenScene from "./lib/GardenScene.svelte";
+  import GardenPhotoScene from "./lib/GardenPhotoScene.svelte";
   import { LANGUAGES } from "./data/languages.js";
   import { SCENES } from "./data/scenes.js";
 
@@ -263,7 +263,7 @@
       </div>
 
       {#if currentScene.id === "garden"}
-        <GardenScene
+        <GardenPhotoScene
           scene={currentScene}
           {language}
           {mode}
@@ -343,7 +343,7 @@
           </label>
 
           <div class="tip">
-            In illustrated scenes, the visible object itself is clickable — there is no separate polygon map.
+            Garden uses the original image with your precise object geometry; smaller overlapping objects win the click.
           </div>
         </aside>
       </div>
