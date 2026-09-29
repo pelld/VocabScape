@@ -1,15 +1,11 @@
 <script lang="ts">
-  import GardenPhotoScene from "./lib/GardenPhotoScene.svelte";
-  import SceneView from "./lib/SceneView.svelte";
   import { LANGUAGES } from "./data/languages.js";
   import { SCENES } from "./data/scenes.js";
 
-  type View = "cards" | "explore";
   type CardState = { correct: number; wrong: number };
 
   const languages: Record<string, any> = LANGUAGES;
   const actionDecks: any[] = SCENES.filter((scene: any) => scene.kind === "action");
-  const exploreScenes: any[] = SCENES.filter((scene: any) => scene.id === "garden" || scene.id === "kitchen");
 
   const progressKey = "vocabscape-card-progress-v2";
 
@@ -22,7 +18,6 @@
 
   let language = "fr";
 
-  let view: View = "cards";
   let deckIndex = 0;
   let currentDeck = actionDecks[deckIndex];
   let currentIndex = 0;
@@ -34,12 +29,9 @@
   let feedbackTone: "good" | "bad" | "neutral" = "neutral";
   let answerInput: HTMLInputElement;
 
-  let exploreIndex = 0;
-  let showOutlines = false;
 
   $: currentCard = currentDeck.objects[currentIndex];
   $: currentTerm = currentCard.terms[language];
-  $: currentExploreScene = exploreScenes[exploreIndex];
   $: roundProgress = Math.round((position / currentDeck.objects.length) * 100);
 
   const asset = (file: string) =>
@@ -167,11 +159,6 @@
     resetDeck();
   }
 
-  function switchView(nextView: View) {
-    view = nextView;
-    if (view === "cards") focusAnswer();
-  }
-
   resetDeck();
 </script>
 
@@ -194,11 +181,6 @@
     </a>
 
     <div class="top-actions">
-      <div class="view-switcher" aria-label="Study view">
-        <button class:active={view === "cards"} onclick={() => switchView("cards")}>Cards</button>
-        <button class:active={view === "explore"} onclick={() => switchView("explore")}>Explore</button>
-      </div>
-
       <div class="language-switcher" aria-label="Target language">
         {#each Object.entries(languages) as [code, config]}
           <button class:active={language === code} onclick={() => switchLanguage(code)}>
@@ -209,8 +191,7 @@
     </div>
   </header>
 
-  {#if view === "cards"}
-    <main class="card-page">
+  <main class="card-page">
       <section class="flashcard">
         <div class="flashcard-media">
           <img src={asset(currentCard.asset)} alt={currentCard.concept} draggable="false" />
@@ -263,50 +244,5 @@
         </div>
       </section>
     </main>
-  {:else}
-    <main class="explore-page">
-      <section class="explore-heading">
-        <div>
-          <div class="eyebrow">{languages[language].name} · Explore</div>
-          <h1>{currentExploreScene.name}</h1>
-          <p>Click objects in the scene to reveal their vocabulary.</p>
-        </div>
 
-        <div class="scene-tabs">
-          {#each exploreScenes as scene, index}
-            <button class:active={index === exploreIndex} onclick={() => (exploreIndex = index)}>
-              {scene.name}
-            </button>
-          {/each}
-        </div>
-      </section>
-
-      {#if currentExploreScene.id === "garden"}
-        <GardenPhotoScene
-          scene={currentExploreScene}
-          {language}
-          mode="explore"
-          currentIndex={0}
-          showAll={showOutlines}
-          masteredIds={new Set()}
-          onhit={() => {}}
-        />
-      {:else}
-        <SceneView
-          scene={currentExploreScene}
-          {language}
-          mode="explore"
-          currentIndex={0}
-          showAll={showOutlines}
-          masteredIds={new Set()}
-          onhit={() => {}}
-        />
-      {/if}
-
-      <label class="outline-toggle">
-        <input type="checkbox" bind:checked={showOutlines} />
-        Show object outlines
-      </label>
-    </main>
-  {/if}
 </div>
