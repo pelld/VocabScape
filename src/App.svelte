@@ -39,8 +39,7 @@
   $: currentCard = actionDeck.objects[currentIndex];
   $: currentTerm = currentCard.terms[language];
   $: currentExploreScene = exploreScenes[exploreIndex];
-  $: knownCount = actionDeck.objects.filter((card: any) => stateFor(card).correct > 0).length;
-  $: progressPercent = Math.round((knownCount / actionDeck.objects.length) * 100);
+  $: roundProgress = Math.round((position / actionDeck.objects.length) * 100);
 
   const asset = (file: string) => `${import.meta.env.BASE_URL}action-garden/${file}`;
 
@@ -204,35 +203,27 @@
 
   {#if view === "cards"}
     <main class="card-page">
-      <section class="deck-heading">
-        <div>
-          <div class="eyebrow">{languages[language].name} · Garden actions</div>
-          <h1>Describe what you see</h1>
-          <p>Every card appears once before the deck repeats.</p>
-        </div>
-
-        <div class="deck-stat">
-          <strong>{knownCount}/{actionDeck.objects.length}</strong>
-          <span>answered correctly</span>
-        </div>
-      </section>
-
-      <div class="progress-row">
-        <div class="progress-track">
-          <div class="progress-fill" style={`width:${progressPercent}%`}></div>
-        </div>
-        <span>Card {position} of {actionDeck.objects.length} · Round {round}</span>
-      </div>
-
       <section class="flashcard">
         <div class="flashcard-media">
           <img src={asset(currentCard.asset)} alt={currentCard.concept} draggable="false" />
         </div>
 
         <div class="flashcard-body">
+          <div class="card-meta">
+            <div>
+              <span class="eyebrow">{languages[language].name} · Garden actions</span>
+              <span class="round-label">Round {round}</span>
+            </div>
+            <strong>Card {position} / {actionDeck.objects.length}</strong>
+          </div>
+
+          <div class="card-progress" aria-hidden="true">
+            <div class="card-progress-fill" style={`width:${roundProgress}%`}></div>
+          </div>
+
           <div class="card-prompt">
-            <span class="eyebrow">Say this in {languages[language].name}</span>
-            <p class="hint">{currentCard.concept}</p>
+            <span class="prompt-label">Translate this sentence</span>
+            <h1>{currentCard.concept}</h1>
           </div>
 
           <div class="answer-row">
@@ -242,7 +233,7 @@
               autocomplete="off"
               autocapitalize="off"
               spellcheck="false"
-              placeholder="Type a sentence…"
+              placeholder={language === "fr" ? "Type the French sentence…" : "Type the Spanish sentence…"}
               onkeydown={handleKeydown}
             />
             <button class="primary" onclick={checkAnswer}>Check</button>
@@ -253,8 +244,8 @@
           </div>
 
           <div class="card-actions">
-            <button class="quiet" onclick={revealAnswer}>Reveal</button>
-            <button class="next-button" onclick={nextCard}>Next</button>
+            <button class="quiet" onclick={revealAnswer}>Reveal answer</button>
+            <button class="next-button" onclick={nextCard}>Next card</button>
           </div>
         </div>
       </section>
