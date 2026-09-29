@@ -205,6 +205,8 @@ button { color: inherit; }
 }
 
 .flashcard {
+  width: min(620px, 100%);
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -216,21 +218,21 @@ button { color: inherit; }
 
 .flashcard-media {
   width: 100%;
-  height: clamp(340px, 50vh, 500px);
-  display: grid;
-  place-items: center;
+  height: auto;
+  display: block;
   padding: 0;
   flex: 0 0 auto;
-  overflow: hidden;
+  overflow: visible;
   background:
     radial-gradient(circle at 50% 85%, rgba(84, 135, 72, 0.14), transparent 32%),
     linear-gradient(180deg, #f7fafb, #edf3f0);
 }
 
 .flashcard-media img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
+  object-fit: initial;
   filter: none;
 }
 
@@ -383,8 +385,8 @@ button { color: inherit; }
   }
 
   .flashcard-media {
-    height: 44vh;
-    min-height: 300px;
+    height: auto;
+    min-height: 0;
   }
 }
 
