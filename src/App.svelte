@@ -21,8 +21,7 @@
     memory = {};
   }
 
-  let language = localStorage.getItem(languageKey) || "fr";
-  if (!languages[language]) language = "fr";
+  let language = "fr";
 
   let view: View = "cards";
   let currentIndex = 0;
@@ -161,7 +160,6 @@
 
   function switchLanguage(code: string) {
     language = code;
-    localStorage.setItem(languageKey, language);
     resetDeck();
   }
 
