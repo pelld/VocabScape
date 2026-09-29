@@ -1,19 +1,20 @@
 <script lang="ts">
-  import SceneView from "./lib/SceneView.svelte";
   import GardenPhotoScene from "./lib/GardenPhotoScene.svelte";
-  import ActionGardenScene from "./lib/ActionGardenScene.svelte";
+  import SceneView from "./lib/SceneView.svelte";
   import { LANGUAGES } from "./data/languages.js";
   import { SCENES } from "./data/scenes.js";
 
-  type Mode = "type" | "click" | "explore";
-  type WordState = { correct: number; wrong: number; mastered: boolean };
+  type View = "cards" | "explore";
+  type CardState = { correct: number; wrong: number };
 
   const languages: Record<string, any> = LANGUAGES;
-  const scenes: any[] = SCENES;
-  const progressKey = "vocabscape-progress-v1";
+  const actionDeck: any = SCENES.find((scene: any) => scene.id === "action-garden");
+  const exploreScenes: any[] = SCENES.filter((scene: any) => scene.id === "garden" || scene.id === "kitchen");
+
+  const progressKey = "vocabscape-card-progress-v2";
   const languageKey = "vocabscape-language";
 
-  let memory: Record<string, WordState> = {};
+  let memory: Record<string, CardState> = {};
   try {
     memory = JSON.parse(localStorage.getItem(progressKey) || "{}");
   } catch {
@@ -21,35 +22,40 @@
   }
 
   let language = localStorage.getItem(languageKey) || "fr";
-  if (!languages[language]) language = Object.keys(languages)[0];
+  if (!languages[language]) language = "fr";
 
-  let sceneIndex = 0;
+  let view: View = "cards";
   let currentIndex = 0;
-  let questionQueue: number[] = [];
-  let questionPosition = 1;
-  let roundNumber = 1;
-  let mode: Mode = "type";
-  let strictMode = Boolean(languages[language].strictDefault);
-  let showAll = false;
+  let queue: number[] = [];
+  let position = 1;
+  let round = 1;
+  let revealed = false;
+  let hintVisible = false;
   let feedback = "";
   let feedbackTone: "good" | "bad" | "neutral" = "neutral";
-  let sessionCorrect = 0;
-  let sessionAttempts = 0;
-  let countedCurrent = false;
   let answerInput: HTMLInputElement;
 
-  $: currentScene = scenes[sceneIndex];
-  $: currentObject = currentScene.objects[currentIndex];
-  $: currentTerm = currentObject.terms[language];
-  $: strictAvailable = Boolean(languages[language].strictLabel);
-  $: sceneMastered = currentScene.objects.filter((object: any) => stateFor(object).mastered).length;
-  $: sceneProgress = Math.round((sceneMastered / Math.max(1, currentScene.objects.length)) * 100);
-  $: allObjects = scenes.flatMap((scene: any) => scene.objects);
-  $: languageKeys = [...new Set(allObjects.map((object: any) => memoryKey(object)))];
-  $: globalMastered = languageKeys.filter((key: string) => memory[key]?.mastered).length;
-  $: masteredIds = new Set(
-    currentScene.objects.filter((object: any) => stateFor(object).mastered).map((object: any) => object.id)
-  );
+  let exploreIndex = 0;
+  let showOutlines = false;
+
+  $: currentCard = actionDeck.objects[currentIndex];
+  $: currentTerm = currentCard.terms[language];
+  $: currentExploreScene = exploreScenes[exploreIndex];
+  $: knownCount = actionDeck.objects.filter((card: any) => stateFor(card).correct > 0).length;
+  $: progressPercent = Math.round((knownCount / actionDeck.objects.length) * 100);
+
+  const asset = (file: string) => `${import.meta.env.BASE_URL}action-garden/${file}`;
+
+  function normalise(value: string) {
+    return value
+      .trim()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[.!?;,]/g, "")
+      .replace(/[’']/g, "'")
+      .replace(/\s+/g, " ");
+  }
 
   function shuffledIndices(length: number, avoidFirst = -1) {
     const indices = Array.from({ length }, (_, index) => index);
@@ -66,170 +72,113 @@
     return indices;
   }
 
-  function resetQuestionRound() {
-    const objectCount = scenes[sceneIndex].objects.length;
-    const order = shuffledIndices(objectCount);
-
-    currentIndex = order.shift() ?? 0;
-    questionQueue = order;
-    questionPosition = 1;
-    roundNumber = 1;
-    countedCurrent = false;
-
-    if (answerInput) answerInput.value = "";
-    clearFeedback();
-    focusAnswer();
+  function stateKey(card: any) {
+    return `${language}:${card.id}`;
   }
 
-  function normalise(value: string) {
-    return value
-      .trim()
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[’']/g, "'")
-      .replace(/\s+/g, " ");
-  }
-
-  function memoryKey(object: any) {
-    return `${language}:${object.id}`;
-  }
-
-  function stateFor(object: any): WordState {
-    const key = memoryKey(object);
-    if (!memory[key]) memory[key] = { correct: 0, wrong: 0, mastered: false };
+  function stateFor(card: any): CardState {
+    const key = stateKey(card);
+    if (!memory[key]) memory[key] = { correct: 0, wrong: 0 };
     return memory[key];
   }
 
-  function save() {
+  function saveProgress() {
     localStorage.setItem(progressKey, JSON.stringify(memory));
   }
 
-  function clearFeedback() {
+  function focusAnswer() {
+    window.setTimeout(() => answerInput?.focus(), 0);
+  }
+
+  function resetDeck() {
+    const order = shuffledIndices(actionDeck.objects.length);
+    currentIndex = order.shift() ?? 0;
+    queue = order;
+    position = 1;
+    round = 1;
+    revealed = false;
+    hintVisible = false;
     feedback = "";
     feedbackTone = "neutral";
-  }
-
-  function focusAnswer() {
-    if (mode === "type") window.setTimeout(() => answerInput?.focus(), 0);
-  }
-
-  function switchLanguage(code: string) {
-    language = code;
-    localStorage.setItem(languageKey, language);
-    strictMode = Boolean(languages[language].strictDefault);
-    sessionCorrect = 0;
-    sessionAttempts = 0;
-    resetQuestionRound();
-  }
-
-  function switchScene(index: number) {
-    sceneIndex = index;
-    resetQuestionRound();
-  }
-
-  function switchMode(nextMode: Mode) {
-    mode = nextMode;
-    resetQuestionRound();
-  }
-
-  function acceptedAnswers() {
-    const answers = strictMode && strictAvailable ? currentTerm.strictAnswers : currentTerm.looseAnswers;
-    return answers.map(normalise);
-  }
-
-  function checkTyped() {
-    if (mode !== "type" || !answerInput?.value.trim()) return;
-
-    sessionAttempts += 1;
-    const correct = acceptedAnswers().includes(normalise(answerInput.value));
-
-    if (correct) {
-      if (!countedCurrent) {
-        const state = stateFor(currentObject);
-        state.correct += 1;
-        state.mastered = true;
-        sessionCorrect += 1;
-        countedCurrent = true;
-        save();
-      }
-
-      feedback = `Correct — ${currentTerm.display}`;
-      feedbackTone = "good";
-      window.setTimeout(nextQuestion, 650);
-    } else {
-      stateFor(currentObject).wrong += 1;
-      save();
-      feedback = strictMode && languages[language].strictHint
-        ? `Not quite. ${languages[language].strictHint}`
-        : "Not quite. Try again.";
-      feedbackTone = "bad";
-    }
-  }
-
-  function handleSceneHit(index: number) {
-    if (mode === "type") {
-      currentIndex = index;
-      countedCurrent = false;
-      clearFeedback();
-      focusAnswer();
-      return;
-    }
-
-    if (mode !== "click") return;
-
-    sessionAttempts += 1;
-
-    if (index === currentIndex) {
-      const state = stateFor(currentObject);
-      state.correct += 1;
-      state.mastered = true;
-      sessionCorrect += 1;
-      save();
-      feedback = `Correct — ${currentTerm.display}`;
-      feedbackTone = "good";
-      window.setTimeout(nextQuestion, 650);
-    } else {
-      stateFor(currentObject).wrong += 1;
-      save();
-      feedback = "Not that one — try again.";
-      feedbackTone = "bad";
-    }
-  }
-
-  function nextQuestion() {
-    const objectCount = currentScene.objects.length;
-    if (objectCount < 2) return;
-
-    if (questionQueue.length === 0) {
-      questionQueue = shuffledIndices(objectCount, currentIndex);
-      questionPosition = 0;
-      roundNumber += 1;
-    }
-
-    currentIndex = questionQueue.shift() ?? currentIndex;
-    questionPosition += 1;
-    countedCurrent = false;
-
     if (answerInput) answerInput.value = "";
-    clearFeedback();
     focusAnswer();
   }
 
-  function showAnswer() {
+  function nextCard() {
+    if (queue.length === 0) {
+      queue = shuffledIndices(actionDeck.objects.length, currentIndex);
+      position = 0;
+      round += 1;
+    }
+
+    currentIndex = queue.shift() ?? currentIndex;
+    position += 1;
+    revealed = false;
+    hintVisible = false;
+    feedback = "";
+    feedbackTone = "neutral";
+
+    if (answerInput) answerInput.value = "";
+    focusAnswer();
+  }
+
+  function acceptedAnswers() {
+    return currentTerm.looseAnswers.map(normalise);
+  }
+
+  function checkAnswer() {
+    if (!answerInput?.value.trim()) return;
+
+    const state = stateFor(currentCard);
+    const correct = acceptedAnswers().includes(normalise(answerInput.value));
+
+    if (correct) {
+      state.correct += 1;
+      feedback = currentTerm.display;
+      feedbackTone = "good";
+      revealed = true;
+    } else {
+      state.wrong += 1;
+      feedback = "Not quite.";
+      feedbackTone = "bad";
+    }
+
+    saveProgress();
+  }
+
+  function revealAnswer() {
+    revealed = true;
     feedback = currentTerm.display;
     feedbackTone = "neutral";
   }
 
   function handleKeydown(event: KeyboardEvent) {
-    if (event.key === "Enter") checkTyped();
+    if (event.key === "Enter") {
+      if (revealed) nextCard();
+      else checkAnswer();
+    }
   }
 
-  resetQuestionRound();
+  function switchLanguage(code: string) {
+    language = code;
+    localStorage.setItem(languageKey, language);
+    resetDeck();
+  }
+
+  function switchView(nextView: View) {
+    view = nextView;
+    if (view === "cards") focusAnswer();
+  }
+
+  resetDeck();
 </script>
 
 <svelte:head>
-  <title>VocabScape · {currentScene.name}</title>
+  <title>VocabScape · Visual language cards</title>
+  <meta
+    name="description"
+    content="Learn French and Spanish from visual flashcards and vocabulary scenes."
+  />
 </svelte:head>
 
 <div class="app-shell">
@@ -238,169 +187,132 @@
       <span class="brand-mark">V</span>
       <span>
         <strong>VocabScape</strong>
-        <small>Learn words where they live</small>
+        <small>See it. Say it.</small>
       </span>
     </a>
 
-    <div class="language-switcher" aria-label="Target language">
-      {#each Object.entries(languages) as [code, config]}
-        <button class:active={language === code} onclick={() => switchLanguage(code)}>
-          {config.nativeName}
-        </button>
-      {/each}
+    <div class="top-actions">
+      <div class="view-switcher" aria-label="Study view">
+        <button class:active={view === "cards"} onclick={() => switchView("cards")}>Cards</button>
+        <button class:active={view === "explore"} onclick={() => switchView("explore")}>Explore</button>
+      </div>
+
+      <div class="language-switcher" aria-label="Target language">
+        {#each Object.entries(languages) as [code, config]}
+          <button class:active={language === code} onclick={() => switchLanguage(code)}>
+            {config.nativeName}
+          </button>
+        {/each}
+      </div>
     </div>
   </header>
 
-  <main class="layout">
-    <nav class="scene-nav" aria-label="Scenes">
-      <div class="eyebrow">Scenes</div>
-
-      {#each scenes as scene, index}
-        <button class="scene-link" class:active={index === sceneIndex} onclick={() => switchScene(index)}>
-          <span>{scene.name}</span>
-          <small>{scene.objects.length} objects</small>
-        </button>
-      {/each}
-
-      <div class="nav-progress">
-        <span>Language progress</span>
-        <strong>{globalMastered}/{languageKeys.length}</strong>
-      </div>
-    </nav>
-
-    <section class="content">
-      <div class="scene-heading">
+  {#if view === "cards"}
+    <main class="card-page">
+      <section class="deck-heading">
         <div>
-          <div class="eyebrow">{languages[language].name} · {currentScene.kind === "action" ? "visual verbs" : "visual vocabulary"}</div>
-          <h1>{currentScene.name}</h1>
-          <p>{currentScene.objects.length} {currentScene.kind === "action" ? "actions" : "objects"} in this scene</p>
+          <div class="eyebrow">{languages[language].name} · Garden actions</div>
+          <h1>Describe what you see</h1>
+          <p>Every card appears once before the deck repeats.</p>
         </div>
 
-        <div class="mode-switcher" aria-label="Practice mode">
-          <button class:active={mode === "type"} onclick={() => switchMode("type")}>{currentScene.kind === "action" ? "Describe" : "Type"}</button>
-          <button class:active={mode === "click"} onclick={() => switchMode("click")}>Click</button>
-          <button class:active={mode === "explore"} onclick={() => switchMode("explore")}>Explore</button>
+        <div class="deck-stat">
+          <strong>{knownCount}/{actionDeck.objects.length}</strong>
+          <span>answered correctly</span>
         </div>
-      </div>
+      </section>
 
       <div class="progress-row">
-        <div class="progress-track" aria-label="Scene progress">
-          <div class="progress-fill" style={`width:${sceneProgress}%`}></div>
+        <div class="progress-track">
+          <div class="progress-fill" style={`width:${progressPercent}%`}></div>
         </div>
-        <span>{sceneMastered}/{currentScene.objects.length} learned</span>
+        <span>Card {position} of {actionDeck.objects.length} · Round {round}</span>
       </div>
 
-      {#if currentScene.id === "garden"}
+      <section class="flashcard">
+        <div class="flashcard-media">
+          <img src={asset(currentCard.asset)} alt={currentCard.concept} draggable="false" />
+        </div>
+
+        <div class="flashcard-body">
+          <div class="card-prompt">
+            <span class="eyebrow">Describe this in {languages[language].name}</span>
+            {#if hintVisible}
+              <p class="hint">{currentCard.concept}</p>
+            {/if}
+          </div>
+
+          <div class="answer-row">
+            <input
+              bind:this={answerInput}
+              type="text"
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+              placeholder="Type a sentence…"
+              onkeydown={handleKeydown}
+            />
+            <button class="primary" onclick={checkAnswer}>Check</button>
+          </div>
+
+          <div class="feedback" class:good={feedbackTone === "good"} class:bad={feedbackTone === "bad"}>
+            {feedback}
+          </div>
+
+          <div class="card-actions">
+            <button class="quiet" onclick={() => (hintVisible = !hintVisible)}>
+              {hintVisible ? "Hide hint" : "Hint"}
+            </button>
+            <button class="quiet" onclick={revealAnswer}>Reveal</button>
+            <button class="next-button" onclick={nextCard}>Next</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  {:else}
+    <main class="explore-page">
+      <section class="explore-heading">
+        <div>
+          <div class="eyebrow">{languages[language].name} · Explore</div>
+          <h1>{currentExploreScene.name}</h1>
+          <p>Click objects in the scene to reveal their vocabulary.</p>
+        </div>
+
+        <div class="scene-tabs">
+          {#each exploreScenes as scene, index}
+            <button class:active={index === exploreIndex} onclick={() => (exploreIndex = index)}>
+              {scene.name}
+            </button>
+          {/each}
+        </div>
+      </section>
+
+      {#if currentExploreScene.id === "garden"}
         <GardenPhotoScene
-          scene={currentScene}
+          scene={currentExploreScene}
           {language}
-          {mode}
-          {currentIndex}
-          {showAll}
-          {masteredIds}
-          onhit={handleSceneHit}
-        />
-      {:else if currentScene.id === "action-garden"}
-        <ActionGardenScene
-          scene={currentScene}
-          {language}
-          {mode}
-          {currentIndex}
-          {showAll}
-          {masteredIds}
-          onhit={handleSceneHit}
+          mode="explore"
+          currentIndex={0}
+          showAll={showOutlines}
+          masteredIds={new Set()}
+          onhit={() => {}}
         />
       {:else}
         <SceneView
-          scene={currentScene}
+          scene={currentExploreScene}
           {language}
-          {mode}
-          {currentIndex}
-          {showAll}
-          {masteredIds}
-          onhit={handleSceneHit}
+          mode="explore"
+          currentIndex={0}
+          showAll={showOutlines}
+          masteredIds={new Set()}
+          onhit={() => {}}
         />
       {/if}
 
-      <div class="practice-grid">
-        <section class="practice-card">
-          {#if mode === "type"}
-            <span class="prompt-label">Question {questionPosition} of {currentScene.objects.length} · Round {roundNumber}</span>
-            <span class="prompt-label prompt-secondary">
-              {currentScene.kind === "action"
-                ? `Describe the highlighted action in ${languages[language].name}.`
-                : `What is the highlighted object in ${languages[language].name}?`}
-            </span>
-            <h2>{currentObject.concept}</h2>
-
-            <div class="answer-row">
-              <input
-                bind:this={answerInput}
-                type="text"
-                autocomplete="off"
-                autocapitalize="off"
-                spellcheck="false"
-                placeholder={currentScene.kind === "action" ? "Type the sentence…" : "Type the word…"}
-                onkeydown={handleKeydown}
-              />
-              <button class="primary" onclick={checkTyped}>Check</button>
-            </div>
-          {:else if mode === "click"}
-            <span class="prompt-label">Question {questionPosition} of {currentScene.objects.length} · Round {roundNumber}</span>
-            <span class="prompt-label prompt-secondary">{currentScene.kind === "action" ? "Find this action in the picture" : "Find this in the picture"}</span>
-            <h2>{currentTerm.display}</h2>
-            <p class="supporting">Click {currentScene.kind === "action" ? currentObject.concept : `the ${currentObject.concept}`}.</p>
-          {:else}
-            <span class="prompt-label">Explore the scene</span>
-            <h2>{currentScene.kind === "action" ? "Click a person" : "Click anything outlined"}</h2>
-            <p class="supporting">
-              {currentScene.kind === "action"
-                ? `The ${languages[language].name} sentence will appear on the picture.`
-                : `The ${languages[language].name} word will appear on the picture.`}
-            </p>
-          {/if}
-
-          {#if mode !== "explore"}
-            <div class="feedback" class:good={feedbackTone === "good"} class:bad={feedbackTone === "bad"}>
-              {feedback}
-            </div>
-
-            <div class="practice-actions">
-              <button class="quiet" onclick={showAnswer}>Show answer</button>
-              <button class="quiet" onclick={nextQuestion}>Next</button>
-            </div>
-          {/if}
-        </section>
-
-        <aside class="settings-card">
-          <div class="stat">
-            <span>This session</span>
-            <strong>{sessionCorrect}/{sessionAttempts}</strong>
-          </div>
-
-          {#if strictAvailable}
-            <label class="setting-row">
-              <span>{languages[language].strictLabel}</span>
-              <input type="checkbox" bind:checked={strictMode} />
-            </label>
-          {/if}
-
-          <label class="setting-row">
-            <span>Show all outlines</span>
-            <input type="checkbox" bind:checked={showAll} />
-          </label>
-
-          <div class="tip">
-            {currentScene.kind === "action"
-              ? "Each person is a separate transparent image layer over the garden background."
-              : "Garden uses the original image with your precise object geometry; smaller overlapping objects win the click."}
-          </div>
-        </aside>
-      </div>
-
-      {#if currentScene.credit}
-        <p class="credit">{currentScene.credit}</p>
-      {/if}
-    </section>
-  </main>
+      <label class="outline-toggle">
+        <input type="checkbox" bind:checked={showOutlines} />
+        Show object outlines
+      </label>
+    </main>
+  {/if}
 </div>
