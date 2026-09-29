@@ -2151,5 +2151,217 @@ export const SCENES = [
         }
       }
     ]
+  },
+  {
+    "id": "action-daily",
+    "name": "Daily routines",
+    "kind": "action",
+    "credit": "Daily routine photos: Pexels contributors",
+    "objects": [
+      {
+        "id": "daily_dressing",
+        "concept": "She is getting dressed.",
+        "asset": "https://images.pexels.com/photos/6311652/pexels-photo-6311652.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Elle s'habille.",
+            "strictAnswers": ["elle s'habille"],
+            "looseAnswers": ["elle s'habille"]
+          },
+          "es": {
+            "display": "Ella se viste.",
+            "strictAnswers": ["ella se viste"],
+            "looseAnswers": ["ella se viste"]
+          }
+        }
+      },
+      {
+        "id": "daily_brushing_teeth",
+        "concept": "He is brushing his teeth.",
+        "asset": "https://images.pexels.com/photos/3764014/pexels-photo-3764014.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Il se brosse les dents.",
+            "strictAnswers": ["il se brosse les dents"],
+            "looseAnswers": ["il se brosse les dents"]
+          },
+          "es": {
+            "display": "Él se cepilla los dientes.",
+            "strictAnswers": ["él se cepilla los dientes"],
+            "looseAnswers": ["él se cepilla los dientes", "el se cepilla los dientes"]
+          }
+        }
+      },
+      {
+        "id": "daily_combing_hair",
+        "concept": "She is combing her hair.",
+        "asset": "https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Elle se peigne les cheveux.",
+            "strictAnswers": ["elle se peigne les cheveux"],
+            "looseAnswers": ["elle se peigne les cheveux"]
+          },
+          "es": {
+            "display": "Ella se peina.",
+            "strictAnswers": ["ella se peina"],
+            "looseAnswers": ["ella se peina"]
+          }
+        }
+      },
+      {
+        "id": "daily_tying_shoes",
+        "concept": "He is tying his shoelaces.",
+        "asset": "https://images.pexels.com/photos/1478442/pexels-photo-1478442.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Il attache ses lacets.",
+            "strictAnswers": ["il attache ses lacets"],
+            "looseAnswers": ["il attache ses lacets"]
+          },
+          "es": {
+            "display": "Él se ata los cordones.",
+            "strictAnswers": ["él se ata los cordones"],
+            "looseAnswers": ["él se ata los cordones", "el se ata los cordones"]
+          }
+        }
+      },
+      {
+        "id": "daily_making_bed",
+        "concept": "She is making the bed.",
+        "asset": "https://images.pexels.com/photos/3771069/pexels-photo-3771069.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Elle fait le lit.",
+            "strictAnswers": ["elle fait le lit"],
+            "looseAnswers": ["elle fait le lit"]
+          },
+          "es": {
+            "display": "Ella hace la cama.",
+            "strictAnswers": ["ella hace la cama"],
+            "looseAnswers": ["ella hace la cama"]
+          }
+        }
+      },
+      {
+        "id": "daily_packing_bag",
+        "concept": "He is packing his bag.",
+        "asset": "https://images.pexels.com/photos/2901209/pexels-photo-2901209.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Il prépare son sac.",
+            "strictAnswers": ["il prépare son sac"],
+            "looseAnswers": ["il prépare son sac", "il prepare son sac"]
+          },
+          "es": {
+            "display": "Él prepara su bolsa.",
+            "strictAnswers": ["él prepara su bolsa"],
+            "looseAnswers": ["él prepara su bolsa", "el prepara su bolsa"]
+          }
+        }
+      },
+      {
+        "id": "daily_locking_door",
+        "concept": "She is locking the door.",
+        "asset": "https://images.pexels.com/photos/279810/pexels-photo-279810.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Elle ferme la porte à clé.",
+            "strictAnswers": ["elle ferme la porte à clé"],
+            "looseAnswers": ["elle ferme la porte à clé", "elle ferme la porte a cle"]
+          },
+          "es": {
+            "display": "Ella cierra la puerta con llave.",
+            "strictAnswers": ["ella cierra la puerta con llave"],
+            "looseAnswers": ["ella cierra la puerta con llave"]
+          }
+        }
+      },
+      {
+        "id": "daily_waiting_bus",
+        "concept": "He is waiting for the bus.",
+        "asset": "https://images.pexels.com/photos/3846559/pexels-photo-3846559.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Il attend le bus.",
+            "strictAnswers": ["il attend le bus"],
+            "looseAnswers": ["il attend le bus"]
+          },
+          "es": {
+            "display": "Él espera el autobús.",
+            "strictAnswers": ["él espera el autobús"],
+            "looseAnswers": ["él espera el autobús", "el espera el autobus"]
+          }
+        }
+      },
+      {
+        "id": "daily_checking_time",
+        "concept": "She is checking the time.",
+        "asset": "https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Elle regarde l'heure.",
+            "strictAnswers": ["elle regarde l'heure"],
+            "looseAnswers": ["elle regarde l'heure"]
+          },
+          "es": {
+            "display": "Ella mira la hora.",
+            "strictAnswers": ["ella mira la hora"],
+            "looseAnswers": ["ella mira la hora"]
+          }
+        }
+      },
+      {
+        "id": "daily_phone",
+        "concept": "He is answering the phone.",
+        "asset": "https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Il répond au téléphone.",
+            "strictAnswers": ["il répond au téléphone"],
+            "looseAnswers": ["il répond au téléphone", "il repond au telephone"]
+          },
+          "es": {
+            "display": "Él contesta el teléfono.",
+            "strictAnswers": ["él contesta el teléfono"],
+            "looseAnswers": ["él contesta el teléfono", "el contesta el telefono"]
+          }
+        }
+      },
+      {
+        "id": "daily_shopping",
+        "concept": "She is carrying the shopping.",
+        "asset": "https://images.pexels.com/photos/3769747/pexels-photo-3769747.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Elle porte les courses.",
+            "strictAnswers": ["elle porte les courses"],
+            "looseAnswers": ["elle porte les courses"]
+          },
+          "es": {
+            "display": "Ella lleva la compra.",
+            "strictAnswers": ["ella lleva la compra"],
+            "looseAnswers": ["ella lleva la compra"]
+          }
+        }
+      },
+      {
+        "id": "daily_bed",
+        "concept": "He is going to bed.",
+        "asset": "https://images.pexels.com/photos/935777/pexels-photo-935777.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Il va se coucher.",
+            "strictAnswers": ["il va se coucher"],
+            "looseAnswers": ["il va se coucher"]
+          },
+          "es": {
+            "display": "Él se va a la cama.",
+            "strictAnswers": ["él se va a la cama"],
+            "looseAnswers": ["él se va a la cama", "el se va a la cama"]
+          }
+        }
+      }
+    ]
   }
 ];
