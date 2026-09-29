@@ -1,5 +1,6 @@
 <script lang="ts">
   import SceneView from "./lib/SceneView.svelte";
+  import GardenScene from "./lib/GardenScene.svelte";
   import { LANGUAGES } from "./data/languages.js";
   import { SCENES } from "./data/scenes.js";
 
@@ -261,15 +262,27 @@
         <span>{sceneMastered}/{currentScene.objects.length} learned</span>
       </div>
 
-      <SceneView
-        scene={currentScene}
-        {language}
-        {mode}
-        {currentIndex}
-        {showAll}
-        {masteredIds}
-        onhit={handleSceneHit}
-      />
+      {#if currentScene.id === "garden"}
+        <GardenScene
+          scene={currentScene}
+          {language}
+          {mode}
+          {currentIndex}
+          {showAll}
+          {masteredIds}
+          onhit={handleSceneHit}
+        />
+      {:else}
+        <SceneView
+          scene={currentScene}
+          {language}
+          {mode}
+          {currentIndex}
+          {showAll}
+          {masteredIds}
+          onhit={handleSceneHit}
+        />
+      {/if}
 
       <div class="practice-grid">
         <section class="practice-card">
@@ -330,7 +343,7 @@
           </label>
 
           <div class="tip">
-            Smaller overlapping objects are placed above larger hotspots, so things such as the bench remain clickable.
+            In illustrated scenes, the visible object itself is clickable — there is no separate polygon map.
           </div>
         </aside>
       </div>
