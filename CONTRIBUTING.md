@@ -1,49 +1,28 @@
-# Adding content to VocabScape
+# Contributing to VocabScape
 
-## Language schema
+VocabScape is a Svelte + TypeScript + Vite project.
 
-A language lives in `data/languages.js`.
+## Local setup
 
-Example:
-
-```js
-"de": {
-  "name": "German",
-  "nativeName": "Deutsch",
-  "strictLabel": "Require article",
-  "strictHint": "Include der / die / das.",
-  "strictDefault": true
-}
+```bash
+npm install
+npm run dev
 ```
 
-If a language does not need a strict/loose distinction, set `strictLabel` to `null`.
+Before committing:
 
-## Vocabulary schema
-
-Every mapped object has one stable concept and language-specific terms:
-
-```js
-{
-  "id": "tree",
-  "concept": "tree",
-  "points": [[0.1,0.1], [0.2,0.1], [0.2,0.3]],
-  "terms": {
-    "fr": {
-      "display": "un arbre",
-      "strictAnswers": ["un arbre"],
-      "looseAnswers": ["un arbre", "arbre"]
-    },
-    "es": {
-      "display": "un árbol",
-      "strictAnswers": ["un árbol"],
-      "looseAnswers": ["un árbol", "árbol"]
-    }
-  }
-}
+```bash
+npm run check
+npm run build
 ```
 
-Keep geometry separate from language. The same polygon is reused for every language.
+## Main files
 
-## Overlapping polygons
+- `src/App.svelte` — app state and practice modes.
+- `src/lib/SceneView.svelte` — image and clickable SVG hotspots.
+- `src/data/scenes.js` — scene geometry and vocabulary.
+- `src/data/languages.js` — supported languages.
+- `src/app.css` — visual design.
+- `.github/workflows/pages.yml` — GitHub Pages deployment.
 
-Polygons may overlap. In Click mode, VocabScape tests the click against the requested object's polygon directly, so a bench can overlap a lawn without becoming unclickable.
+Keep scene geometry data-driven and keep language-specific vocabulary out of the interface code.
