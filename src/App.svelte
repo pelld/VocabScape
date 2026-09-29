@@ -29,7 +29,6 @@
   let position = 1;
   let round = 1;
   let revealed = false;
-  let hintVisible = false;
   let feedback = "";
   let feedbackTone: "good" | "bad" | "neutral" = "neutral";
   let answerInput: HTMLInputElement;
@@ -96,7 +95,6 @@
     position = 1;
     round = 1;
     revealed = false;
-    hintVisible = false;
     feedback = "";
     feedbackTone = "neutral";
     if (answerInput) answerInput.value = "";
@@ -113,7 +111,6 @@
     currentIndex = queue.shift() ?? currentIndex;
     position += 1;
     revealed = false;
-    hintVisible = false;
     feedback = "";
     feedbackTone = "neutral";
 
@@ -234,10 +231,8 @@
 
         <div class="flashcard-body">
           <div class="card-prompt">
-            <span class="eyebrow">Describe this in {languages[language].name}</span>
-            {#if hintVisible}
-              <p class="hint">{currentCard.concept}</p>
-            {/if}
+            <span class="eyebrow">Say this in {languages[language].name}</span>
+            <p class="hint">{currentCard.concept}</p>
           </div>
 
           <div class="answer-row">
@@ -258,9 +253,6 @@
           </div>
 
           <div class="card-actions">
-            <button class="quiet" onclick={() => (hintVisible = !hintVisible)}>
-              {hintVisible ? "Hide hint" : "Hint"}
-            </button>
             <button class="quiet" onclick={revealAnswer}>Reveal</button>
             <button class="next-button" onclick={nextCard}>Next</button>
           </div>
