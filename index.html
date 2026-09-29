@@ -1,99 +1,14 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="VocabScape — learn vocabulary by exploring visual scenes.">
-  <title>VocabScape</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<header>
-  <div class="header-inner">
-    <div>
-      <div class="brand">VocabScape</div>
-      <div class="tag">Learn vocabulary in visual scenes</div>
-    </div>
-
-    <div class="header-actions">
-      <label class="language-picker">
-        <span>Learn</span>
-        <select id="languageSelect" aria-label="Target language"></select>
-      </label>
-
-      <div class="mode-tabs" aria-label="Practice mode">
-        <button id="typeMode" class="active" type="button">Type</button>
-        <button id="clickMode" type="button">Click</button>
-        <button id="exploreMode" type="button">Explore</button>
-      </div>
-    </div>
-  </div>
-</header>
-
-<main>
-  <aside id="scenePicker">
-    <h2>Scenes</h2>
-  </aside>
-
-  <section class="workspace">
-    <div class="scene-head">
-      <div>
-        <div class="scene-title" id="sceneTitle"></div>
-        <div class="scene-count" id="sceneCount"></div>
-      </div>
-      <div class="progress-wrap">
-        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-      </div>
-      <div class="scoreline"><span id="masteredLabel"></span> · <span id="sessionLabel"></span></div>
-    </div>
-
-    <div class="scene-area">
-      <div class="scene-box" id="sceneBox">
-        <img id="sceneImage" alt="">
-        <svg class="overlay" id="overlay" viewBox="0 0 1 1" preserveAspectRatio="none"></svg>
-        <div class="float-label" id="floatLabel" hidden></div>
-      </div>
-    </div>
-
-    <div class="quiz">
-      <div class="quiz-card">
-        <div class="prompt-small" id="promptSmall"></div>
-        <div class="prompt" id="prompt"></div>
-
-        <div id="typeControls">
-          <div class="answer-row">
-            <input id="answerInput" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type the word…">
-            <button class="action primary" id="checkBtn" type="button">Check</button>
-          </div>
-        </div>
-
-        <div class="feedback" id="feedback" aria-live="polite"></div>
-        <div class="click-prompt" id="clickInstruction"></div>
-
-        <div class="quiz-actions">
-          <button class="action" id="showAnswer" type="button">Show answer</button>
-          <button class="action" id="nextBtn" type="button">Next</button>
-        </div>
-      </div>
-
-      <div class="settings-card">
-        <div class="setting" id="strictSetting">
-          <span id="strictLabel">Require article</span>
-          <input type="checkbox" id="strictMode">
-        </div>
-        <div class="setting"><span>Show all outlines</span><input type="checkbox" id="showAll"></div>
-        <div class="setting"><span>Scene progress</span><strong id="sceneProgress"></strong></div>
-        <div class="setting"><span>Language progress</span><strong id="globalProgress"></strong></div>
-        <div class="setting"><span>Overlapping objects</span><strong>Handled</strong></div>
-      </div>
-    </div>
-
-    <div class="credit" id="credit"></div>
-  </section>
-</main>
-
-<script src="languages.js"></script>
-<script src="scenes.js"></script>
-<script src="app.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="VocabScape — learn vocabulary by exploring visual scenes." />
+    <meta name="theme-color" content="#10243e" />
+    <title>VocabScape</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
