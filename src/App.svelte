@@ -1,6 +1,7 @@
 <script lang="ts">
   import SceneView from "./lib/SceneView.svelte";
   import GardenPhotoScene from "./lib/GardenPhotoScene.svelte";
+  import ActionGardenScene from "./lib/ActionGardenScene.svelte";
   import { LANGUAGES } from "./data/languages.js";
   import { SCENES } from "./data/scenes.js";
 
@@ -270,13 +271,13 @@
     <section class="content">
       <div class="scene-heading">
         <div>
-          <div class="eyebrow">{languages[language].name} · visual vocabulary</div>
+          <div class="eyebrow">{languages[language].name} · {currentScene.kind === "action" ? "visual verbs" : "visual vocabulary"}</div>
           <h1>{currentScene.name}</h1>
-          <p>{currentScene.objects.length} objects in this scene</p>
+          <p>{currentScene.objects.length} {currentScene.kind === "action" ? "actions" : "objects"} in this scene</p>
         </div>
 
         <div class="mode-switcher" aria-label="Practice mode">
-          <button class:active={mode === "type"} onclick={() => switchMode("type")}>Type</button>
+          <button class:active={mode === "type"} onclick={() => switchMode("type")}>{currentScene.kind === "action" ? "Describe" : "Type"}</button>
           <button class:active={mode === "click"} onclick={() => switchMode("click")}>Click</button>
           <button class:active={mode === "explore"} onclick={() => switchMode("explore")}>Explore</button>
         </div>
@@ -291,6 +292,16 @@
 
       {#if currentScene.id === "garden"}
         <GardenPhotoScene
+          scene={currentScene}
+          {language}
+          {mode}
+          {currentIndex}
+          {showAll}
+          {masteredIds}
+          onhit={handleSceneHit}
+        />
+      {:else if currentScene.id === "action-garden"}
+        <ActionGardenScene
           scene={currentScene}
           {language}
           {mode}
@@ -315,7 +326,11 @@
         <section class="practice-card">
           {#if mode === "type"}
             <span class="prompt-label">Question {questionPosition} of {currentScene.objects.length} · Round {roundNumber}</span>
-            <span class="prompt-label prompt-secondary">What is the highlighted object in {languages[language].name}?</span>
+            <span class="prompt-label prompt-secondary">
+              {currentScene.kind === "action"
+                ? `Describe the highlighted action in ${languages[language].name}.`
+                : `What is the highlighted object in ${languages[language].name}?`}
+            </span>
             <h2>{currentObject.concept}</h2>
 
             <div class="answer-row">
@@ -325,20 +340,24 @@
                 autocomplete="off"
                 autocapitalize="off"
                 spellcheck="false"
-                placeholder="Type the word…"
+                placeholder={currentScene.kind === "action" ? "Type the sentence…" : "Type the word…"}
                 onkeydown={handleKeydown}
               />
               <button class="primary" onclick={checkTyped}>Check</button>
             </div>
           {:else if mode === "click"}
             <span class="prompt-label">Question {questionPosition} of {currentScene.objects.length} · Round {roundNumber}</span>
-            <span class="prompt-label prompt-secondary">Find this in the picture</span>
+            <span class="prompt-label prompt-secondary">{currentScene.kind === "action" ? "Find this action in the picture" : "Find this in the picture"}</span>
             <h2>{currentTerm.display}</h2>
-            <p class="supporting">Click the {currentObject.concept}.</p>
+            <p class="supporting">Click {currentScene.kind === "action" ? currentObject.concept : `the ${currentObject.concept}`}.</p>
           {:else}
             <span class="prompt-label">Explore the scene</span>
-            <h2>Click anything outlined</h2>
-            <p class="supporting">The {languages[language].name} word will appear on the picture.</p>
+            <h2>{currentScene.kind === "action" ? "Click a person" : "Click anything outlined"}</h2>
+            <p class="supporting">
+              {currentScene.kind === "action"
+                ? `The ${languages[language].name} sentence will appear on the picture.`
+                : `The ${languages[language].name} word will appear on the picture.`}
+            </p>
           {/if}
 
           {#if mode !== "explore"}
@@ -372,7 +391,9 @@
           </label>
 
           <div class="tip">
-            Garden uses the original image with your precise object geometry; smaller overlapping objects win the click.
+            {currentScene.kind === "action"
+              ? "Each person is a separate transparent image layer over the garden background."
+              : "Garden uses the original image with your precise object geometry; smaller overlapping objects win the click."}
           </div>
         </aside>
       </div>
