@@ -2016,18 +2016,18 @@ export const SCENES = [
       },
       {
         "id": "kitchen_oven",
-        "concept": "She is taking the cookies out of the oven.",
+        "concept": "She is taking a dish out of the oven.",
         "asset": "https://images.pexels.com/photos/7669756/pexels-photo-7669756.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
           "fr": {
-            "display": "Elle sort les biscuits du four.",
-            "strictAnswers": ["elle sort les biscuits du four"],
-            "looseAnswers": ["elle sort les biscuits du four"]
+            "display": "Elle sort un plat du four.",
+            "strictAnswers": ["elle sort un plat du four"],
+            "looseAnswers": ["elle sort un plat du four"]
           },
           "es": {
-            "display": "Ella saca las galletas del horno.",
-            "strictAnswers": ["ella saca las galletas del horno"],
-            "looseAnswers": ["ella saca las galletas del horno"]
+            "display": "Ella saca una fuente del horno.",
+            "strictAnswers": ["ella saca una fuente del horno"],
+            "looseAnswers": ["ella saca una fuente del horno"]
           }
         }
       },
@@ -2039,7 +2039,7 @@ export const SCENES = [
           "fr": {
             "display": "Elle ouvre le réfrigérateur.",
             "strictAnswers": ["elle ouvre le réfrigérateur"],
-            "looseAnswers": ["elle ouvre le réfrigérateur"]
+            "looseAnswers": ["elle ouvre le réfrigérateur", "elle ouvre le frigo"]
           },
           "es": {
             "display": "Ella abre el frigorífico.",
@@ -2079,6 +2079,74 @@ export const SCENES = [
             "display": "Ella pone la mesa.",
             "strictAnswers": ["ella pone la mesa"],
             "looseAnswers": ["ella pone la mesa"]
+          }
+        }
+      },
+      {
+        "id": "kitchen_frying_egg",
+        "concept": "She is frying an egg.",
+        "asset": "https://images.pexels.com/photos/7719169/pexels-photo-7719169.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Elle fait frire un œuf.",
+            "strictAnswers": ["elle fait frire un œuf"],
+            "looseAnswers": ["elle fait frire un œuf", "elle fait frire un oeuf"]
+          },
+          "es": {
+            "display": "Ella fríe un huevo.",
+            "strictAnswers": ["ella fríe un huevo"],
+            "looseAnswers": ["ella fríe un huevo", "ella frie un huevo"]
+          }
+        }
+      },
+      {
+        "id": "kitchen_grating_cheese",
+        "concept": "He is grating cheese.",
+        "asset": "https://images.pexels.com/photos/8487817/pexels-photo-8487817.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Il râpe du fromage.",
+            "strictAnswers": ["il râpe du fromage"],
+            "looseAnswers": ["il râpe du fromage", "il rape du fromage"]
+          },
+          "es": {
+            "display": "Él ralla queso.",
+            "strictAnswers": ["él ralla queso"],
+            "looseAnswers": ["él ralla queso", "el ralla queso"]
+          }
+        }
+      },
+      {
+        "id": "kitchen_kneading_dough",
+        "concept": "A person is kneading dough.",
+        "asset": "https://images.pexels.com/photos/7966373/pexels-photo-7966373.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Une personne pétrit la pâte.",
+            "strictAnswers": ["une personne pétrit la pâte"],
+            "looseAnswers": ["une personne pétrit la pâte", "une personne petrit la pate"]
+          },
+          "es": {
+            "display": "Una persona amasa la masa.",
+            "strictAnswers": ["una persona amasa la masa"],
+            "looseAnswers": ["una persona amasa la masa"]
+          }
+        }
+      },
+      {
+        "id": "kitchen_making_coffee",
+        "concept": "He is making coffee.",
+        "asset": "https://images.pexels.com/photos/17501680/pexels-photo-17501680.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Il prépare du café.",
+            "strictAnswers": ["il prépare du café"],
+            "looseAnswers": ["il prépare du café", "il prepare du cafe"]
+          },
+          "es": {
+            "display": "Él prepara café.",
+            "strictAnswers": ["él prepara café"],
+            "looseAnswers": ["él prepara café", "el prepara cafe"]
           }
         }
       }
