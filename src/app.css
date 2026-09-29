@@ -208,6 +208,31 @@ button { color: inherit; }
   white-space: nowrap;
 }
 
+.deck-switcher {
+  display: inline-flex;
+  gap: 4px;
+  padding: 3px;
+  border-radius: 10px;
+  background: #eef3f6;
+}
+
+.deck-switcher button {
+  border: 0;
+  border-radius: 8px;
+  padding: 7px 10px;
+  background: transparent;
+  color: #66778a;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.deck-switcher button.active {
+  background: white;
+  color: var(--ink);
+  box-shadow: 0 2px 8px rgba(16, 36, 62, 0.08);
+}
+
 .card-progress {
   height: 6px;
   margin-top: 12px;
@@ -510,6 +535,11 @@ button { color: inherit; }
 
   .card-meta strong {
     font-size: 0.76rem;
+  }
+
+  .deck-switcher button {
+    padding: 6px 8px;
+    font-size: 0.72rem;
   }
 
   .eyebrow {
