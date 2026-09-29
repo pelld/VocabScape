@@ -1730,7 +1730,7 @@ export const SCENES = [
   },
   {
     "id": "action-garden",
-    "name": "Action Garden",
+    "name": "Garden",
     "kind": "action",
     "credit": "Photographic action flashcards",
     "objects": [
@@ -1935,6 +1935,150 @@ export const SCENES = [
             "display": "Él barre el camino.",
             "strictAnswers": ["él barre el camino"],
             "looseAnswers": ["él barre el camino", "el barre el camino"]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "action-kitchen",
+    "name": "Kitchen",
+    "kind": "action",
+    "credit": "Kitchen photos: Pexels contributors",
+    "objects": [
+      {
+        "id": "kitchen_chopping",
+        "concept": "She is chopping vegetables.",
+        "asset": "https://images.pexels.com/photos/8357264/pexels-photo-8357264.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Elle coupe des légumes.",
+            "strictAnswers": ["elle coupe des légumes"],
+            "looseAnswers": ["elle coupe des légumes"]
+          },
+          "es": {
+            "display": "Ella corta verduras.",
+            "strictAnswers": ["ella corta verduras"],
+            "looseAnswers": ["ella corta verduras"]
+          }
+        }
+      },
+      {
+        "id": "kitchen_stirring",
+        "concept": "She is stirring the soup.",
+        "asset": "https://images.pexels.com/photos/5692190/pexels-photo-5692190.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Elle remue la soupe.",
+            "strictAnswers": ["elle remue la soupe"],
+            "looseAnswers": ["elle remue la soupe"]
+          },
+          "es": {
+            "display": "Ella remueve la sopa.",
+            "strictAnswers": ["ella remueve la sopa"],
+            "looseAnswers": ["ella remueve la sopa"]
+          }
+        }
+      },
+      {
+        "id": "kitchen_washing",
+        "concept": "He is washing the dishes.",
+        "asset": "https://images.pexels.com/photos/13736082/pexels-photo-13736082.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Il fait la vaisselle.",
+            "strictAnswers": ["il fait la vaisselle"],
+            "looseAnswers": ["il fait la vaisselle"]
+          },
+          "es": {
+            "display": "Él lava los platos.",
+            "strictAnswers": ["él lava los platos"],
+            "looseAnswers": ["él lava los platos", "el lava los platos"]
+          }
+        }
+      },
+      {
+        "id": "kitchen_pouring",
+        "concept": "He is pouring water into a glass.",
+        "asset": "https://images.pexels.com/photos/7299877/pexels-photo-7299877.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Il verse de l'eau dans un verre.",
+            "strictAnswers": ["il verse de l'eau dans un verre"],
+            "looseAnswers": ["il verse de l'eau dans un verre"]
+          },
+          "es": {
+            "display": "Él vierte agua en un vaso.",
+            "strictAnswers": ["él vierte agua en un vaso"],
+            "looseAnswers": ["él vierte agua en un vaso", "el vierte agua en un vaso"]
+          }
+        }
+      },
+      {
+        "id": "kitchen_oven",
+        "concept": "She is taking the cookies out of the oven.",
+        "asset": "https://images.pexels.com/photos/7669756/pexels-photo-7669756.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Elle sort les biscuits du four.",
+            "strictAnswers": ["elle sort les biscuits du four"],
+            "looseAnswers": ["elle sort les biscuits du four"]
+          },
+          "es": {
+            "display": "Ella saca las galletas del horno.",
+            "strictAnswers": ["ella saca las galletas del horno"],
+            "looseAnswers": ["ella saca las galletas del horno"]
+          }
+        }
+      },
+      {
+        "id": "kitchen_fridge",
+        "concept": "She is opening the fridge.",
+        "asset": "https://images.pexels.com/photos/8289912/pexels-photo-8289912.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Elle ouvre le réfrigérateur.",
+            "strictAnswers": ["elle ouvre le réfrigérateur"],
+            "looseAnswers": ["elle ouvre le réfrigérateur"]
+          },
+          "es": {
+            "display": "Ella abre el frigorífico.",
+            "strictAnswers": ["ella abre el frigorífico"],
+            "looseAnswers": ["ella abre el frigorífico", "ella abre el frigorifico"]
+          }
+        }
+      },
+      {
+        "id": "kitchen_peeling",
+        "concept": "They are peeling potatoes.",
+        "asset": "https://images.pexels.com/photos/36940774/pexels-photo-36940774.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Elles épluchent des pommes de terre.",
+            "strictAnswers": ["elles épluchent des pommes de terre"],
+            "looseAnswers": ["elles épluchent des pommes de terre"]
+          },
+          "es": {
+            "display": "Ellas pelan patatas.",
+            "strictAnswers": ["ellas pelan patatas"],
+            "looseAnswers": ["ellas pelan patatas"]
+          }
+        }
+      },
+      {
+        "id": "kitchen_table",
+        "concept": "She is setting the table.",
+        "asset": "https://images.pexels.com/photos/3951656/pexels-photo-3951656.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Elle met la table.",
+            "strictAnswers": ["elle met la table"],
+            "looseAnswers": ["elle met la table"]
+          },
+          "es": {
+            "display": "Ella pone la mesa.",
+            "strictAnswers": ["ella pone la mesa"],
+            "looseAnswers": ["ella pone la mesa"]
           }
         }
       }
