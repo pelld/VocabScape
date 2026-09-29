@@ -2159,43 +2159,43 @@ export const SCENES = [
     "credit": "Daily routine photos: Pexels contributors",
     "objects": [
       {
-        "id": "daily_dressing",
-        "concept": "She is getting dressed.",
-        "asset": "https://images.pexels.com/photos/6311652/pexels-photo-6311652.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "id": "daily_jacket",
+        "concept": "He is putting on his jacket.",
+        "asset": "https://images.pexels.com/photos/6656476/pexels-photo-6656476.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
           "fr": {
-            "display": "Elle s'habille.",
-            "strictAnswers": ["elle s'habille"],
-            "looseAnswers": ["elle s'habille"]
+            "display": "Il met sa veste.",
+            "strictAnswers": ["il met sa veste"],
+            "looseAnswers": ["il met sa veste"]
           },
           "es": {
-            "display": "Ella se viste.",
-            "strictAnswers": ["ella se viste"],
-            "looseAnswers": ["ella se viste"]
+            "display": "Él se pone la chaqueta.",
+            "strictAnswers": ["él se pone la chaqueta"],
+            "looseAnswers": ["él se pone la chaqueta", "el se pone la chaqueta"]
           }
         }
       },
       {
         "id": "daily_brushing_teeth",
-        "concept": "He is brushing his teeth.",
-        "asset": "https://images.pexels.com/photos/3764014/pexels-photo-3764014.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "concept": "She is brushing her teeth.",
+        "asset": "https://images.pexels.com/photos/27177610/pexels-photo-27177610.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
           "fr": {
-            "display": "Il se brosse les dents.",
-            "strictAnswers": ["il se brosse les dents"],
-            "looseAnswers": ["il se brosse les dents"]
+            "display": "Elle se brosse les dents.",
+            "strictAnswers": ["elle se brosse les dents"],
+            "looseAnswers": ["elle se brosse les dents"]
           },
           "es": {
-            "display": "Él se cepilla los dientes.",
-            "strictAnswers": ["él se cepilla los dientes"],
-            "looseAnswers": ["él se cepilla los dientes", "el se cepilla los dientes"]
+            "display": "Ella se cepilla los dientes.",
+            "strictAnswers": ["ella se cepilla los dientes"],
+            "looseAnswers": ["ella se cepilla los dientes"]
           }
         }
       },
       {
         "id": "daily_combing_hair",
         "concept": "She is combing her hair.",
-        "asset": "https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "asset": "https://images.pexels.com/photos/7269512/pexels-photo-7269512.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
           "fr": {
             "display": "Elle se peigne les cheveux.",
@@ -2212,7 +2212,7 @@ export const SCENES = [
       {
         "id": "daily_tying_shoes",
         "concept": "He is tying his shoelaces.",
-        "asset": "https://images.pexels.com/photos/1478442/pexels-photo-1478442.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "asset": "https://images.pexels.com/photos/7870016/pexels-photo-7870016.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
           "fr": {
             "display": "Il attache ses lacets.",
@@ -2229,7 +2229,7 @@ export const SCENES = [
       {
         "id": "daily_making_bed",
         "concept": "She is making the bed.",
-        "asset": "https://images.pexels.com/photos/3771069/pexels-photo-3771069.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "asset": "https://images.pexels.com/photos/10554822/pexels-photo-10554822.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
           "fr": {
             "display": "Elle fait le lit.",
@@ -2245,120 +2245,120 @@ export const SCENES = [
       },
       {
         "id": "daily_packing_bag",
-        "concept": "He is packing his bag.",
-        "asset": "https://images.pexels.com/photos/2901209/pexels-photo-2901209.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "concept": "He is packing his backpack.",
+        "asset": "https://images.pexels.com/photos/12125322/pexels-photo-12125322.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
           "fr": {
-            "display": "Il prépare son sac.",
-            "strictAnswers": ["il prépare son sac"],
-            "looseAnswers": ["il prépare son sac", "il prepare son sac"]
+            "display": "Il prépare son sac à dos.",
+            "strictAnswers": ["il prépare son sac à dos"],
+            "looseAnswers": ["il prépare son sac à dos", "il prepare son sac a dos"]
           },
           "es": {
-            "display": "Él prepara su bolsa.",
-            "strictAnswers": ["él prepara su bolsa"],
-            "looseAnswers": ["él prepara su bolsa", "el prepara su bolsa"]
-          }
-        }
-      },
-      {
-        "id": "daily_locking_door",
-        "concept": "She is locking the door.",
-        "asset": "https://images.pexels.com/photos/279810/pexels-photo-279810.jpeg?auto=compress&cs=tinysrgb&w=1200",
-        "terms": {
-          "fr": {
-            "display": "Elle ferme la porte à clé.",
-            "strictAnswers": ["elle ferme la porte à clé"],
-            "looseAnswers": ["elle ferme la porte à clé", "elle ferme la porte a cle"]
-          },
-          "es": {
-            "display": "Ella cierra la puerta con llave.",
-            "strictAnswers": ["ella cierra la puerta con llave"],
-            "looseAnswers": ["ella cierra la puerta con llave"]
+            "display": "Él prepara su mochila.",
+            "strictAnswers": ["él prepara su mochila"],
+            "looseAnswers": ["él prepara su mochila", "el prepara su mochila"]
           }
         }
       },
       {
         "id": "daily_waiting_bus",
-        "concept": "He is waiting for the bus.",
-        "asset": "https://images.pexels.com/photos/3846559/pexels-photo-3846559.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "concept": "They are waiting for the bus.",
+        "asset": "https://images.pexels.com/photos/16592561/pexels-photo-16592561.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
           "fr": {
-            "display": "Il attend le bus.",
-            "strictAnswers": ["il attend le bus"],
-            "looseAnswers": ["il attend le bus"]
+            "display": "Ils attendent le bus.",
+            "strictAnswers": ["ils attendent le bus"],
+            "looseAnswers": ["ils attendent le bus"]
           },
           "es": {
-            "display": "Él espera el autobús.",
-            "strictAnswers": ["él espera el autobús"],
-            "looseAnswers": ["él espera el autobús", "el espera el autobus"]
+            "display": "Ellos esperan el autobús.",
+            "strictAnswers": ["ellos esperan el autobús"],
+            "looseAnswers": ["ellos esperan el autobús", "ellos esperan el autobus"]
           }
         }
       },
       {
         "id": "daily_checking_time",
-        "concept": "She is checking the time.",
-        "asset": "https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "concept": "He is checking the time.",
+        "asset": "https://images.pexels.com/photos/29843084/pexels-photo-29843084.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
           "fr": {
-            "display": "Elle regarde l'heure.",
-            "strictAnswers": ["elle regarde l'heure"],
-            "looseAnswers": ["elle regarde l'heure"]
+            "display": "Il regarde l'heure.",
+            "strictAnswers": ["il regarde l'heure"],
+            "looseAnswers": ["il regarde l'heure"]
           },
           "es": {
-            "display": "Ella mira la hora.",
-            "strictAnswers": ["ella mira la hora"],
-            "looseAnswers": ["ella mira la hora"]
+            "display": "Él mira la hora.",
+            "strictAnswers": ["él mira la hora"],
+            "looseAnswers": ["él mira la hora", "el mira la hora"]
           }
         }
       },
       {
         "id": "daily_phone",
-        "concept": "He is answering the phone.",
-        "asset": "https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "concept": "She is talking on the phone.",
+        "asset": "https://images.pexels.com/photos/4240538/pexels-photo-4240538.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
           "fr": {
-            "display": "Il répond au téléphone.",
-            "strictAnswers": ["il répond au téléphone"],
-            "looseAnswers": ["il répond au téléphone", "il repond au telephone"]
+            "display": "Elle parle au téléphone.",
+            "strictAnswers": ["elle parle au téléphone"],
+            "looseAnswers": ["elle parle au téléphone", "elle parle au telephone"]
           },
           "es": {
-            "display": "Él contesta el teléfono.",
-            "strictAnswers": ["él contesta el teléfono"],
-            "looseAnswers": ["él contesta el teléfono", "el contesta el telefono"]
+            "display": "Ella habla por teléfono.",
+            "strictAnswers": ["ella habla por teléfono"],
+            "looseAnswers": ["ella habla por teléfono", "ella habla por telefono"]
           }
         }
       },
       {
         "id": "daily_shopping",
-        "concept": "She is carrying the shopping.",
-        "asset": "https://images.pexels.com/photos/3769747/pexels-photo-3769747.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "concept": "He is carrying the shopping.",
+        "asset": "https://images.pexels.com/photos/32455972/pexels-photo-32455972.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
           "fr": {
-            "display": "Elle porte les courses.",
-            "strictAnswers": ["elle porte les courses"],
-            "looseAnswers": ["elle porte les courses"]
+            "display": "Il porte les courses.",
+            "strictAnswers": ["il porte les courses"],
+            "looseAnswers": ["il porte les courses"]
           },
           "es": {
-            "display": "Ella lleva la compra.",
-            "strictAnswers": ["ella lleva la compra"],
-            "looseAnswers": ["ella lleva la compra"]
+            "display": "Él lleva la compra.",
+            "strictAnswers": ["él lleva la compra"],
+            "looseAnswers": ["él lleva la compra", "el lleva la compra"]
           }
         }
       },
       {
         "id": "daily_bed",
-        "concept": "He is going to bed.",
-        "asset": "https://images.pexels.com/photos/935777/pexels-photo-935777.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "concept": "He is lying in bed.",
+        "asset": "https://images.pexels.com/photos/6943997/pexels-photo-6943997.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
           "fr": {
-            "display": "Il va se coucher.",
-            "strictAnswers": ["il va se coucher"],
-            "looseAnswers": ["il va se coucher"]
+            "display": "Il est allongé dans son lit.",
+            "strictAnswers": ["il est allongé dans son lit"],
+            "looseAnswers": ["il est allongé dans son lit", "il est allonge dans son lit"]
           },
           "es": {
-            "display": "Él se va a la cama.",
-            "strictAnswers": ["él se va a la cama"],
-            "looseAnswers": ["él se va a la cama", "el se va a la cama"]
+            "display": "Él está acostado en la cama.",
+            "strictAnswers": ["él está acostado en la cama"],
+            "looseAnswers": ["él está acostado en la cama", "el esta acostado en la cama"]
+          }
+        }
+      },
+      {
+        "id": "daily_coffee",
+        "concept": "She is drinking coffee.",
+        "asset": "https://images.pexels.com/photos/1117484/pexels-photo-1117484.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Elle boit du café.",
+            "strictAnswers": ["elle boit du café"],
+            "looseAnswers": ["elle boit du café", "elle boit du cafe"]
+          },
+          "es": {
+            "display": "Ella bebe café.",
+            "strictAnswers": ["ella bebe café"],
+            "looseAnswers": ["ella bebe café", "ella bebe cafe"]
           }
         }
       }
