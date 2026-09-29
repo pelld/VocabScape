@@ -2363,5 +2363,217 @@ export const SCENES = [
         }
       }
     ]
+  },
+  {
+    "id": "action-travel",
+    "name": "Travel",
+    "kind": "action",
+    "credit": "Travel photos: Pexels contributors",
+    "objects": [
+      {
+        "id": "travel_boarding_train",
+        "concept": "A traveler is boarding the train.",
+        "asset": "https://images.pexels.com/photos/32707616/pexels-photo-32707616.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Un voyageur monte dans le train.",
+            "strictAnswers": ["un voyageur monte dans le train"],
+            "looseAnswers": ["un voyageur monte dans le train"]
+          },
+          "es": {
+            "display": "Un viajero sube al tren.",
+            "strictAnswers": ["un viajero sube al tren"],
+            "looseAnswers": ["un viajero sube al tren"]
+          }
+        }
+      },
+      {
+        "id": "travel_buying_ticket",
+        "concept": "He is buying a ticket at the machine.",
+        "asset": "https://images.pexels.com/photos/8554381/pexels-photo-8554381.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Il achète un billet à la machine.",
+            "strictAnswers": ["il achète un billet à la machine"],
+            "looseAnswers": ["il achète un billet à la machine", "il achete un billet a la machine"]
+          },
+          "es": {
+            "display": "Él compra un billete en la máquina.",
+            "strictAnswers": ["él compra un billete en la máquina"],
+            "looseAnswers": ["él compra un billete en la máquina", "el compra un billete en la maquina"]
+          }
+        }
+      },
+      {
+        "id": "travel_waiting_train",
+        "concept": "He is waiting for the train.",
+        "asset": "https://images.pexels.com/photos/36053082/pexels-photo-36053082.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Il attend le train.",
+            "strictAnswers": ["il attend le train"],
+            "looseAnswers": ["il attend le train"]
+          },
+          "es": {
+            "display": "Él espera el tren.",
+            "strictAnswers": ["él espera el tren"],
+            "looseAnswers": ["él espera el tren", "el espera el tren"]
+          }
+        }
+      },
+      {
+        "id": "travel_platform_suitcase",
+        "concept": "He is walking along the platform with his suitcase.",
+        "asset": "https://images.pexels.com/photos/31196457/pexels-photo-31196457.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Il marche sur le quai avec sa valise.",
+            "strictAnswers": ["il marche sur le quai avec sa valise"],
+            "looseAnswers": ["il marche sur le quai avec sa valise"]
+          },
+          "es": {
+            "display": "Él camina por el andén con su maleta.",
+            "strictAnswers": ["él camina por el andén con su maleta"],
+            "looseAnswers": ["él camina por el andén con su maleta", "el camina por el anden con su maleta"]
+          }
+        }
+      },
+      {
+        "id": "travel_bus_stop",
+        "concept": "They are waiting at the bus stop.",
+        "asset": "https://images.pexels.com/photos/18427240/pexels-photo-18427240.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Ils attendent à l'arrêt de bus.",
+            "strictAnswers": ["ils attendent à l'arrêt de bus"],
+            "looseAnswers": ["ils attendent à l'arrêt de bus", "ils attendent a l'arret de bus"]
+          },
+          "es": {
+            "display": "Ellos esperan en la parada de autobús.",
+            "strictAnswers": ["ellos esperan en la parada de autobús"],
+            "looseAnswers": ["ellos esperan en la parada de autobús", "ellos esperan en la parada de autobus"]
+          }
+        }
+      },
+      {
+        "id": "travel_taxi",
+        "concept": "She is hailing a taxi.",
+        "asset": "https://images.pexels.com/photos/7963831/pexels-photo-7963831.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Elle hèle un taxi.",
+            "strictAnswers": ["elle hèle un taxi"],
+            "looseAnswers": ["elle hèle un taxi", "elle hele un taxi"]
+          },
+          "es": {
+            "display": "Ella para un taxi.",
+            "strictAnswers": ["ella para un taxi"],
+            "looseAnswers": ["ella para un taxi"]
+          }
+        }
+      },
+      {
+        "id": "travel_departures",
+        "concept": "The flight times are displayed on the departure board.",
+        "asset": "https://images.pexels.com/photos/12940608/pexels-photo-12940608.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Les horaires des vols sont affichés sur le tableau des départs.",
+            "strictAnswers": ["les horaires des vols sont affichés sur le tableau des départs"],
+            "looseAnswers": ["les horaires des vols sont affichés sur le tableau des départs", "les horaires des vols sont affiches sur le tableau des departs"]
+          },
+          "es": {
+            "display": "Los horarios de los vuelos aparecen en el panel de salidas.",
+            "strictAnswers": ["los horarios de los vuelos aparecen en el panel de salidas"],
+            "looseAnswers": ["los horarios de los vuelos aparecen en el panel de salidas"]
+          }
+        }
+      },
+      {
+        "id": "travel_cycling",
+        "concept": "He is riding a bicycle through the city.",
+        "asset": "https://images.pexels.com/photos/19297287/pexels-photo-19297287.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Il fait du vélo en ville.",
+            "strictAnswers": ["il fait du vélo en ville"],
+            "looseAnswers": ["il fait du vélo en ville", "il fait du velo en ville"]
+          },
+          "es": {
+            "display": "Él va en bicicleta por la ciudad.",
+            "strictAnswers": ["él va en bicicleta por la ciudad"],
+            "looseAnswers": ["él va en bicicleta por la ciudad", "el va en bicicleta por la ciudad"]
+          }
+        }
+      },
+      {
+        "id": "travel_driving",
+        "concept": "He is driving a car.",
+        "asset": "https://images.pexels.com/photos/8478475/pexels-photo-8478475.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Il conduit une voiture.",
+            "strictAnswers": ["il conduit une voiture"],
+            "looseAnswers": ["il conduit une voiture"]
+          },
+          "es": {
+            "display": "Él conduce un coche.",
+            "strictAnswers": ["él conduce un coche"],
+            "looseAnswers": ["él conduce un coche", "el conduce un coche"]
+          }
+        }
+      },
+      {
+        "id": "travel_map",
+        "concept": "She is reading a map.",
+        "asset": "https://images.pexels.com/photos/3783086/pexels-photo-3783086.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Elle lit une carte.",
+            "strictAnswers": ["elle lit une carte"],
+            "looseAnswers": ["elle lit une carte"]
+          },
+          "es": {
+            "display": "Ella lee un mapa.",
+            "strictAnswers": ["ella lee un mapa"],
+            "looseAnswers": ["ella lee un mapa"]
+          }
+        }
+      },
+      {
+        "id": "travel_airport",
+        "concept": "A traveler is walking through the airport with a suitcase.",
+        "asset": "https://images.pexels.com/photos/30981181/pexels-photo-30981181.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Un voyageur traverse l'aéroport avec une valise.",
+            "strictAnswers": ["un voyageur traverse l'aéroport avec une valise"],
+            "looseAnswers": ["un voyageur traverse l'aéroport avec une valise", "un voyageur traverse l'aeroport avec une valise"]
+          },
+          "es": {
+            "display": "Un viajero atraviesa el aeropuerto con una maleta.",
+            "strictAnswers": ["un viajero atraviesa el aeropuerto con una maleta"],
+            "looseAnswers": ["un viajero atraviesa el aeropuerto con una maleta"]
+          }
+        }
+      },
+      {
+        "id": "travel_luggage_cart",
+        "concept": "He is pushing a luggage cart.",
+        "asset": "https://images.pexels.com/photos/14433259/pexels-photo-14433259.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        "terms": {
+          "fr": {
+            "display": "Il pousse un chariot à bagages.",
+            "strictAnswers": ["il pousse un chariot à bagages"],
+            "looseAnswers": ["il pousse un chariot à bagages", "il pousse un chariot a bagages"]
+          },
+          "es": {
+            "display": "Él empuja un carrito de equipaje.",
+            "strictAnswers": ["él empuja un carrito de equipaje"],
+            "looseAnswers": ["él empuja un carrito de equipaje", "el empuja un carrito de equipaje"]
+          }
+        }
+      }
+    ]
   }
 ];
