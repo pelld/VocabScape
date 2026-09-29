@@ -1841,6 +1841,108 @@ export const SCENES = [
             "looseAnswers": ["ella abre la puerta del jardín", "abre la puerta del jardín", "abrir la puerta del jardín", "abrir"]
           }
         }
+      },
+      {
+        "id": "action_holding_watering_can",
+        "concept": "holding a watering can",
+        "asset": "watering.webp",
+        "terms": {
+          "fr": {
+            "display": "Elle tient un arrosoir.",
+            "strictAnswers": ["elle tient un arrosoir"],
+            "looseAnswers": ["elle tient un arrosoir", "tenir un arrosoir", "tient un arrosoir"]
+          },
+          "es": {
+            "display": "Ella sostiene una regadera.",
+            "strictAnswers": ["ella sostiene una regadera"],
+            "looseAnswers": ["ella sostiene una regadera", "sostiene una regadera", "sostener una regadera"]
+          }
+        }
+      },
+      {
+        "id": "action_kneeling",
+        "concept": "kneeling in the flower bed",
+        "asset": "planting.webp",
+        "terms": {
+          "fr": {
+            "display": "Elle est à genoux dans le parterre.",
+            "strictAnswers": ["elle est à genoux dans le parterre"],
+            "looseAnswers": ["elle est à genoux dans le parterre", "elle est a genoux dans le parterre", "être à genoux", "etre a genoux"]
+          },
+          "es": {
+            "display": "Ella está arrodillada en el parterre.",
+            "strictAnswers": ["ella está arrodillada en el parterre"],
+            "looseAnswers": ["ella está arrodillada en el parterre", "ella esta arrodillada en el parterre", "estar arrodillada"]
+          }
+        }
+      },
+      {
+        "id": "action_digging_shovel",
+        "concept": "digging with a shovel",
+        "asset": "digging.webp",
+        "terms": {
+          "fr": {
+            "display": "Il creuse avec une pelle.",
+            "strictAnswers": ["il creuse avec une pelle"],
+            "looseAnswers": ["il creuse avec une pelle", "creuser avec une pelle", "creuse avec une pelle"]
+          },
+          "es": {
+            "display": "Él cava con una pala.",
+            "strictAnswers": ["él cava con una pala"],
+            "looseAnswers": ["él cava con una pala", "el cava con una pala", "cava con una pala", "cavar con una pala"]
+          }
+        }
+      },
+      {
+        "id": "action_wheelbarrow_soil",
+        "concept": "pushing a wheelbarrow full of soil",
+        "asset": "wheelbarrow.webp",
+        "terms": {
+          "fr": {
+            "display": "Il pousse une brouette pleine de terre.",
+            "strictAnswers": ["il pousse une brouette pleine de terre"],
+            "looseAnswers": ["il pousse une brouette pleine de terre", "pousser une brouette pleine de terre"]
+          },
+          "es": {
+            "display": "Él empuja una carretilla llena de tierra.",
+            "strictAnswers": ["él empuja una carretilla llena de tierra"],
+            "looseAnswers": ["él empuja una carretilla llena de tierra", "el empuja una carretilla llena de tierra", "empujar una carretilla llena de tierra"]
+          }
+        }
+      },
+      {
+        "id": "action_shears",
+        "concept": "cutting the hedge with shears",
+        "asset": "trimming.webp",
+        "terms": {
+          "fr": {
+            "display": "Il coupe la haie avec des cisailles.",
+            "strictAnswers": ["il coupe la haie avec des cisailles"],
+            "looseAnswers": ["il coupe la haie avec des cisailles", "couper la haie avec des cisailles"]
+          },
+          "es": {
+            "display": "Él corta el seto con unas tijeras de podar.",
+            "strictAnswers": ["él corta el seto con unas tijeras de podar"],
+            "looseAnswers": ["él corta el seto con unas tijeras de podar", "el corta el seto con unas tijeras de podar", "cortar el seto con unas tijeras de podar"]
+          }
+        }
+      },
+      {
+        "id": "action_through_gate",
+        "concept": "walking through the gate",
+        "asset": "opening-gate.webp",
+        "terms": {
+          "fr": {
+            "display": "Elle passe par le portail.",
+            "strictAnswers": ["elle passe par le portail"],
+            "looseAnswers": ["elle passe par le portail", "passer par le portail", "passe par le portail"]
+          },
+          "es": {
+            "display": "Ella pasa por la puerta del jardín.",
+            "strictAnswers": ["ella pasa por la puerta del jardín"],
+            "looseAnswers": ["ella pasa por la puerta del jardín", "pasa por la puerta del jardín", "pasar por la puerta del jardín"]
+          }
+        }
       }
     ]
   }
