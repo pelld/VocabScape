@@ -1732,215 +1732,209 @@ export const SCENES = [
     "id": "action-garden",
     "name": "Action Garden",
     "kind": "action",
-    "credit": "Layered photographic action scene",
+    "credit": "Photographic action flashcards",
     "objects": [
       {
         "id": "action_watering",
-        "concept": "watering the flowers",
+        "concept": "She is watering the flowers.",
         "asset": "watering.webp",
-        "layout": {"left": 1.5, "top": 10, "width": 27, "z": 22},
         "terms": {
           "fr": {
             "display": "Elle arrose les fleurs.",
             "strictAnswers": ["elle arrose les fleurs"],
-            "looseAnswers": ["elle arrose les fleurs", "arrose les fleurs", "arroser les fleurs", "arroser"]
+            "looseAnswers": ["elle arrose les fleurs"]
           },
           "es": {
             "display": "Ella riega las flores.",
             "strictAnswers": ["ella riega las flores"],
-            "looseAnswers": ["ella riega las flores", "riega las flores", "regar las flores", "regar"]
+            "looseAnswers": ["ella riega las flores"]
           }
         }
       },
       {
         "id": "action_digging",
-        "concept": "digging a hole",
+        "concept": "He is digging a hole.",
         "asset": "digging.webp",
-        "layout": {"left": 44, "top": 18, "width": 23, "z": 24},
         "terms": {
           "fr": {
             "display": "Il creuse un trou.",
             "strictAnswers": ["il creuse un trou"],
-            "looseAnswers": ["il creuse un trou", "creuse un trou", "creuser un trou", "creuser"]
+            "looseAnswers": ["il creuse un trou"]
           },
           "es": {
             "display": "Él cava un hoyo.",
             "strictAnswers": ["él cava un hoyo"],
-            "looseAnswers": ["él cava un hoyo", "el cava un hoyo", "cava un hoyo", "cavar un hoyo", "cavar"]
+            "looseAnswers": ["él cava un hoyo", "el cava un hoyo"]
           }
         }
       },
       {
         "id": "action_wheelbarrow",
-        "concept": "pushing a wheelbarrow",
+        "concept": "He is pushing a wheelbarrow.",
         "asset": "wheelbarrow.webp",
-        "layout": {"left": 70, "top": 23, "width": 26, "z": 23},
         "terms": {
           "fr": {
             "display": "Il pousse une brouette.",
             "strictAnswers": ["il pousse une brouette"],
-            "looseAnswers": ["il pousse une brouette", "pousse une brouette", "pousser une brouette", "pousser"]
+            "looseAnswers": ["il pousse une brouette"]
           },
           "es": {
             "display": "Él empuja una carretilla.",
             "strictAnswers": ["él empuja una carretilla"],
-            "looseAnswers": ["él empuja una carretilla", "el empuja una carretilla", "empuja una carretilla", "empujar una carretilla", "empujar"]
+            "looseAnswers": ["él empuja una carretilla", "el empuja una carretilla"]
           }
         }
       },
       {
         "id": "action_trimming",
-        "concept": "trimming the hedge",
+        "concept": "He is trimming the hedge.",
         "asset": "trimming.webp",
-        "layout": {"left": 33, "top": 14, "width": 17, "z": 21},
         "terms": {
           "fr": {
             "display": "Il taille la haie.",
             "strictAnswers": ["il taille la haie"],
-            "looseAnswers": ["il taille la haie", "taille la haie", "tailler la haie", "tailler"]
+            "looseAnswers": ["il taille la haie"]
           },
           "es": {
             "display": "Él recorta el seto.",
             "strictAnswers": ["él recorta el seto"],
-            "looseAnswers": ["él recorta el seto", "el recorta el seto", "recorta el seto", "recortar el seto", "recortar"]
+            "looseAnswers": ["él recorta el seto", "el recorta el seto"]
           }
         }
       },
       {
         "id": "action_planting",
-        "concept": "planting flowers",
+        "concept": "She is planting flowers.",
         "asset": "planting.webp",
-        "layout": {"left": 25, "top": 42, "width": 27, "z": 27},
         "terms": {
           "fr": {
             "display": "Elle plante des fleurs.",
             "strictAnswers": ["elle plante des fleurs"],
-            "looseAnswers": ["elle plante des fleurs", "plante des fleurs", "planter des fleurs", "planter"]
+            "looseAnswers": ["elle plante des fleurs"]
           },
           "es": {
             "display": "Ella planta flores.",
             "strictAnswers": ["ella planta flores"],
-            "looseAnswers": ["ella planta flores", "planta flores", "plantar flores", "plantar"]
+            "looseAnswers": ["ella planta flores"]
           }
         }
       },
       {
         "id": "action_gate",
-        "concept": "opening the gate",
+        "concept": "She is opening the gate.",
         "asset": "opening-gate.webp",
-        "layout": {"left": 82, "top": 18, "width": 17, "z": 25},
         "terms": {
           "fr": {
             "display": "Elle ouvre le portail.",
             "strictAnswers": ["elle ouvre le portail"],
-            "looseAnswers": ["elle ouvre le portail", "ouvre le portail", "ouvrir le portail", "ouvrir"]
+            "looseAnswers": ["elle ouvre le portail"]
           },
           "es": {
             "display": "Ella abre la puerta del jardín.",
             "strictAnswers": ["ella abre la puerta del jardín"],
-            "looseAnswers": ["ella abre la puerta del jardín", "abre la puerta del jardín", "abrir la puerta del jardín", "abrir"]
+            "looseAnswers": ["ella abre la puerta del jardín"]
           }
         }
       },
       {
-        "id": "action_holding_watering_can",
-        "concept": "holding a watering can",
-        "asset": "watering.webp",
+        "id": "action_raking",
+        "concept": "She is raking the leaves.",
+        "asset": "raking.webp",
         "terms": {
           "fr": {
-            "display": "Elle tient un arrosoir.",
-            "strictAnswers": ["elle tient un arrosoir"],
-            "looseAnswers": ["elle tient un arrosoir", "tenir un arrosoir", "tient un arrosoir"]
+            "display": "Elle ratisse les feuilles.",
+            "strictAnswers": ["elle ratisse les feuilles"],
+            "looseAnswers": ["elle ratisse les feuilles"]
           },
           "es": {
-            "display": "Ella sostiene una regadera.",
-            "strictAnswers": ["ella sostiene una regadera"],
-            "looseAnswers": ["ella sostiene una regadera", "sostiene una regadera", "sostener una regadera"]
+            "display": "Ella rastrilla las hojas.",
+            "strictAnswers": ["ella rastrilla las hojas"],
+            "looseAnswers": ["ella rastrilla las hojas"]
           }
         }
       },
       {
-        "id": "action_kneeling",
-        "concept": "kneeling in the flower bed",
-        "asset": "planting.webp",
+        "id": "action_mowing",
+        "concept": "He is mowing the lawn.",
+        "asset": "mowing.webp",
         "terms": {
           "fr": {
-            "display": "Elle est à genoux dans le parterre.",
-            "strictAnswers": ["elle est à genoux dans le parterre"],
-            "looseAnswers": ["elle est à genoux dans le parterre", "elle est a genoux dans le parterre", "être à genoux", "etre a genoux"]
+            "display": "Il tond la pelouse.",
+            "strictAnswers": ["il tond la pelouse"],
+            "looseAnswers": ["il tond la pelouse"]
           },
           "es": {
-            "display": "Ella está arrodillada en el parterre.",
-            "strictAnswers": ["ella está arrodillada en el parterre"],
-            "looseAnswers": ["ella está arrodillada en el parterre", "ella esta arrodillada en el parterre", "estar arrodillada"]
+            "display": "Él corta el césped.",
+            "strictAnswers": ["él corta el césped"],
+            "looseAnswers": ["él corta el césped", "el corta el cesped"]
           }
         }
       },
       {
-        "id": "action_digging_shovel",
-        "concept": "digging with a shovel",
-        "asset": "digging.webp",
+        "id": "action_weeding",
+        "concept": "She is pulling up weeds.",
+        "asset": "weeding.webp",
         "terms": {
           "fr": {
-            "display": "Il creuse avec une pelle.",
-            "strictAnswers": ["il creuse avec une pelle"],
-            "looseAnswers": ["il creuse avec une pelle", "creuser avec une pelle", "creuse avec une pelle"]
+            "display": "Elle arrache les mauvaises herbes.",
+            "strictAnswers": ["elle arrache les mauvaises herbes"],
+            "looseAnswers": ["elle arrache les mauvaises herbes"]
           },
           "es": {
-            "display": "Él cava con una pala.",
-            "strictAnswers": ["él cava con una pala"],
-            "looseAnswers": ["él cava con una pala", "el cava con una pala", "cava con una pala", "cavar con una pala"]
+            "display": "Ella arranca las malas hierbas.",
+            "strictAnswers": ["ella arranca las malas hierbas"],
+            "looseAnswers": ["ella arranca las malas hierbas"]
           }
         }
       },
       {
-        "id": "action_wheelbarrow_soil",
-        "concept": "pushing a wheelbarrow full of soil",
-        "asset": "wheelbarrow.webp",
+        "id": "action_pruning",
+        "concept": "He is pruning the roses.",
+        "asset": "pruning.webp",
         "terms": {
           "fr": {
-            "display": "Il pousse une brouette pleine de terre.",
-            "strictAnswers": ["il pousse une brouette pleine de terre"],
-            "looseAnswers": ["il pousse une brouette pleine de terre", "pousser une brouette pleine de terre"]
+            "display": "Il taille les rosiers.",
+            "strictAnswers": ["il taille les rosiers"],
+            "looseAnswers": ["il taille les rosiers"]
           },
           "es": {
-            "display": "Él empuja una carretilla llena de tierra.",
-            "strictAnswers": ["él empuja una carretilla llena de tierra"],
-            "looseAnswers": ["él empuja una carretilla llena de tierra", "el empuja una carretilla llena de tierra", "empujar una carretilla llena de tierra"]
+            "display": "Él poda los rosales.",
+            "strictAnswers": ["él poda los rosales"],
+            "looseAnswers": ["él poda los rosales", "el poda los rosales"]
           }
         }
       },
       {
-        "id": "action_shears",
-        "concept": "cutting the hedge with shears",
-        "asset": "trimming.webp",
+        "id": "action_picking_apples",
+        "concept": "She is picking apples.",
+        "asset": "picking-apples.webp",
         "terms": {
           "fr": {
-            "display": "Il coupe la haie avec des cisailles.",
-            "strictAnswers": ["il coupe la haie avec des cisailles"],
-            "looseAnswers": ["il coupe la haie avec des cisailles", "couper la haie avec des cisailles"]
+            "display": "Elle cueille des pommes.",
+            "strictAnswers": ["elle cueille des pommes"],
+            "looseAnswers": ["elle cueille des pommes"]
           },
           "es": {
-            "display": "Él corta el seto con unas tijeras de podar.",
-            "strictAnswers": ["él corta el seto con unas tijeras de podar"],
-            "looseAnswers": ["él corta el seto con unas tijeras de podar", "el corta el seto con unas tijeras de podar", "cortar el seto con unas tijeras de podar"]
+            "display": "Ella recoge manzanas.",
+            "strictAnswers": ["ella recoge manzanas"],
+            "looseAnswers": ["ella recoge manzanas"]
           }
         }
       },
       {
-        "id": "action_through_gate",
-        "concept": "walking through the gate",
-        "asset": "opening-gate.webp",
+        "id": "action_sweeping",
+        "concept": "He is sweeping the path.",
+        "asset": "sweeping.webp",
         "terms": {
           "fr": {
-            "display": "Elle passe par le portail.",
-            "strictAnswers": ["elle passe par le portail"],
-            "looseAnswers": ["elle passe par le portail", "passer par le portail", "passe par le portail"]
+            "display": "Il balaie le chemin.",
+            "strictAnswers": ["il balaie le chemin"],
+            "looseAnswers": ["il balaie le chemin"]
           },
           "es": {
-            "display": "Ella pasa por la puerta del jardín.",
-            "strictAnswers": ["ella pasa por la puerta del jardín"],
-            "looseAnswers": ["ella pasa por la puerta del jardín", "pasa por la puerta del jardín", "pasar por la puerta del jardín"]
+            "display": "Él barre el camino.",
+            "strictAnswers": ["él barre el camino"],
+            "looseAnswers": ["él barre el camino", "el barre el camino"]
           }
         }
       }
