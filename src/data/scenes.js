@@ -1727,5 +1727,121 @@ export const SCENES = [
         }
       }
     ]
+  },
+  {
+    "id": "action-garden",
+    "name": "Action Garden",
+    "kind": "action",
+    "credit": "Layered photographic action scene",
+    "objects": [
+      {
+        "id": "action_watering",
+        "concept": "watering the flowers",
+        "asset": "watering.webp",
+        "layout": {"left": 18, "top": 24, "width": 33, "z": 22},
+        "terms": {
+          "fr": {
+            "display": "Elle arrose les fleurs.",
+            "strictAnswers": ["elle arrose les fleurs"],
+            "looseAnswers": ["elle arrose les fleurs", "arrose les fleurs", "arroser les fleurs", "arroser"]
+          },
+          "es": {
+            "display": "Ella riega las flores.",
+            "strictAnswers": ["ella riega las flores"],
+            "looseAnswers": ["ella riega las flores", "riega las flores", "regar las flores", "regar"]
+          }
+        }
+      },
+      {
+        "id": "action_digging",
+        "concept": "digging a hole",
+        "asset": "digging.webp",
+        "layout": {"left": 2, "top": 43, "width": 28, "z": 24},
+        "terms": {
+          "fr": {
+            "display": "Il creuse un trou.",
+            "strictAnswers": ["il creuse un trou"],
+            "looseAnswers": ["il creuse un trou", "creuse un trou", "creuser un trou", "creuser"]
+          },
+          "es": {
+            "display": "Él cava un hoyo.",
+            "strictAnswers": ["él cava un hoyo"],
+            "looseAnswers": ["él cava un hoyo", "el cava un hoyo", "cava un hoyo", "cavar un hoyo", "cavar"]
+          }
+        }
+      },
+      {
+        "id": "action_wheelbarrow",
+        "concept": "pushing a wheelbarrow",
+        "asset": "wheelbarrow.webp",
+        "layout": {"left": 51, "top": 42, "width": 33, "z": 23},
+        "terms": {
+          "fr": {
+            "display": "Il pousse une brouette.",
+            "strictAnswers": ["il pousse une brouette"],
+            "looseAnswers": ["il pousse une brouette", "pousse une brouette", "pousser une brouette", "pousser"]
+          },
+          "es": {
+            "display": "Él empuja una carretilla.",
+            "strictAnswers": ["él empuja una carretilla"],
+            "looseAnswers": ["él empuja una carretilla", "el empuja una carretilla", "empuja una carretilla", "empujar una carretilla", "empujar"]
+          }
+        }
+      },
+      {
+        "id": "action_trimming",
+        "concept": "trimming the hedge",
+        "asset": "trimming.webp",
+        "layout": {"left": 74, "top": 47, "width": 24, "z": 26},
+        "terms": {
+          "fr": {
+            "display": "Il taille la haie.",
+            "strictAnswers": ["il taille la haie"],
+            "looseAnswers": ["il taille la haie", "taille la haie", "tailler la haie", "tailler"]
+          },
+          "es": {
+            "display": "Él recorta el seto.",
+            "strictAnswers": ["él recorta el seto"],
+            "looseAnswers": ["él recorta el seto", "el recorta el seto", "recorta el seto", "recortar el seto", "recortar"]
+          }
+        }
+      },
+      {
+        "id": "action_planting",
+        "concept": "planting flowers",
+        "asset": "planting.webp",
+        "layout": {"left": 31, "top": 55, "width": 25, "z": 27},
+        "terms": {
+          "fr": {
+            "display": "Elle plante des fleurs.",
+            "strictAnswers": ["elle plante des fleurs"],
+            "looseAnswers": ["elle plante des fleurs", "plante des fleurs", "planter des fleurs", "planter"]
+          },
+          "es": {
+            "display": "Ella planta flores.",
+            "strictAnswers": ["ella planta flores"],
+            "looseAnswers": ["ella planta flores", "planta flores", "plantar flores", "plantar"]
+          }
+        }
+      },
+      {
+        "id": "action_gate",
+        "concept": "opening the gate",
+        "asset": "opening-gate.webp",
+        "layout": {"left": 73, "top": 20, "width": 20, "z": 21},
+        "terms": {
+          "fr": {
+            "display": "Elle ouvre le portail.",
+            "strictAnswers": ["elle ouvre le portail"],
+            "looseAnswers": ["elle ouvre le portail", "ouvre le portail", "ouvrir le portail", "ouvrir"]
+          },
+          "es": {
+            "display": "Ella abre la puerta del jardín.",
+            "strictAnswers": ["ella abre la puerta del jardín"],
+            "looseAnswers": ["ella abre la puerta del jardín", "abre la puerta del jardín", "abrir la puerta del jardín", "abrir"]
+          }
+        }
+      }
+    ]
   }
 ];
