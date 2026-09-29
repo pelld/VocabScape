@@ -90,6 +90,7 @@
     border: 0;
     background: transparent;
     cursor: pointer;
+    opacity: 0.001;
     transform-origin: 50% 80%;
     transition: transform 120ms ease, filter 120ms ease, opacity 120ms ease;
   }
@@ -104,12 +105,16 @@
 
   .action-layer:hover,
   .action-layer:focus-visible {
+    opacity: 0.78;
     transform: translateY(-2px);
-    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.95));
+    filter:
+      drop-shadow(0 0 3px rgba(255, 255, 255, 1))
+      drop-shadow(0 0 9px rgba(64, 120, 216, 0.82));
     outline: none;
   }
 
   .action-layer.target {
+    opacity: 0.86;
     filter:
       drop-shadow(0 0 4px #fff7ed)
       drop-shadow(0 0 10px #ff7258)
@@ -117,11 +122,12 @@
   }
 
   .action-layer.reveal:not(.target) {
+    opacity: 0.22;
     filter: drop-shadow(0 0 7px rgba(64, 120, 216, 0.72));
   }
 
-  .action-layer.mastered:not(.target) {
-    opacity: 0.96;
+  .action-layer.mastered:not(.target):not(.reveal) {
+    opacity: 0.001;
   }
 
   .floating-label {
