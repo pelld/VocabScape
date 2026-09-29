@@ -209,11 +209,18 @@ button { color: inherit; }
 }
 
 .deck-switcher {
+  max-width: 100%;
   display: inline-flex;
   gap: 4px;
   padding: 3px;
+  overflow-x: auto;
   border-radius: 10px;
   background: #eef3f6;
+  scrollbar-width: none;
+}
+
+.deck-switcher::-webkit-scrollbar {
+  display: none;
 }
 
 .deck-switcher button {
@@ -442,6 +449,16 @@ button { color: inherit; }
 
   .card-meta {
     align-items: center;
+    min-width: 0;
+  }
+
+  .deck-switcher {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .card-meta strong {
+    flex: 0 0 auto;
   }
 
   .round-label {
