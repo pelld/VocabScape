@@ -118,7 +118,7 @@ button { color: inherit; }
 
 .card-page,
 .explore-page {
-  width: min(1080px, calc(100% - 28px));
+  width: min(900px, calc(100% - 28px));
   margin: 0 auto;
   padding: 28px 0 48px;
 }
@@ -213,10 +213,10 @@ button { color: inherit; }
 }
 
 .flashcard-media {
-  height: clamp(390px, 58vh, 650px);
+  height: clamp(340px, 50vh, 500px);
   display: grid;
   place-items: center;
-  padding: clamp(18px, 3vw, 34px);
+  padding: 0;
   background:
     radial-gradient(circle at 50% 85%, rgba(84, 135, 72, 0.14), transparent 32%),
     linear-gradient(180deg, #f7fafb, #edf3f0);
@@ -226,7 +226,7 @@ button { color: inherit; }
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 16px 18px rgba(27, 49, 38, 0.13));
+  filter: none;
 }
 
 .flashcard-body {
@@ -374,8 +374,8 @@ button { color: inherit; }
   }
 
   .flashcard-media {
-    height: 52vh;
-    min-height: 330px;
+    height: 44vh;
+    min-height: 300px;
   }
 }
 
