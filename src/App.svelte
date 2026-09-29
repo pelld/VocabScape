@@ -24,6 +24,9 @@
 
   let sceneIndex = 0;
   let currentIndex = 0;
+  let questionQueue: number[] = [];
+  let questionPosition = 1;
+  let roundNumber = 1;
   let mode: Mode = "type";
   let strictMode = Boolean(languages[language].strictDefault);
   let showAll = false;
@@ -46,6 +49,36 @@
   $: masteredIds = new Set(
     currentScene.objects.filter((object: any) => stateFor(object).mastered).map((object: any) => object.id)
   );
+
+  function shuffledIndices(length: number, avoidFirst = -1) {
+    const indices = Array.from({ length }, (_, index) => index);
+
+    for (let i = indices.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+
+    if (indices.length > 1 && indices[0] === avoidFirst) {
+      [indices[0], indices[1]] = [indices[1], indices[0]];
+    }
+
+    return indices;
+  }
+
+  function resetQuestionRound() {
+    const objectCount = scenes[sceneIndex].objects.length;
+    const order = shuffledIndices(objectCount);
+
+    currentIndex = order.shift() ?? 0;
+    questionQueue = order;
+    questionPosition = 1;
+    roundNumber = 1;
+    countedCurrent = false;
+
+    if (answerInput) answerInput.value = "";
+    clearFeedback();
+    focusAnswer();
+  }
 
   function normalise(value: string) {
     return value
@@ -84,27 +117,19 @@
     language = code;
     localStorage.setItem(languageKey, language);
     strictMode = Boolean(languages[language].strictDefault);
-    currentIndex = 0;
     sessionCorrect = 0;
     sessionAttempts = 0;
-    countedCurrent = false;
-    clearFeedback();
-    focusAnswer();
+    resetQuestionRound();
   }
 
   function switchScene(index: number) {
     sceneIndex = index;
-    currentIndex = 0;
-    countedCurrent = false;
-    clearFeedback();
-    focusAnswer();
+    resetQuestionRound();
   }
 
   function switchMode(nextMode: Mode) {
     mode = nextMode;
-    countedCurrent = false;
-    clearFeedback();
-    focusAnswer();
+    resetQuestionRound();
   }
 
   function acceptedAnswers() {
@@ -172,19 +197,19 @@
   }
 
   function nextQuestion() {
-    if (currentScene.objects.length < 2) return;
+    const objectCount = currentScene.objects.length;
+    if (objectCount < 2) return;
 
-    const ranked = currentScene.objects
-      .map((object: any, index: number) => {
-        const state = stateFor(object);
-        return { index, score: state.correct * 2 - state.wrong * 2 + (state.mastered ? 4 : 0) };
-      })
-      .filter((item: any) => item.index !== currentIndex)
-      .sort((a: any, b: any) => a.score - b.score || Math.random() - 0.5);
+    if (questionQueue.length === 0) {
+      questionQueue = shuffledIndices(objectCount, currentIndex);
+      questionPosition = 0;
+      roundNumber += 1;
+    }
 
-    const pool = ranked.slice(0, Math.max(3, Math.ceil(ranked.length / 2)));
-    currentIndex = pool[Math.floor(Math.random() * pool.length)].index;
+    currentIndex = questionQueue.shift() ?? currentIndex;
+    questionPosition += 1;
     countedCurrent = false;
+
     if (answerInput) answerInput.value = "";
     clearFeedback();
     focusAnswer();
@@ -198,6 +223,8 @@
   function handleKeydown(event: KeyboardEvent) {
     if (event.key === "Enter") checkTyped();
   }
+
+  resetQuestionRound();
 </script>
 
 <svelte:head>
@@ -287,7 +314,8 @@
       <div class="practice-grid">
         <section class="practice-card">
           {#if mode === "type"}
-            <span class="prompt-label">What is the highlighted object in {languages[language].name}?</span>
+            <span class="prompt-label">Question {questionPosition} of {currentScene.objects.length} · Round {roundNumber}</span>
+            <span class="prompt-label prompt-secondary">What is the highlighted object in {languages[language].name}?</span>
             <h2>{currentObject.concept}</h2>
 
             <div class="answer-row">
@@ -303,7 +331,8 @@
               <button class="primary" onclick={checkTyped}>Check</button>
             </div>
           {:else if mode === "click"}
-            <span class="prompt-label">Find this in the picture</span>
+            <span class="prompt-label">Question {questionPosition} of {currentScene.objects.length} · Round {roundNumber}</span>
+            <span class="prompt-label prompt-secondary">Find this in the picture</span>
             <h2>{currentTerm.display}</h2>
             <p class="supporting">Click the {currentObject.concept}.</p>
           {:else}
