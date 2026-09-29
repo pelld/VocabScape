@@ -1738,7 +1738,7 @@ export const SCENES = [
         "id": "action_watering",
         "concept": "watering the flowers",
         "asset": "watering.webp",
-        "layout": {"left": 18, "top": 24, "width": 33, "z": 22},
+        "layout": {"left": 1.5, "top": 10, "width": 27, "z": 22},
         "terms": {
           "fr": {
             "display": "Elle arrose les fleurs.",
@@ -1756,7 +1756,7 @@ export const SCENES = [
         "id": "action_digging",
         "concept": "digging a hole",
         "asset": "digging.webp",
-        "layout": {"left": 2, "top": 43, "width": 28, "z": 24},
+        "layout": {"left": 44, "top": 18, "width": 23, "z": 24},
         "terms": {
           "fr": {
             "display": "Il creuse un trou.",
@@ -1774,7 +1774,7 @@ export const SCENES = [
         "id": "action_wheelbarrow",
         "concept": "pushing a wheelbarrow",
         "asset": "wheelbarrow.webp",
-        "layout": {"left": 51, "top": 42, "width": 33, "z": 23},
+        "layout": {"left": 70, "top": 23, "width": 26, "z": 23},
         "terms": {
           "fr": {
             "display": "Il pousse une brouette.",
@@ -1792,7 +1792,7 @@ export const SCENES = [
         "id": "action_trimming",
         "concept": "trimming the hedge",
         "asset": "trimming.webp",
-        "layout": {"left": 74, "top": 47, "width": 24, "z": 26},
+        "layout": {"left": 33, "top": 14, "width": 17, "z": 21},
         "terms": {
           "fr": {
             "display": "Il taille la haie.",
@@ -1810,7 +1810,7 @@ export const SCENES = [
         "id": "action_planting",
         "concept": "planting flowers",
         "asset": "planting.webp",
-        "layout": {"left": 31, "top": 55, "width": 25, "z": 27},
+        "layout": {"left": 25, "top": 42, "width": 27, "z": 27},
         "terms": {
           "fr": {
             "display": "Elle plante des fleurs.",
@@ -1828,7 +1828,7 @@ export const SCENES = [
         "id": "action_gate",
         "concept": "opening the gate",
         "asset": "opening-gate.webp",
-        "layout": {"left": 73, "top": 20, "width": 20, "z": 21},
+        "layout": {"left": 82, "top": 18, "width": 17, "z": 25},
         "terms": {
           "fr": {
             "display": "Elle ouvre le portail.",
