@@ -177,6 +177,7 @@
       feedbackTone = "bad";
     }
 
+    memory = { ...memory };
     saveProgress();
   }
 
