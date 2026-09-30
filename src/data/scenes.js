@@ -2623,5 +2623,320 @@ export const SCENES = [
         }
       }
     ]
+  },
+  {
+    "id": "my-french",
+    "name": "My French",
+    "kind": "action",
+    "textOnly": true,
+    "credit": "Built from recent French practice",
+    "objects": [
+      {
+        "id": "mine_only_friday",
+        "level": "A",
+        "concept": "I only work from home on Fridays.",
+        "terms": {
+          "fr": {
+            "display": "Je ne travaille de chez moi que le vendredi.",
+            "strictAnswers": ["je ne travaille de chez moi que le vendredi"],
+            "looseAnswers": ["je ne travaille de chez moi que le vendredi"]
+          },
+          "es": {
+            "display": "Solo trabajo desde casa los viernes.",
+            "strictAnswers": ["solo trabajo desde casa los viernes"],
+            "looseAnswers": ["solo trabajo desde casa los viernes"]
+          }
+        }
+      },
+      {
+        "id": "mine_only_wine",
+        "level": "A",
+        "concept": "I only drink wine in the evening.",
+        "terms": {
+          "fr": {
+            "display": "Je ne bois que du vin le soir.",
+            "strictAnswers": ["je ne bois que du vin le soir"],
+            "looseAnswers": ["je ne bois que du vin le soir"]
+          },
+          "es": {
+            "display": "Solo bebo vino por la noche.",
+            "strictAnswers": ["solo bebo vino por la noche"],
+            "looseAnswers": ["solo bebo vino por la noche"]
+          }
+        }
+      },
+      {
+        "id": "mine_habit",
+        "level": "A",
+        "concept": "I am used to working from home.",
+        "terms": {
+          "fr": {
+            "display": "J'ai l'habitude de travailler de chez moi.",
+            "strictAnswers": ["j'ai l'habitude de travailler de chez moi"],
+            "looseAnswers": ["j'ai l'habitude de travailler de chez moi"]
+          },
+          "es": {
+            "display": "Estoy acostumbrado a trabajar desde casa.",
+            "strictAnswers": ["estoy acostumbrado a trabajar desde casa"],
+            "looseAnswers": ["estoy acostumbrado a trabajar desde casa"]
+          }
+        }
+      },
+      {
+        "id": "mine_just_finished",
+        "level": "A",
+        "concept": "I have just finished.",
+        "terms": {
+          "fr": {
+            "display": "Je viens de finir.",
+            "strictAnswers": ["je viens de finir"],
+            "looseAnswers": ["je viens de finir"]
+          },
+          "es": {
+            "display": "Acabo de terminar.",
+            "strictAnswers": ["acabo de terminar"],
+            "looseAnswers": ["acabo de terminar"]
+          }
+        }
+      },
+      {
+        "id": "mine_during",
+        "level": "A",
+        "concept": "I listened to music while I was working.",
+        "terms": {
+          "fr": {
+            "display": "J'ai écouté de la musique pendant que je travaillais.",
+            "strictAnswers": ["j'ai écouté de la musique pendant que je travaillais"],
+            "looseAnswers": ["j'ai écouté de la musique pendant que je travaillais"]
+          },
+          "es": {
+            "display": "Escuché música mientras trabajaba.",
+            "strictAnswers": ["escuché música mientras trabajaba"],
+            "looseAnswers": ["escuché música mientras trabajaba"]
+          }
+        }
+      },
+      {
+        "id": "mine_even_if",
+        "level": "A",
+        "concept": "Even if it rains, I will go.",
+        "terms": {
+          "fr": {
+            "display": "Même s'il pleut, j'irai.",
+            "strictAnswers": ["même s'il pleut, j'irai"],
+            "looseAnswers": ["même s'il pleut, j'irai", "meme s'il pleut j'irai"]
+          },
+          "es": {
+            "display": "Aunque llueva, iré.",
+            "strictAnswers": ["aunque llueva, iré"],
+            "looseAnswers": ["aunque llueva, iré"]
+          }
+        }
+      },
+      {
+        "id": "mine_realised",
+        "level": "B",
+        "concept": "I realised that I had forgotten my keys.",
+        "terms": {
+          "fr": {
+            "display": "Je me suis rendu compte que j'avais oublié mes clés.",
+            "strictAnswers": ["je me suis rendu compte que j'avais oublié mes clés"],
+            "looseAnswers": ["je me suis rendu compte que j'avais oublié mes clés", "je me suis rendu compte que j'avais oublie mes cles"]
+          },
+          "es": {
+            "display": "Me di cuenta de que había olvidado mis llaves.",
+            "strictAnswers": ["me di cuenta de que había olvidado mis llaves"],
+            "looseAnswers": ["me di cuenta de que había olvidado mis llaves"]
+          }
+        }
+      },
+      {
+        "id": "mine_almost",
+        "level": "B",
+        "concept": "I almost missed the train.",
+        "terms": {
+          "fr": {
+            "display": "J'ai failli rater le train.",
+            "strictAnswers": ["j'ai failli rater le train"],
+            "looseAnswers": ["j'ai failli rater le train"]
+          },
+          "es": {
+            "display": "Casi pierdo el tren.",
+            "strictAnswers": ["casi pierdo el tren"],
+            "looseAnswers": ["casi pierdo el tren"]
+          }
+        }
+      },
+      {
+        "id": "mine_result",
+        "level": "B",
+        "concept": "I was tired, so I went to bed early.",
+        "terms": {
+          "fr": {
+            "display": "J'étais fatigué, ce qui fait que je me suis couché tôt.",
+            "strictAnswers": ["j'étais fatigué, ce qui fait que je me suis couché tôt"],
+            "looseAnswers": ["j'étais fatigué ce qui fait que je me suis couché tôt", "j'etais fatigue ce qui fait que je me suis couche tot"]
+          },
+          "es": {
+            "display": "Estaba cansado, así que me acosté temprano.",
+            "strictAnswers": ["estaba cansado, así que me acosté temprano"],
+            "looseAnswers": ["estaba cansado, así que me acosté temprano"]
+          }
+        }
+      },
+      {
+        "id": "mine_what_i_like",
+        "level": "B",
+        "concept": "What I like is the atmosphere.",
+        "terms": {
+          "fr": {
+            "display": "Ce que j'aime, c'est l'ambiance.",
+            "strictAnswers": ["ce que j'aime, c'est l'ambiance"],
+            "looseAnswers": ["ce que j'aime c'est l'ambiance"]
+          },
+          "es": {
+            "display": "Lo que me gusta es el ambiente.",
+            "strictAnswers": ["lo que me gusta es el ambiente"],
+            "looseAnswers": ["lo que me gusta es el ambiente"]
+          }
+        }
+      },
+      {
+        "id": "mine_makes_laugh",
+        "level": "B",
+        "concept": "What makes me laugh is his accent.",
+        "terms": {
+          "fr": {
+            "display": "Ce qui me fait rire, c'est son accent.",
+            "strictAnswers": ["ce qui me fait rire, c'est son accent"],
+            "looseAnswers": ["ce qui me fait rire c'est son accent"]
+          },
+          "es": {
+            "display": "Lo que me hace reír es su acento.",
+            "strictAnswers": ["lo que me hace reír es su acento"],
+            "looseAnswers": ["lo que me hace reír es su acento"]
+          }
+        }
+      },
+      {
+        "id": "mine_y_go",
+        "level": "B",
+        "concept": "I go there every week.",
+        "terms": {
+          "fr": {
+            "display": "J'y vais toutes les semaines.",
+            "strictAnswers": ["j'y vais toutes les semaines"],
+            "looseAnswers": ["j'y vais toutes les semaines"]
+          },
+          "es": {
+            "display": "Voy allí todas las semanas.",
+            "strictAnswers": ["voy allí todas las semanas"],
+            "looseAnswers": ["voy allí todas las semanas"]
+          }
+        }
+      },
+      {
+        "id": "mine_subj_go",
+        "level": "C",
+        "concept": "I have to go there.",
+        "terms": {
+          "fr": {
+            "display": "Il faut que j'y aille.",
+            "strictAnswers": ["il faut que j'y aille"],
+            "looseAnswers": ["il faut que j'y aille"]
+          },
+          "es": {
+            "display": "Tengo que ir allí.",
+            "strictAnswers": ["tengo que ir allí"],
+            "looseAnswers": ["tengo que ir allí"]
+          }
+        }
+      },
+      {
+        "id": "mine_subj_do",
+        "level": "C",
+        "concept": "You have to do it today.",
+        "terms": {
+          "fr": {
+            "display": "Il faut que tu le fasses aujourd'hui.",
+            "strictAnswers": ["il faut que tu le fasses aujourd'hui"],
+            "looseAnswers": ["il faut que tu le fasses aujourd'hui"]
+          },
+          "es": {
+            "display": "Tienes que hacerlo hoy.",
+            "strictAnswers": ["tienes que hacerlo hoy"],
+            "looseAnswers": ["tienes que hacerlo hoy"]
+          }
+        }
+      },
+      {
+        "id": "mine_cod",
+        "level": "C",
+        "concept": "I see her every Sunday.",
+        "terms": {
+          "fr": {
+            "display": "Je la vois tous les dimanches.",
+            "strictAnswers": ["je la vois tous les dimanches"],
+            "looseAnswers": ["je la vois tous les dimanches"]
+          },
+          "es": {
+            "display": "La veo todos los domingos.",
+            "strictAnswers": ["la veo todos los domingos"],
+            "looseAnswers": ["la veo todos los domingos"]
+          }
+        }
+      },
+      {
+        "id": "mine_coi",
+        "level": "C",
+        "concept": "I speak to him every week.",
+        "terms": {
+          "fr": {
+            "display": "Je lui parle toutes les semaines.",
+            "strictAnswers": ["je lui parle toutes les semaines"],
+            "looseAnswers": ["je lui parle toutes les semaines"]
+          },
+          "es": {
+            "display": "Hablo con él todas las semanas.",
+            "strictAnswers": ["hablo con él todas las semanas"],
+            "looseAnswers": ["hablo con él todas las semanas"]
+          }
+        }
+      },
+      {
+        "id": "mine_send_it",
+        "level": "C",
+        "concept": "They are going to send it to us.",
+        "terms": {
+          "fr": {
+            "display": "Ils vont nous l'envoyer.",
+            "strictAnswers": ["ils vont nous l'envoyer"],
+            "looseAnswers": ["ils vont nous l'envoyer"]
+          },
+          "es": {
+            "display": "Nos lo van a enviar.",
+            "strictAnswers": ["nos lo van a enviar"],
+            "looseAnswers": ["nos lo van a enviar"]
+          }
+        }
+      },
+      {
+        "id": "mine_never_been",
+        "level": "C",
+        "concept": "I have never been there.",
+        "terms": {
+          "fr": {
+            "display": "Je n'y suis jamais allé.",
+            "strictAnswers": ["je n'y suis jamais allé"],
+            "looseAnswers": ["je n'y suis jamais allé", "je n'y suis jamais alle"]
+          },
+          "es": {
+            "display": "Nunca he estado allí.",
+            "strictAnswers": ["nunca he estado allí"],
+            "looseAnswers": ["nunca he estado allí"]
+          }
+        }
+      }
+    ]
   }
 ];
