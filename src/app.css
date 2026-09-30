@@ -201,6 +201,74 @@ button { color: inherit; }
   font-size: 0.75rem;
   font-weight: 650;
 }
+.study-toolbar {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.study-toolbar .round-label {
+  margin-top: 0;
+}
+
+.level-switcher {
+  display: inline-flex;
+  gap: 3px;
+  padding: 3px;
+  border-radius: 9px;
+  background: #eef3f6;
+}
+
+.level-switcher button {
+  border: 0;
+  border-radius: 7px;
+  padding: 5px 8px;
+  background: transparent;
+  color: #637487;
+  cursor: pointer;
+  font-size: 0.74rem;
+  font-weight: 850;
+}
+
+.level-switcher button.active {
+  background: white;
+  color: var(--ink);
+  box-shadow: 0 2px 7px rgba(16, 36, 62, 0.08);
+}
+
+.level-switcher small {
+  margin-left: 3px;
+  color: #8b98a6;
+  font-size: 0.64rem;
+  font-weight: 750;
+}
+
+.progress-summary {
+  margin-top: 8px;
+  display: flex;
+  gap: 14px;
+  color: #7b8898;
+  font-size: 0.7rem;
+  font-weight: 650;
+}
+
+.progress-summary strong {
+  color: #405267;
+  font-weight: 850;
+}
+
+.level-badge {
+  display: inline-block;
+  margin-left: 7px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: #eef3f6;
+  color: #5c6e82;
+  font-size: 0.68rem;
+  font-weight: 850;
+}
 
 .card-meta strong {
   color: var(--ink);
@@ -461,8 +529,23 @@ button { color: inherit; }
     flex: 0 0 auto;
   }
 
+  .study-toolbar {
+    margin-top: 6px;
+  }
+
   .round-label {
     display: none;
+  }
+
+  .progress-summary {
+    margin-top: 6px;
+    gap: 9px;
+    font-size: 0.64rem;
+  }
+
+  .level-switcher button {
+    padding: 5px 7px;
+    font-size: 0.7rem;
   }
 
   .card-progress {
@@ -564,7 +647,22 @@ button { color: inherit; }
   }
 
   .card-prompt {
-    margin: 10px 0 9px;
+    margin: 8px 0 8px;
+  }
+
+  .progress-summary {
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+
+  .progress-summary::-webkit-scrollbar {
+    display: none;
+  }
+
+  .level-badge {
+    margin-left: 4px;
+    font-size: 0.62rem;
   }
 
   .answer-row {
