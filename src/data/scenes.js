@@ -2629,6 +2629,7 @@ export const SCENES = [
     "name": "My French",
     "kind": "action",
     "textOnly": true,
+    "languages": ["fr"],
     "credit": "Built from recent French practice",
     "objects": [
       {
