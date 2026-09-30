@@ -1736,6 +1736,7 @@ export const SCENES = [
     "objects": [
       {
         "id": "action_watering",
+        "level": "A",
         "concept": "She is watering the flowers.",
         "asset": "watering.webp",
         "terms": {
@@ -1753,6 +1754,7 @@ export const SCENES = [
       },
       {
         "id": "action_digging",
+        "level": "A",
         "concept": "He is digging a hole.",
         "asset": "digging.webp",
         "terms": {
@@ -1770,6 +1772,7 @@ export const SCENES = [
       },
       {
         "id": "action_wheelbarrow",
+        "level": "A",
         "concept": "He is pushing a wheelbarrow.",
         "asset": "wheelbarrow.webp",
         "terms": {
@@ -1787,6 +1790,7 @@ export const SCENES = [
       },
       {
         "id": "action_trimming",
+        "level": "B",
         "concept": "He is trimming the hedge.",
         "asset": "trimming.webp",
         "terms": {
@@ -1804,6 +1808,7 @@ export const SCENES = [
       },
       {
         "id": "action_planting",
+        "level": "B",
         "concept": "She is planting flowers.",
         "asset": "planting.webp",
         "terms": {
@@ -1821,6 +1826,7 @@ export const SCENES = [
       },
       {
         "id": "action_gate",
+        "level": "B",
         "concept": "She is opening the gate.",
         "asset": "opening-gate.webp",
         "terms": {
@@ -1838,6 +1844,7 @@ export const SCENES = [
       },
       {
         "id": "action_raking",
+        "level": "B",
         "concept": "She is raking the leaves.",
         "asset": "raking.webp",
         "terms": {
@@ -1855,6 +1862,7 @@ export const SCENES = [
       },
       {
         "id": "action_mowing",
+        "level": "A",
         "concept": "He is mowing the lawn.",
         "asset": "mowing.webp",
         "terms": {
@@ -1872,6 +1880,7 @@ export const SCENES = [
       },
       {
         "id": "action_weeding",
+        "level": "C",
         "concept": "She is pulling up weeds.",
         "asset": "weeding.webp",
         "terms": {
@@ -1889,6 +1898,7 @@ export const SCENES = [
       },
       {
         "id": "action_pruning",
+        "level": "C",
         "concept": "He is pruning the roses.",
         "asset": "pruning.webp",
         "terms": {
@@ -1906,6 +1916,7 @@ export const SCENES = [
       },
       {
         "id": "action_picking_apples",
+        "level": "C",
         "concept": "She is picking apples.",
         "asset": "picking-apples.webp",
         "terms": {
@@ -1923,6 +1934,7 @@ export const SCENES = [
       },
       {
         "id": "action_sweeping",
+        "level": "C",
         "concept": "He is sweeping the path.",
         "asset": "sweeping.webp",
         "terms": {
@@ -1948,6 +1960,7 @@ export const SCENES = [
     "objects": [
       {
         "id": "kitchen_chopping",
+        "level": "A",
         "concept": "She is chopping vegetables.",
         "asset": "https://images.pexels.com/photos/8357264/pexels-photo-8357264.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -1965,6 +1978,7 @@ export const SCENES = [
       },
       {
         "id": "kitchen_stirring",
+        "level": "B",
         "concept": "She is stirring the soup.",
         "asset": "https://images.pexels.com/photos/5692190/pexels-photo-5692190.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -1982,6 +1996,7 @@ export const SCENES = [
       },
       {
         "id": "kitchen_washing",
+        "level": "A",
         "concept": "He is washing the dishes.",
         "asset": "https://images.pexels.com/photos/13736082/pexels-photo-13736082.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -1999,6 +2014,7 @@ export const SCENES = [
       },
       {
         "id": "kitchen_pouring",
+        "level": "B",
         "concept": "He is pouring water into a glass.",
         "asset": "https://images.pexels.com/photos/7299877/pexels-photo-7299877.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2016,6 +2032,7 @@ export const SCENES = [
       },
       {
         "id": "kitchen_oven",
+        "level": "C",
         "concept": "She is taking a dish out of the oven.",
         "asset": "https://images.pexels.com/photos/7669756/pexels-photo-7669756.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2033,6 +2050,7 @@ export const SCENES = [
       },
       {
         "id": "kitchen_fridge",
+        "level": "A",
         "concept": "She is opening the fridge.",
         "asset": "https://images.pexels.com/photos/8289912/pexels-photo-8289912.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2050,6 +2068,7 @@ export const SCENES = [
       },
       {
         "id": "kitchen_peeling",
+        "level": "C",
         "concept": "They are peeling potatoes.",
         "asset": "https://images.pexels.com/photos/36940774/pexels-photo-36940774.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2067,6 +2086,7 @@ export const SCENES = [
       },
       {
         "id": "kitchen_table",
+        "level": "C",
         "concept": "She is setting the table.",
         "asset": "https://images.pexels.com/photos/3951656/pexels-photo-3951656.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2084,6 +2104,7 @@ export const SCENES = [
       },
       {
         "id": "kitchen_frying_egg",
+        "level": "B",
         "concept": "She is frying an egg.",
         "asset": "https://images.pexels.com/photos/7719169/pexels-photo-7719169.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2101,6 +2122,7 @@ export const SCENES = [
       },
       {
         "id": "kitchen_grating_cheese",
+        "level": "B",
         "concept": "He is grating cheese.",
         "asset": "https://images.pexels.com/photos/8487817/pexels-photo-8487817.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2118,6 +2140,7 @@ export const SCENES = [
       },
       {
         "id": "kitchen_kneading_dough",
+        "level": "C",
         "concept": "A person is kneading dough.",
         "asset": "https://images.pexels.com/photos/7966373/pexels-photo-7966373.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2135,6 +2158,7 @@ export const SCENES = [
       },
       {
         "id": "kitchen_making_coffee",
+        "level": "A",
         "concept": "He is making coffee.",
         "asset": "https://images.pexels.com/photos/17501680/pexels-photo-17501680.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2160,6 +2184,7 @@ export const SCENES = [
     "objects": [
       {
         "id": "daily_jacket",
+        "level": "A",
         "concept": "He is putting on his jacket.",
         "asset": "https://images.pexels.com/photos/6656476/pexels-photo-6656476.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2177,6 +2202,7 @@ export const SCENES = [
       },
       {
         "id": "daily_brushing_teeth",
+        "level": "A",
         "concept": "She is brushing her teeth.",
         "asset": "https://images.pexels.com/photos/27177610/pexels-photo-27177610.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2194,6 +2220,7 @@ export const SCENES = [
       },
       {
         "id": "daily_combing_hair",
+        "level": "B",
         "concept": "She is combing her hair.",
         "asset": "https://images.pexels.com/photos/7269512/pexels-photo-7269512.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2211,6 +2238,7 @@ export const SCENES = [
       },
       {
         "id": "daily_tying_shoes",
+        "level": "B",
         "concept": "He is tying his shoelaces.",
         "asset": "https://images.pexels.com/photos/7870016/pexels-photo-7870016.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2228,6 +2256,7 @@ export const SCENES = [
       },
       {
         "id": "daily_making_bed",
+        "level": "A",
         "concept": "She is making the bed.",
         "asset": "https://images.pexels.com/photos/10554822/pexels-photo-10554822.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2245,6 +2274,7 @@ export const SCENES = [
       },
       {
         "id": "daily_packing_bag",
+        "level": "C",
         "concept": "He is packing his backpack.",
         "asset": "https://images.pexels.com/photos/12125322/pexels-photo-12125322.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2262,6 +2292,7 @@ export const SCENES = [
       },
       {
         "id": "daily_waiting_bus",
+        "level": "C",
         "concept": "They are waiting for the bus.",
         "asset": "https://images.pexels.com/photos/16592561/pexels-photo-16592561.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2279,6 +2310,7 @@ export const SCENES = [
       },
       {
         "id": "daily_checking_time",
+        "level": "C",
         "concept": "He is checking the time.",
         "asset": "https://images.pexels.com/photos/29843084/pexels-photo-29843084.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2296,6 +2328,7 @@ export const SCENES = [
       },
       {
         "id": "daily_phone",
+        "level": "B",
         "concept": "She is talking on the phone.",
         "asset": "https://images.pexels.com/photos/4240538/pexels-photo-4240538.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2313,6 +2346,7 @@ export const SCENES = [
       },
       {
         "id": "daily_shopping",
+        "level": "B",
         "concept": "He is carrying the shopping.",
         "asset": "https://images.pexels.com/photos/32455972/pexels-photo-32455972.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2330,6 +2364,7 @@ export const SCENES = [
       },
       {
         "id": "daily_bed",
+        "level": "C",
         "concept": "He is lying in bed.",
         "asset": "https://images.pexels.com/photos/6943997/pexels-photo-6943997.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2347,6 +2382,7 @@ export const SCENES = [
       },
       {
         "id": "daily_coffee",
+        "level": "A",
         "concept": "She is drinking coffee.",
         "asset": "https://images.pexels.com/photos/1117484/pexels-photo-1117484.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2372,6 +2408,7 @@ export const SCENES = [
     "objects": [
       {
         "id": "travel_boarding_train",
+        "level": "B",
         "concept": "A traveler is boarding the train.",
         "asset": "https://images.pexels.com/photos/32707616/pexels-photo-32707616.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2389,6 +2426,7 @@ export const SCENES = [
       },
       {
         "id": "travel_buying_ticket",
+        "level": "B",
         "concept": "He is buying a ticket at the machine.",
         "asset": "https://images.pexels.com/photos/8554381/pexels-photo-8554381.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2406,6 +2444,7 @@ export const SCENES = [
       },
       {
         "id": "travel_waiting_train",
+        "level": "A",
         "concept": "He is waiting for the train.",
         "asset": "https://images.pexels.com/photos/36053082/pexels-photo-36053082.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2423,6 +2462,7 @@ export const SCENES = [
       },
       {
         "id": "travel_platform_suitcase",
+        "level": "C",
         "concept": "He is walking along the platform with his suitcase.",
         "asset": "https://images.pexels.com/photos/31196457/pexels-photo-31196457.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2440,6 +2480,7 @@ export const SCENES = [
       },
       {
         "id": "travel_bus_stop",
+        "level": "B",
         "concept": "They are waiting at the bus stop.",
         "asset": "https://images.pexels.com/photos/18427240/pexels-photo-18427240.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2457,6 +2498,7 @@ export const SCENES = [
       },
       {
         "id": "travel_taxi",
+        "level": "A",
         "concept": "She is hailing a taxi.",
         "asset": "https://images.pexels.com/photos/7963831/pexels-photo-7963831.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2474,6 +2516,7 @@ export const SCENES = [
       },
       {
         "id": "travel_departures",
+        "level": "C",
         "concept": "The flight times are displayed on the departure board.",
         "asset": "https://images.pexels.com/photos/12940608/pexels-photo-12940608.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2491,6 +2534,7 @@ export const SCENES = [
       },
       {
         "id": "travel_cycling",
+        "level": "B",
         "concept": "He is riding a bicycle through the city.",
         "asset": "https://images.pexels.com/photos/19297287/pexels-photo-19297287.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2508,6 +2552,7 @@ export const SCENES = [
       },
       {
         "id": "travel_driving",
+        "level": "A",
         "concept": "He is driving a car.",
         "asset": "https://images.pexels.com/photos/8478475/pexels-photo-8478475.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2525,6 +2570,7 @@ export const SCENES = [
       },
       {
         "id": "travel_map",
+        "level": "A",
         "concept": "She is reading a map.",
         "asset": "https://images.pexels.com/photos/3783086/pexels-photo-3783086.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2542,6 +2588,7 @@ export const SCENES = [
       },
       {
         "id": "travel_airport",
+        "level": "C",
         "concept": "A traveler is walking through the airport with a suitcase.",
         "asset": "https://images.pexels.com/photos/30981181/pexels-photo-30981181.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
@@ -2559,6 +2606,7 @@ export const SCENES = [
       },
       {
         "id": "travel_luggage_cart",
+        "level": "C",
         "concept": "He is pushing a luggage cart.",
         "asset": "https://images.pexels.com/photos/14433259/pexels-photo-14433259.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "terms": {
