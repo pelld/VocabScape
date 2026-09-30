@@ -2628,12 +2628,12 @@ export const SCENES = [
     "id": "my-french",
     "name": "My French",
     "kind": "action",
-    "textOnly": true,
     "languages": ["fr"],
     "credit": "Built from recent French practice",
     "objects": [
       {
         "id": "mine_only_friday",
+        "asset": "mine_only_friday.webp",
         "level": "A",
         "concept": "I only work from home on Fridays.",
         "terms": {
@@ -2651,6 +2651,7 @@ export const SCENES = [
       },
       {
         "id": "mine_only_wine",
+        "asset": "mine_only_wine.webp",
         "level": "A",
         "concept": "I only drink wine in the evening.",
         "terms": {
@@ -2668,6 +2669,7 @@ export const SCENES = [
       },
       {
         "id": "mine_habit",
+        "asset": "mine_habit.webp",
         "level": "A",
         "concept": "I am used to working from home.",
         "terms": {
@@ -2685,6 +2687,7 @@ export const SCENES = [
       },
       {
         "id": "mine_just_finished",
+        "asset": "mine_just_finished.webp",
         "level": "A",
         "concept": "I have just finished.",
         "terms": {
@@ -2702,6 +2705,7 @@ export const SCENES = [
       },
       {
         "id": "mine_during",
+        "asset": "mine_during.webp",
         "level": "A",
         "concept": "I listened to music while I was working.",
         "terms": {
@@ -2719,6 +2723,7 @@ export const SCENES = [
       },
       {
         "id": "mine_even_if",
+        "asset": "mine_even_if.webp",
         "level": "A",
         "concept": "Even if it rains, I will go.",
         "terms": {
@@ -2736,6 +2741,7 @@ export const SCENES = [
       },
       {
         "id": "mine_realised",
+        "asset": "mine_realised.webp",
         "level": "B",
         "concept": "I realised that I had forgotten my keys.",
         "terms": {
@@ -2753,6 +2759,7 @@ export const SCENES = [
       },
       {
         "id": "mine_almost",
+        "asset": "mine_almost.webp",
         "level": "B",
         "concept": "I almost missed the train.",
         "terms": {
@@ -2770,6 +2777,7 @@ export const SCENES = [
       },
       {
         "id": "mine_result",
+        "asset": "mine_result.webp",
         "level": "B",
         "concept": "I was tired, so I went to bed early.",
         "terms": {
@@ -2787,6 +2795,7 @@ export const SCENES = [
       },
       {
         "id": "mine_what_i_like",
+        "asset": "mine_what_i_like.webp",
         "level": "B",
         "concept": "What I like is the atmosphere.",
         "terms": {
@@ -2804,6 +2813,7 @@ export const SCENES = [
       },
       {
         "id": "mine_makes_laugh",
+        "asset": "https://images.pexels.com/photos/7219166/pexels-photo-7219166.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "level": "B",
         "concept": "What makes me laugh is his accent.",
         "terms": {
@@ -2821,6 +2831,7 @@ export const SCENES = [
       },
       {
         "id": "mine_y_go",
+        "asset": "https://images.pexels.com/photos/10215906/pexels-photo-10215906.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "level": "B",
         "concept": "I go there every week.",
         "terms": {
@@ -2838,6 +2849,7 @@ export const SCENES = [
       },
       {
         "id": "mine_subj_go",
+        "asset": "https://images.pexels.com/photos/9186030/pexels-photo-9186030.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "level": "C",
         "concept": "I have to go there.",
         "terms": {
@@ -2855,6 +2867,7 @@ export const SCENES = [
       },
       {
         "id": "mine_subj_do",
+        "asset": "https://images.pexels.com/photos/29843084/pexels-photo-29843084.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "level": "C",
         "concept": "You have to do it today.",
         "terms": {
@@ -2872,6 +2885,7 @@ export const SCENES = [
       },
       {
         "id": "mine_cod",
+        "asset": "https://images.pexels.com/photos/5737833/pexels-photo-5737833.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "level": "C",
         "concept": "I see her every Sunday.",
         "terms": {
@@ -2889,6 +2903,7 @@ export const SCENES = [
       },
       {
         "id": "mine_coi",
+        "asset": "https://images.pexels.com/photos/7155762/pexels-photo-7155762.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "level": "C",
         "concept": "I speak to him every week.",
         "terms": {
@@ -2906,6 +2921,7 @@ export const SCENES = [
       },
       {
         "id": "mine_send_it",
+        "asset": "https://images.pexels.com/photos/7190881/pexels-photo-7190881.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "level": "C",
         "concept": "They are going to send it to us.",
         "terms": {
@@ -2923,6 +2939,7 @@ export const SCENES = [
       },
       {
         "id": "mine_never_been",
+        "asset": "https://images.pexels.com/photos/7368277/pexels-photo-7368277.jpeg?auto=compress&cs=tinysrgb&w=1200",
         "level": "C",
         "concept": "I have never been there.",
         "terms": {
