@@ -3,6 +3,7 @@
   import { SCENES } from "./data/scenes.js";
 
   type CardState = { correct: number; wrong: number };
+  type Level = "ALL" | "A" | "B" | "C";
 
   const languages: Record<string, any> = LANGUAGES;
   const actionDecks: any[] = SCENES.filter((scene: any) => scene.kind === "action");
@@ -20,6 +21,7 @@
 
   let deckIndex = 0;
   let currentDeck = actionDecks[deckIndex];
+  let selectedLevel: Level = "ALL";
   let currentIndex = 0;
   let queue: number[] = [];
   let position = 1;
@@ -30,12 +32,52 @@
   let answerInput: HTMLInputElement;
 
 
-  $: currentCard = currentDeck.objects[currentIndex];
+  $: filteredCards = cardsForLevel(currentDeck, selectedLevel);
+  $: currentCard = filteredCards[currentIndex] ?? filteredCards[0];
   $: currentTerm = currentCard.terms[language];
-  $: roundProgress = Math.round((position / currentDeck.objects.length) * 100);
+  $: roundProgress = Math.round((position / filteredCards.length) * 100);
+  $: deckStats = progressForCards(currentDeck.objects);
+  $: levelStats = {
+    A: progressForCards(cardsForLevel(currentDeck, "A")),
+    B: progressForCards(cardsForLevel(currentDeck, "B")),
+    C: progressForCards(cardsForLevel(currentDeck, "C"))
+  };
 
   const asset = (file: string) =>
     file.startsWith("http") ? file : `${import.meta.env.BASE_URL}${currentDeck.id}/${file}`;
+
+  function cardsForLevel(deck: any, level: Level) {
+    return level === "ALL" ? deck.objects : deck.objects.filter((card: any) => card.level === level);
+  }
+
+  function isMastered(card: any) {
+    const state = stateFor(card);
+    const attempts = state.correct + state.wrong;
+    return state.correct >= 2 && attempts > 0 && state.correct / attempts >= 0.67;
+  }
+
+  function progressForCards(cards: any[]) {
+    let seen = 0;
+    let mastered = 0;
+    let correct = 0;
+    let attempts = 0;
+
+    for (const card of cards) {
+      const state = stateFor(card);
+      const cardAttempts = state.correct + state.wrong;
+      if (cardAttempts > 0) seen += 1;
+      if (isMastered(card)) mastered += 1;
+      correct += state.correct;
+      attempts += cardAttempts;
+    }
+
+    return {
+      total: cards.length,
+      seen,
+      mastered,
+      accuracy: attempts ? Math.round((correct / attempts) * 100) : 0
+    };
+  }
 
   function normalise(value: string) {
     return value
@@ -82,7 +124,8 @@
   }
 
   function resetDeck() {
-    const order = shuffledIndices(currentDeck.objects.length);
+    const cards = cardsForLevel(currentDeck, selectedLevel);
+    const order = shuffledIndices(cards.length);
     currentIndex = order.shift() ?? 0;
     queue = order;
     position = 1;
@@ -95,8 +138,10 @@
   }
 
   function nextCard() {
+    const cards = cardsForLevel(currentDeck, selectedLevel);
+
     if (queue.length === 0) {
-      queue = shuffledIndices(currentDeck.objects.length, currentIndex);
+      queue = shuffledIndices(cards.length, currentIndex);
       position = 0;
       round += 1;
     }
@@ -159,6 +204,11 @@
     resetDeck();
   }
 
+  function switchLevel(level: Level) {
+    selectedLevel = level;
+    resetDeck();
+  }
+
   resetDeck();
 </script>
 
@@ -206,17 +256,38 @@
                 </button>
               {/each}
             </div>
-            <strong>Card {position} / {currentDeck.objects.length}</strong>
+            <strong>Card {position} / {filteredCards.length}</strong>
           </div>
 
-          <span class="round-label">{languages[language].name} · Round {round}</span>
+          <div class="study-toolbar">
+            <span class="round-label">{languages[language].name} · Round {round}</span>
+
+            <div class="level-switcher" aria-label="Difficulty level">
+              <button class:active={selectedLevel === "ALL"} onclick={() => switchLevel("ALL")}>All</button>
+              <button class:active={selectedLevel === "A"} onclick={() => switchLevel("A")} title="Level A · Easy">
+                A <small>{levelStats.A.mastered}/{levelStats.A.total}</small>
+              </button>
+              <button class:active={selectedLevel === "B"} onclick={() => switchLevel("B")} title="Level B · Medium">
+                B <small>{levelStats.B.mastered}/{levelStats.B.total}</small>
+              </button>
+              <button class:active={selectedLevel === "C"} onclick={() => switchLevel("C")} title="Level C · Hard">
+                C <small>{levelStats.C.mastered}/{levelStats.C.total}</small>
+              </button>
+            </div>
+          </div>
+
+          <div class="progress-summary" aria-label="Learning progress">
+            <span><strong>{deckStats.seen}</strong>/{deckStats.total} seen</span>
+            <span><strong>{deckStats.mastered}</strong> mastered</span>
+            <span><strong>{deckStats.accuracy}%</strong> accuracy</span>
+          </div>
 
           <div class="card-progress" aria-hidden="true">
             <div class="card-progress-fill" style={`width:${roundProgress}%`}></div>
           </div>
 
           <div class="card-prompt">
-            <span class="prompt-label">Translate this sentence</span>
+            <span class="prompt-label">Translate this sentence <b class="level-badge">Level {currentCard.level ?? "A"}</b></span>
             <h1>{currentCard.concept}</h1>
           </div>
 
