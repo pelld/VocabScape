@@ -43,8 +43,8 @@
     C: progressForCards(cardsForLevel(currentDeck, "C"))
   };
 
-  const asset = (file: string) =>
-    file.startsWith("http") ? file : `${import.meta.env.BASE_URL}${currentDeck.id}/${file}`;
+  const asset = (file?: string) =>
+    !file ? "" : file.startsWith("http") ? file : `${import.meta.env.BASE_URL}${currentDeck.id}/${file}`;
 
   function cardsForLevel(deck: any, level: Level) {
     return level === "ALL" ? deck.objects : deck.objects.filter((card: any) => card.level === level);
@@ -202,6 +202,11 @@
   function switchDeck(index: number) {
     deckIndex = index;
     currentDeck = actionDecks[index];
+
+    if (currentDeck.languages && !currentDeck.languages.includes(language)) {
+      language = currentDeck.languages[0];
+    }
+
     resetDeck();
   }
 
@@ -234,9 +239,11 @@
     <div class="top-actions">
       <div class="language-switcher" aria-label="Target language">
         {#each Object.entries(languages) as [code, config]}
-          <button class:active={language === code} onclick={() => switchLanguage(code)}>
-            {config.nativeName}
-          </button>
+          {#if !currentDeck.languages || currentDeck.languages.includes(code)}
+            <button class:active={language === code} onclick={() => switchLanguage(code)}>
+              {config.nativeName}
+            </button>
+          {/if}
         {/each}
       </div>
     </div>
@@ -244,8 +251,17 @@
 
   <main class="card-page">
       <section class="flashcard">
-        <div class="flashcard-media">
-          <img src={asset(currentCard.asset)} alt={currentCard.concept} draggable="false" />
+        <div class="flashcard-media" class:text-only-media={currentDeck.textOnly}>
+          {#if currentDeck.textOnly}
+            <div class="text-deck-panel">
+              <span class="text-deck-kicker">Your recent French</span>
+              <h2>My French</h2>
+              <p>ne…que · ce qui / ce que · y · lui · il faut que · j’ai failli · se rendre compte</p>
+              <small>{currentDeck.objects.length} cards from recent practice</small>
+            </div>
+          {:else}
+            <img src={asset(currentCard.asset)} alt={currentCard.concept} draggable="false" />
+          {/if}
         </div>
 
         <div class="flashcard-body">
