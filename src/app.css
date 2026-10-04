@@ -522,7 +522,7 @@ button { color: inherit; }
   }
 
   .flashcard-media img {
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
   }
 
