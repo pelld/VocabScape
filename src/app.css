@@ -1268,3 +1268,27 @@ button { color: inherit; }
     min-width: 700px;
   }
 }
+
+
+.current-card-progress {
+  margin-top: 6px;
+  color: #7b8898;
+  font-size: 0.66rem;
+  font-weight: 700;
+}
+
+.current-card-progress strong {
+  color: #405267;
+}
+
+@media (max-width: 820px) {
+  .progress-summary {
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+
+  .progress-summary::-webkit-scrollbar {
+    display: none;
+  }
+}
