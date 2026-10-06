@@ -2956,5 +2956,114 @@ export const SCENES = [
         }
       }
     ]
+  },
+  {
+    "id": "my-polish",
+    "name": "My Polish",
+    "kind": "action",
+    "languages": ["pl"],
+    "textOnly": true,
+    "kicker": "Your Polish",
+    "description": "Useful Polish for greetings, cafés, tickets and getting around.",
+    "credit": "Built for introductory Polish practice",
+    "objects": [
+      {
+        "id": "polish_good_morning",
+        "level": "A",
+        "concept": "Good morning / hello",
+        "terms": { "pl": { "display": "Dzień dobry", "strictAnswers": ["dzień dobry"], "looseAnswers": ["dzień dobry", "dzien dobry"] } }
+      },
+      {
+        "id": "polish_hi_bye",
+        "level": "A",
+        "concept": "Hi / bye",
+        "terms": { "pl": { "display": "Cześć", "strictAnswers": ["cześć"], "looseAnswers": ["cześć", "czesc"] } }
+      },
+      {
+        "id": "polish_thank_you",
+        "level": "A",
+        "concept": "Thank you",
+        "terms": { "pl": { "display": "Dziękuję", "strictAnswers": ["dziękuję"], "looseAnswers": ["dziękuję", "dziekuje"] } }
+      },
+      {
+        "id": "polish_please",
+        "level": "A",
+        "concept": "Please / you're welcome",
+        "terms": { "pl": { "display": "Proszę", "strictAnswers": ["proszę"], "looseAnswers": ["proszę", "prosze"] } }
+      },
+      {
+        "id": "polish_excuse_me",
+        "level": "A",
+        "concept": "Sorry / excuse me",
+        "terms": { "pl": { "display": "Przepraszam", "strictAnswers": ["przepraszam"], "looseAnswers": ["przepraszam"] } }
+      },
+      {
+        "id": "polish_yes",
+        "level": "A",
+        "concept": "Yes",
+        "terms": { "pl": { "display": "Tak", "strictAnswers": ["tak"], "looseAnswers": ["tak"] } }
+      },
+      {
+        "id": "polish_no",
+        "level": "A",
+        "concept": "No",
+        "terms": { "pl": { "display": "Nie", "strictAnswers": ["nie"], "looseAnswers": ["nie"] } }
+      },
+      {
+        "id": "polish_dont_speak",
+        "level": "A",
+        "concept": "I don't speak Polish",
+        "terms": { "pl": { "display": "Nie mówię po polsku.", "strictAnswers": ["nie mówię po polsku"], "looseAnswers": ["nie mówię po polsku", "nie mowie po polsku"] } }
+      },
+      {
+        "id": "polish_speak_english",
+        "level": "B",
+        "concept": "Do you speak English?",
+        "terms": { "pl": { "display": "Czy mówi pan po angielsku?", "strictAnswers": ["czy mówi pan po angielsku"], "looseAnswers": ["czy mówi pan po angielsku", "czy mowi pan po angielsku", "czy mówi pani po angielsku", "czy mowi pani po angielsku"] } }
+      },
+      {
+        "id": "polish_id_like",
+        "level": "B",
+        "concept": "I'd like… / …please",
+        "terms": { "pl": { "display": "Poproszę…", "strictAnswers": ["poproszę"], "looseAnswers": ["poproszę", "poprosze"] } }
+      },
+      {
+        "id": "polish_how_much",
+        "level": "B",
+        "concept": "How much does it cost?",
+        "terms": { "pl": { "display": "Ile to kosztuje?", "strictAnswers": ["ile to kosztuje"], "looseAnswers": ["ile to kosztuje"] } }
+      },
+      {
+        "id": "polish_toilet",
+        "level": "B",
+        "concept": "Where is the toilet?",
+        "terms": { "pl": { "display": "Gdzie jest toaleta?", "strictAnswers": ["gdzie jest toaleta"], "looseAnswers": ["gdzie jest toaleta"] } }
+      },
+      {
+        "id": "polish_two_tickets",
+        "level": "B",
+        "concept": "Two tickets, please",
+        "terms": { "pl": { "display": "Dwa bilety, proszę.", "strictAnswers": ["dwa bilety proszę"], "looseAnswers": ["dwa bilety proszę", "dwa bilety prosze"] } }
+      },
+      {
+        "id": "polish_for_here",
+        "level": "B",
+        "concept": "For here / eat in",
+        "terms": { "pl": { "display": "Na miejscu", "strictAnswers": ["na miejscu"], "looseAnswers": ["na miejscu"] } }
+      },
+      {
+        "id": "polish_takeaway",
+        "level": "B",
+        "concept": "Takeaway / to go",
+        "terms": { "pl": { "display": "Na wynos", "strictAnswers": ["na wynos"], "looseAnswers": ["na wynos"] } }
+      },
+      {
+        "id": "polish_by_card",
+        "level": "B",
+        "concept": "By card, please",
+        "terms": { "pl": { "display": "Kartą, proszę.", "strictAnswers": ["kartą proszę"], "looseAnswers": ["kartą proszę", "karta prosze", "karta proszę", "kartą prosze"] } }
+      }
+    ]
   }
+
 ];
