@@ -231,7 +231,8 @@
   function answerPlaceholder() {
     if (language === "fr") return "Type the French sentence…";
     if (language === "es") return "Type the Spanish sentence…";
-    return "Type the Polish…";
+    if (language === "pl") return "Type the Polish sentence…";
+    return "Type your answer…";
   }
 
   resetDeck();
