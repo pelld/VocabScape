@@ -12,5 +12,12 @@ export const LANGUAGES = {
     "strictLabel": "Require article",
     "strictHint": "Include the article, e.g. un / una / el / la.",
     "strictDefault": true
+  },
+  "pl": {
+    "name": "Polish",
+    "nativeName": "Polski",
+    "strictLabel": "Require accents",
+    "strictHint": "Polish accents are optional when checking answers.",
+    "strictDefault": false
   }
 };

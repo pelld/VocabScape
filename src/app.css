@@ -911,3 +911,53 @@ button { color: inherit; }
     margin-top: 10px;
   }
 }
+
+
+/* --------------------------------------------------------------------------
+   Language-led navigation
+   -------------------------------------------------------------------------- */
+
+.language-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.language-label {
+  color: #bdcad8;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+@media (max-width: 820px) {
+  .top-actions {
+    width: 100%;
+    display: block;
+  }
+
+  .language-control {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .language-switcher {
+    width: 100%;
+  }
+
+  .language-switcher button {
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .language-label {
+    font-size: 0.66rem;
+  }
+
+  .language-switcher button {
+    padding-inline: 8px;
+    font-size: 0.76rem;
+  }
+}

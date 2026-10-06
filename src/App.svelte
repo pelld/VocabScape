@@ -1,15 +1,12 @@
 <script lang="ts">
   import { LANGUAGES } from "./data/languages.js";
   import { SCENES } from "./data/scenes.js";
-  import PolishIntro from "./lib/PolishIntro.svelte";
 
   type CardState = { correct: number; wrong: number };
   type Level = "ALL" | "A" | "B" | "C";
-  type View = "intro" | "study";
 
   const languages: Record<string, any> = LANGUAGES;
   const actionDecks: any[] = SCENES.filter((scene: any) => scene.kind === "action");
-
   const progressKey = "vocabscape-card-progress-v2";
 
   let memory: Record<string, CardState> = {};
@@ -19,11 +16,10 @@
     memory = {};
   }
 
-  let view: View = "intro";
   let language = "fr";
-
-  let deckIndex = 0;
-  let currentDeck = actionDecks[deckIndex];
+  let availableDecks = decksForLanguage(language);
+  let deckIndex = preferredDeckIndex(language, availableDecks);
+  let currentDeck = availableDecks[deckIndex];
   let selectedLevel: Level = "ALL";
   let currentIndex = 0;
   let queue: number[] = [];
@@ -34,11 +30,10 @@
   let feedbackTone: "good" | "bad" | "neutral" = "neutral";
   let answerInput: HTMLInputElement;
 
-
   $: filteredCards = cardsForLevel(currentDeck, selectedLevel);
   $: currentCard = filteredCards[currentIndex] ?? filteredCards[0];
-  $: currentTerm = currentCard.terms[language];
-  $: roundProgress = Math.round((position / filteredCards.length) * 100);
+  $: currentTerm = currentCard?.terms?.[language];
+  $: roundProgress = filteredCards.length ? Math.round((position / filteredCards.length) * 100) : 0;
   $: deckStats = progressForCards(currentDeck.objects);
   $: levelStats = {
     A: progressForCards(cardsForLevel(currentDeck, "A")),
@@ -48,6 +43,19 @@
 
   const asset = (file?: string) =>
     !file ? "" : file.startsWith("http") ? file : `${import.meta.env.BASE_URL}${currentDeck.id}/${file}`;
+
+  function decksForLanguage(code: string) {
+    return actionDecks.filter((deck: any) => {
+      if (deck.languages) return deck.languages.includes(code);
+      return deck.objects.some((card: any) => Boolean(card.terms?.[code]));
+    });
+  }
+
+  function preferredDeckIndex(code: string, decks: any[]) {
+    const preferredId = code === "fr" ? "my-french" : code === "pl" ? "my-polish" : "";
+    const index = preferredId ? decks.findIndex((deck: any) => deck.id === preferredId) : -1;
+    return index >= 0 ? index : 0;
+  }
 
   function cardsForLevel(deck: any, level: Level) {
     return level === "ALL" ? deck.objects : deck.objects.filter((card: any) => card.level === level);
@@ -86,9 +94,10 @@
     return value
       .trim()
       .toLowerCase()
+      .replace(/[łŁ]/g, "l")
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[.!?;,]/g, "")
+      .replace(/[.!?;,:…]/g, "")
       .replace(/[’']/g, "'")
       .replace(/\s+/g, " ");
   }
@@ -164,7 +173,7 @@
   }
 
   function checkAnswer() {
-    if (!answerInput?.value.trim()) return;
+    if (!answerInput?.value.trim() || !currentTerm) return;
 
     const state = stateFor(currentCard);
     const correct = acceptedAnswers().includes(normalise(answerInput.value));
@@ -185,6 +194,7 @@
   }
 
   function revealAnswer() {
+    if (!currentTerm) return;
     revealed = true;
     feedback = currentTerm.display;
     feedbackTone = "neutral";
@@ -199,23 +209,29 @@
 
   function switchLanguage(code: string) {
     language = code;
+    availableDecks = decksForLanguage(code);
+    deckIndex = preferredDeckIndex(code, availableDecks);
+    currentDeck = availableDecks[deckIndex];
+    selectedLevel = "ALL";
     resetDeck();
   }
 
   function switchDeck(index: number) {
     deckIndex = index;
-    currentDeck = actionDecks[index];
-
-    if (currentDeck.languages && !currentDeck.languages.includes(language)) {
-      language = currentDeck.languages[0];
-    }
-
+    currentDeck = availableDecks[index];
+    selectedLevel = "ALL";
     resetDeck();
   }
 
   function switchLevel(level: Level) {
     selectedLevel = level;
     resetDeck();
+  }
+
+  function answerPlaceholder() {
+    if (language === "fr") return "Type the French sentence…";
+    if (language === "es") return "Type the Spanish sentence…";
+    return "Type the Polish…";
   }
 
   resetDeck();
@@ -225,7 +241,7 @@
   <title>VocabScape · Visual language cards</title>
   <meta
     name="description"
-    content="Learn French, Spanish and introductory Polish with visual flashcards and vocabulary scenes."
+    content="Learn French, Spanish and Polish with visual flashcards and vocabulary scenes."
   />
 </svelte:head>
 
@@ -240,111 +256,106 @@
     </a>
 
     <div class="top-actions">
-      <div class="view-switcher" aria-label="VocabScape area">
-        <button class:active={view === "intro"} onclick={() => view = "intro"}>Introduction</button>
-        <button class:active={view === "study"} onclick={() => view = "study"}>Flashcards</button>
-      </div>
-
-      {#if view === "study"}
+      <div class="language-control">
+        <span class="language-label">Language</span>
         <div class="language-switcher" aria-label="Target language">
           {#each Object.entries(languages) as [code, config]}
-            {#if !currentDeck.languages || currentDeck.languages.includes(code)}
-              <button class:active={language === code} onclick={() => switchLanguage(code)}>
-                {config.nativeName}
-              </button>
-            {/if}
+            <button class:active={language === code} onclick={() => switchLanguage(code)}>
+              {config.name}
+            </button>
           {/each}
         </div>
-      {/if}
+      </div>
     </div>
   </header>
 
-  {#if view === "intro"}
-    <PolishIntro />
-  {:else}
-    <main class="card-page">
-      <section class="flashcard">
-        <div class="flashcard-media" class:text-only-media={currentDeck.textOnly}>
-          {#if currentDeck.textOnly}
-            <div class="text-deck-panel">
-              <span class="text-deck-kicker">Your recent French</span>
-              <h2>My French</h2>
-              <p>ne…que · ce qui / ce que · y · lui · il faut que · j’ai failli · se rendre compte</p>
-              <small>{currentDeck.objects.length} cards from recent practice</small>
-            </div>
-          {:else}
-            <img src={asset(currentCard.asset)} alt={currentCard.concept} draggable="false" />
-          {/if}
+  <main class="card-page">
+    <section class="flashcard">
+      <div class="flashcard-media" class:text-only-media={currentDeck.textOnly}>
+        {#if currentDeck.textOnly}
+          <div class="text-deck-panel">
+            <span class="text-deck-kicker">{currentDeck.kicker ?? `${languages[language].name} practice`}</span>
+            <h2>{currentDeck.name}</h2>
+            <p>{currentDeck.description ?? "A personal deck built from recent practice."}</p>
+            <small>{currentDeck.objects.length} cards</small>
+          </div>
+        {:else}
+          <img src={asset(currentCard.asset)} alt={currentCard.concept} draggable="false" />
+        {/if}
+      </div>
+
+      <div class="flashcard-body">
+        <div class="card-meta">
+          <div class="deck-switcher" aria-label="Flashcard topic">
+            {#each availableDecks as deck, index}
+              <button class:active={index === deckIndex} onclick={() => switchDeck(index)}>
+                {deck.name}
+              </button>
+            {/each}
+          </div>
+          <strong>Card {position} / {filteredCards.length}</strong>
         </div>
 
-        <div class="flashcard-body">
-          <div class="card-meta">
-            <div class="deck-switcher" aria-label="Flashcard topic">
-              {#each actionDecks as deck, index}
-                <button class:active={index === deckIndex} onclick={() => switchDeck(index)}>
-                  {deck.name}
-                </button>
-              {/each}
-            </div>
-            <strong>Card {position} / {filteredCards.length}</strong>
-          </div>
+        <div class="study-toolbar">
+          <span class="round-label">{languages[language].name} · Round {round}</span>
 
-          <div class="study-toolbar">
-            <span class="round-label">{languages[language].name} · Round {round}</span>
-
-            <div class="level-switcher" aria-label="Difficulty level">
-              <button class:active={selectedLevel === "ALL"} onclick={() => switchLevel("ALL")}>All</button>
+          <div class="level-switcher" aria-label="Difficulty level">
+            <button class:active={selectedLevel === "ALL"} onclick={() => switchLevel("ALL")}>All</button>
+            {#if levelStats.A.total}
               <button class:active={selectedLevel === "A"} onclick={() => switchLevel("A")} title="Level A · Easy">
                 A <small>{levelStats.A.mastered}/{levelStats.A.total}</small>
               </button>
+            {/if}
+            {#if levelStats.B.total}
               <button class:active={selectedLevel === "B"} onclick={() => switchLevel("B")} title="Level B · Medium">
                 B <small>{levelStats.B.mastered}/{levelStats.B.total}</small>
               </button>
+            {/if}
+            {#if levelStats.C.total}
               <button class:active={selectedLevel === "C"} onclick={() => switchLevel("C")} title="Level C · Hard">
                 C <small>{levelStats.C.mastered}/{levelStats.C.total}</small>
               </button>
-            </div>
-          </div>
-
-          <div class="progress-summary" aria-label="Learning progress">
-            <span><strong>{deckStats.seen}</strong>/{deckStats.total} seen</span>
-            <span><strong>{deckStats.mastered}</strong> mastered</span>
-            <span><strong>{deckStats.accuracy}%</strong> accuracy</span>
-          </div>
-
-          <div class="card-progress" aria-hidden="true">
-            <div class="card-progress-fill" style={`width:${roundProgress}%`}></div>
-          </div>
-
-          <div class="card-prompt">
-            <span class="prompt-label">Translate this sentence <b class="level-badge">Level {currentCard.level ?? "A"}</b></span>
-            <h1>{currentCard.concept}</h1>
-          </div>
-
-          <div class="answer-row">
-            <input
-              bind:this={answerInput}
-              type="text"
-              autocomplete="off"
-              autocapitalize="off"
-              spellcheck="false"
-              placeholder={language === "fr" ? "Type the French sentence…" : "Type the Spanish sentence…"}
-              onkeydown={handleKeydown}
-            />
-            <button class="primary" onclick={checkAnswer}>Check</button>
-          </div>
-
-          <div class="feedback" class:good={feedbackTone === "good"} class:bad={feedbackTone === "bad"}>
-            {feedback}
-          </div>
-
-          <div class="card-actions">
-            <button class="quiet" onclick={revealAnswer}>Reveal answer</button>
-            <button class="next-button" onclick={nextCard}>Next card</button>
+            {/if}
           </div>
         </div>
-      </section>
-    </main>
-  {/if}
 
+        <div class="progress-summary" aria-label="Learning progress">
+          <span><strong>{deckStats.seen}</strong>/{deckStats.total} seen</span>
+          <span><strong>{deckStats.mastered}</strong> mastered</span>
+          <span><strong>{deckStats.accuracy}%</strong> accuracy</span>
+        </div>
+
+        <div class="card-progress" aria-hidden="true">
+          <div class="card-progress-fill" style={`width:${roundProgress}%`}></div>
+        </div>
+
+        <div class="card-prompt">
+          <span class="prompt-label">Translate this sentence <b class="level-badge">Level {currentCard.level ?? "A"}</b></span>
+          <h1>{currentCard.concept}</h1>
+        </div>
+
+        <div class="answer-row">
+          <input
+            bind:this={answerInput}
+            type="text"
+            autocomplete="off"
+            autocapitalize="off"
+            spellcheck="false"
+            placeholder={answerPlaceholder()}
+            onkeydown={handleKeydown}
+          />
+          <button class="primary" onclick={checkAnswer}>Check</button>
+        </div>
+
+        <div class="feedback" class:good={feedbackTone === "good"} class:bad={feedbackTone === "bad"}>
+          {feedback}
+        </div>
+
+        <div class="card-actions">
+          <button class="quiet" onclick={revealAnswer}>Reveal answer</button>
+          <button class="next-button" onclick={nextCard}>Next card</button>
+        </div>
+      </div>
+    </section>
+  </main>
 </div>
