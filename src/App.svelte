@@ -4,6 +4,7 @@
 
   type CardState = { correct: number; wrong: number };
   type Level = "ALL" | "A" | "B" | "C";
+  type StudyThreshold = null | 50 | 70 | 90;
 
   const languages: Record<string, any> = LANGUAGES;
   const actionDecks: any[] = SCENES.filter((scene: any) => scene.kind === "action");
@@ -29,12 +30,17 @@
   let feedback = "";
   let feedbackTone: "good" | "bad" | "neutral" = "neutral";
   let answerInput: HTMLInputElement;
+  let studyThreshold: StudyThreshold = null;
+  let filteredCards: any[] = [];
+  let progressOpen = false;
+  let focusMessage = "";
 
-  $: filteredCards = cardsForLevel(currentDeck, selectedLevel);
   $: currentCard = filteredCards[currentIndex] ?? filteredCards[0];
   $: currentTerm = currentCard?.terms?.[language];
-  $: roundProgress = filteredCards.length ? Math.round((position / filteredCards.length) * 100) : 0;
   $: deckStats = progressForCards(currentDeck.objects);
+  $: seenProgress = deckStats.total ? Math.round((deckStats.seen / deckStats.total) * 100) : 0;
+  $: masteredProgress = deckStats.total ? Math.round((deckStats.mastered / deckStats.total) * 100) : 0;
+  $: progressRows = progressTableRows(currentDeck.objects);
   $: levelStats = {
     A: progressForCards(cardsForLevel(currentDeck, "A")),
     B: progressForCards(cardsForLevel(currentDeck, "B")),
@@ -59,6 +65,69 @@
 
   function cardsForLevel(deck: any, level: Level) {
     return level === "ALL" ? deck.objects : deck.objects.filter((card: any) => card.level === level);
+  }
+
+  function attemptsFor(card: any) {
+    const state = memory[stateKey(card)] ?? { correct: 0, wrong: 0 };
+    return state.correct + state.wrong;
+  }
+
+  function successRate(card: any): number | null {
+    const state = memory[stateKey(card)] ?? { correct: 0, wrong: 0 };
+    const attempts = state.correct + state.wrong;
+    return attempts ? Math.round((state.correct / attempts) * 100) : null;
+  }
+
+  function cardsForStudy(deck: any, level: Level, threshold: StudyThreshold) {
+    const cards = cardsForLevel(deck, level);
+    if (threshold === null) return cards;
+
+    return cards.filter((card: any) => {
+      const rate = successRate(card);
+      return rate === null || rate < threshold;
+    });
+  }
+
+  function weaknessScore(card: any, threshold: StudyThreshold) {
+    const rate = successRate(card);
+    return rate === null ? (threshold ?? 50) : rate;
+  }
+
+  function orderedIndices(cards: any[], threshold: StudyThreshold, avoidFirst = -1) {
+    if (threshold === null) return shuffledIndices(cards.length, avoidFirst);
+
+    const indices = Array.from({ length: cards.length }, (_, index) => index);
+    indices.sort((a, b) => {
+      const scoreDifference = weaknessScore(cards[a], threshold) - weaknessScore(cards[b], threshold);
+      if (scoreDifference !== 0) return scoreDifference;
+      return attemptsFor(cards[b]) - attemptsFor(cards[a]);
+    });
+
+    if (indices.length > 1 && indices[0] === avoidFirst) {
+      [indices[0], indices[1]] = [indices[1], indices[0]];
+    }
+
+    return indices;
+  }
+
+  function progressTableRows(cards: any[]) {
+    return cards
+      .map((card: any) => {
+        const state = memory[stateKey(card)] ?? { correct: 0, wrong: 0 };
+        const attempts = state.correct + state.wrong;
+        const rate = attempts ? Math.round((state.correct / attempts) * 100) : null;
+
+        return {
+          card,
+          target: card.terms?.[language]?.display ?? "",
+          attempts,
+          correct: state.correct,
+          wrong: state.wrong,
+          rate,
+          sortScore: rate === null ? 50 : rate
+        };
+      })
+      .sort((a: any, b: any) => a.sortScore - b.sortScore || b.attempts - a.attempts || a.card.concept.localeCompare(b.card.concept));
   }
 
   function isMastered(card: any) {
@@ -136,8 +205,18 @@
   }
 
   function resetDeck() {
-    const cards = cardsForLevel(currentDeck, selectedLevel);
-    const order = shuffledIndices(cards.length);
+    const cards = cardsForStudy(currentDeck, selectedLevel, studyThreshold);
+
+    if (cards.length === 0 && studyThreshold !== null) {
+      focusMessage = `No cards are currently below ${studyThreshold}% in this level, so all cards are shown.`;
+      studyThreshold = null;
+      filteredCards = cardsForLevel(currentDeck, selectedLevel);
+    } else {
+      focusMessage = "";
+      filteredCards = cards;
+    }
+
+    const order = orderedIndices(filteredCards, studyThreshold);
     currentIndex = order.shift() ?? 0;
     queue = order;
     position = 1;
@@ -150,16 +229,27 @@
   }
 
   function nextCard() {
-    const cards = cardsForLevel(currentDeck, selectedLevel);
-
     if (queue.length === 0) {
-      queue = shuffledIndices(cards.length, currentIndex);
-      position = 0;
+      const refreshed = cardsForStudy(currentDeck, selectedLevel, studyThreshold);
+
+      if (refreshed.length) {
+        filteredCards = refreshed;
+      } else if (studyThreshold !== null) {
+        focusMessage = `No cards remain below ${studyThreshold}% — switching back to all cards.`;
+        studyThreshold = null;
+        filteredCards = cardsForLevel(currentDeck, selectedLevel);
+      }
+
+      const order = orderedIndices(filteredCards, studyThreshold, currentIndex);
+      currentIndex = order.shift() ?? currentIndex;
+      queue = order;
+      position = 1;
       round += 1;
+    } else {
+      currentIndex = queue.shift() ?? currentIndex;
+      position += 1;
     }
 
-    currentIndex = queue.shift() ?? currentIndex;
-    position += 1;
     revealed = false;
     feedback = "";
     feedbackTone = "neutral";
@@ -213,6 +303,8 @@
     deckIndex = preferredDeckIndex(code, availableDecks);
     currentDeck = availableDecks[deckIndex];
     selectedLevel = "ALL";
+    studyThreshold = null;
+    progressOpen = false;
     resetDeck();
   }
 
@@ -220,12 +312,39 @@
     deckIndex = index;
     currentDeck = availableDecks[index];
     selectedLevel = "ALL";
+    studyThreshold = null;
+    progressOpen = false;
     resetDeck();
   }
 
   function switchLevel(level: Level) {
     selectedLevel = level;
     resetDeck();
+  }
+
+  function setStudyThreshold(threshold: StudyThreshold) {
+    studyThreshold = threshold;
+    resetDeck();
+  }
+
+  function studyCard(card: any) {
+    selectedLevel = "ALL";
+    studyThreshold = null;
+    filteredCards = cardsForLevel(currentDeck, "ALL");
+    currentIndex = Math.max(0, filteredCards.findIndex((item: any) => item.id === card.id));
+    queue = shuffledIndices(filteredCards.length).filter((index: number) => index !== currentIndex);
+    position = 1;
+    round = 1;
+    revealed = false;
+    feedback = "";
+    feedbackTone = "neutral";
+    progressOpen = false;
+    if (answerInput) answerInput.value = "";
+    focusAnswer();
+  }
+
+  function handleWindowKeydown(event: KeyboardEvent) {
+    if (event.key === "Escape" && progressOpen) progressOpen = false;
   }
 
   function answerPlaceholder() {
@@ -245,6 +364,8 @@
     content="Learn French, Spanish and Polish with visual flashcards and vocabulary scenes."
   />
 </svelte:head>
+
+<svelte:window onkeydown={handleWindowKeydown} />
 
 <div class="app-shell">
   <header class="topbar">
@@ -324,11 +445,30 @@
           <span><strong>{deckStats.seen}</strong>/{deckStats.total} seen</span>
           <span><strong>{deckStats.mastered}</strong> mastered</span>
           <span><strong>{deckStats.accuracy}%</strong> accuracy</span>
+          <button class="progress-link" onclick={() => progressOpen = true}>Progress</button>
         </div>
 
-        <div class="card-progress" aria-hidden="true">
-          <div class="card-progress-fill" style={`width:${roundProgress}%`}></div>
+        <div class="learning-progress" aria-label={`${deckStats.seen} seen and ${deckStats.mastered} mastered out of ${deckStats.total}`}>
+          <div class="learning-progress-seen" style={`width:${seenProgress}%`}></div>
+          <div class="learning-progress-mastered" style={`width:${masteredProgress}%`}></div>
         </div>
+
+        <div class="focus-row">
+          <span>Study</span>
+          <div class="focus-switcher" aria-label="Study cards by success rate">
+            <button class:active={studyThreshold === null} onclick={() => setStudyThreshold(null)}>All</button>
+            <button class:active={studyThreshold === 50} onclick={() => setStudyThreshold(50)}>&lt;50%</button>
+            <button class:active={studyThreshold === 70} onclick={() => setStudyThreshold(70)}>&lt;70%</button>
+            <button class:active={studyThreshold === 90} onclick={() => setStudyThreshold(90)}>&lt;90%</button>
+          </div>
+          {#if studyThreshold !== null}
+            <small>{filteredCards.length} cards · weakest first</small>
+          {/if}
+        </div>
+
+        {#if focusMessage}
+          <div class="focus-message">{focusMessage}</div>
+        {/if}
 
         <div class="card-prompt">
           <span class="prompt-label">Translate this sentence <b class="level-badge">Level {currentCard.level ?? "A"}</b></span>
@@ -359,4 +499,62 @@
       </div>
     </section>
   </main>
+
+  {#if progressOpen}
+    <div class="progress-modal-backdrop" role="presentation" onclick={() => progressOpen = false}>
+      <section class="progress-modal" role="dialog" aria-modal="true" aria-label={`${currentDeck.name} progress`} onclick={(event) => event.stopPropagation()}>
+        <div class="progress-modal-header">
+          <div>
+            <span class="eyebrow">{languages[language].name} · {currentDeck.name}</span>
+            <h2>Card progress</h2>
+            <p>Attempts are counted when you press Check. Unseen cards are shown as New.</p>
+          </div>
+          <button class="modal-close" aria-label="Close progress" onclick={() => progressOpen = false}>×</button>
+        </div>
+
+        <div class="progress-modal-focus">
+          <span>Build a study round:</span>
+          <button onclick={() => { setStudyThreshold(50); progressOpen = false; }}>&lt;50%</button>
+          <button onclick={() => { setStudyThreshold(70); progressOpen = false; }}>&lt;70%</button>
+          <button onclick={() => { setStudyThreshold(90); progressOpen = false; }}>&lt;90%</button>
+        </div>
+
+        <div class="progress-table-wrap">
+          <table class="progress-table">
+            <thead>
+              <tr>
+                <th>Card</th>
+                <th>Attempts</th>
+                <th>Correct</th>
+                <th>Incorrect</th>
+                <th>Success</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {#each progressRows as row}
+                <tr>
+                  <td>
+                    <strong>{row.card.concept}</strong>
+                    <small>{row.target}</small>
+                  </td>
+                  <td>{row.attempts}</td>
+                  <td>{row.correct}</td>
+                  <td>{row.wrong}</td>
+                  <td>
+                    {#if row.rate === null}
+                      <span class="rate-new">New</span>
+                    {:else}
+                      <span class:rate-low={row.rate < 70}>{row.rate}%</span>
+                    {/if}
+                  </td>
+                  <td><button class="study-link" onclick={() => studyCard(row.card)}>Study</button></td>
+                </tr>
+              {/each}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  {/if}
 </div>
