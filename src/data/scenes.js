@@ -3994,7 +3994,7 @@ export const SCENES = [
             ]
           }
         },
-        "asset": "https://images.pexels.com/photos/1117484/pexels-photo-1117484.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        "asset": "https://images.pexels.com/photos/16040173/pexels-photo-16040173.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_hi_bye",
@@ -4012,7 +4012,7 @@ export const SCENES = [
             ]
           }
         },
-        "asset": "https://images.pexels.com/photos/30981181/pexels-photo-30981181.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        "asset": "https://images.pexels.com/photos/5957076/pexels-photo-5957076.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_thank_you",
@@ -4030,7 +4030,7 @@ export const SCENES = [
             ]
           }
         },
-        "asset": "https://images.pexels.com/photos/17501680/pexels-photo-17501680.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        "asset": "https://images.pexels.com/photos/6829507/pexels-photo-6829507.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_please",
@@ -4048,7 +4048,7 @@ export const SCENES = [
             ]
           }
         },
-        "asset": "https://images.pexels.com/photos/3951656/pexels-photo-3951656.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        "asset": "https://images.pexels.com/photos/4921164/pexels-photo-4921164.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_excuse_me",
@@ -4065,7 +4065,7 @@ export const SCENES = [
             ]
           }
         },
-        "asset": "https://images.pexels.com/photos/31196457/pexels-photo-31196457.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        "asset": "https://images.pexels.com/photos/10998175/pexels-photo-10998175.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_yes",
@@ -4082,7 +4082,7 @@ export const SCENES = [
             ]
           }
         },
-        "asset": "https://images.pexels.com/photos/7963831/pexels-photo-7963831.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        "asset": "https://images.pexels.com/photos/193821/pexels-photo-193821.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_no",
@@ -4099,7 +4099,7 @@ export const SCENES = [
             ]
           }
         },
-        "asset": "https://images.pexels.com/photos/3783086/pexels-photo-3783086.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        "asset": "https://images.pexels.com/photos/5723263/pexels-photo-5723263.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_dont_speak",
@@ -4117,7 +4117,7 @@ export const SCENES = [
             ]
           }
         },
-        "asset": "https://images.pexels.com/photos/30981181/pexels-photo-30981181.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        "asset": "https://images.pexels.com/photos/2961977/pexels-photo-2961977.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_speak_english",
@@ -4137,7 +4137,7 @@ export const SCENES = [
             ]
           }
         },
-        "asset": "https://images.pexels.com/photos/18427240/pexels-photo-18427240.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        "asset": "https://images.pexels.com/photos/6327560/pexels-photo-6327560.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_id_like",
@@ -4155,7 +4155,7 @@ export const SCENES = [
             ]
           }
         },
-        "asset": "https://images.pexels.com/photos/17501680/pexels-photo-17501680.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        "asset": "https://images.pexels.com/photos/13735959/pexels-photo-13735959.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_how_much",
@@ -4172,7 +4172,7 @@ export const SCENES = [
             ]
           }
         },
-        "asset": "https://images.pexels.com/photos/8554381/pexels-photo-8554381.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        "asset": "https://images.pexels.com/photos/5699241/pexels-photo-5699241.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_toilet",
@@ -4189,7 +4189,7 @@ export const SCENES = [
             ]
           }
         },
-        "asset": "https://images.pexels.com/photos/30981181/pexels-photo-30981181.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        "asset": "https://images.pexels.com/photos/10589635/pexels-photo-10589635.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_two_tickets",
@@ -4207,7 +4207,7 @@ export const SCENES = [
             ]
           }
         },
-        "asset": "https://images.pexels.com/photos/8554381/pexels-photo-8554381.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        "asset": "https://images.pexels.com/photos/14344455/pexels-photo-14344455.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_for_here",
@@ -4224,7 +4224,7 @@ export const SCENES = [
             ]
           }
         },
-        "asset": "https://images.pexels.com/photos/3951656/pexels-photo-3951656.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        "asset": "https://images.pexels.com/photos/15098824/pexels-photo-15098824.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_takeaway",
@@ -4241,7 +4241,7 @@ export const SCENES = [
             ]
           }
         },
-        "asset": "https://images.pexels.com/photos/7299877/pexels-photo-7299877.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        "asset": "https://images.pexels.com/photos/6684779/pexels-photo-6684779.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_by_card",
@@ -4261,7 +4261,7 @@ export const SCENES = [
             ]
           }
         },
-        "asset": "https://images.pexels.com/photos/8554381/pexels-photo-8554381.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        "asset": "https://images.pexels.com/photos/8475155/pexels-photo-8475155.jpeg?auto=compress&cs=tinysrgb&w=1200"
       }
     ]
   }
