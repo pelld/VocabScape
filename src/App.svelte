@@ -34,17 +34,19 @@
   let filteredCards: any[] = [];
   let progressOpen = false;
   let focusMessage = "";
+  let attemptedThisCard = false;
 
   $: currentCard = filteredCards[currentIndex] ?? filteredCards[0];
   $: currentTerm = currentCard?.terms?.[language];
-  $: deckStats = progressForCards(currentDeck.objects);
+  $: deckStats = progressForCards(currentDeck.objects, memory);
   $: seenProgress = deckStats.total ? Math.round((deckStats.seen / deckStats.total) * 100) : 0;
   $: masteredProgress = deckStats.total ? Math.round((deckStats.mastered / deckStats.total) * 100) : 0;
-  $: progressRows = progressTableRows(currentDeck.objects);
+  $: progressRows = progressTableRows(currentDeck.objects, memory);
+  $: currentCardStats = currentCard ? cardStats(currentCard, memory) : { attempts: 0, correct: 0, wrong: 0, rate: null };
   $: levelStats = {
-    A: progressForCards(cardsForLevel(currentDeck, "A")),
-    B: progressForCards(cardsForLevel(currentDeck, "B")),
-    C: progressForCards(cardsForLevel(currentDeck, "C"))
+    A: progressForCards(cardsForLevel(currentDeck, "A"), memory),
+    B: progressForCards(cardsForLevel(currentDeck, "B"), memory),
+    C: progressForCards(cardsForLevel(currentDeck, "C"), memory)
   };
 
   const asset = (file?: string) =>
@@ -110,52 +112,62 @@
     return indices;
   }
 
-  function progressTableRows(cards: any[]) {
+  function cardStats(card: any, snapshot: Record<string, CardState> = memory) {
+    const state = snapshot[stateKey(card)] ?? { correct: 0, wrong: 0 };
+    const attempts = state.correct + state.wrong;
+
+    return {
+      attempts,
+      correct: state.correct,
+      wrong: state.wrong,
+      rate: attempts ? Math.round((state.correct / attempts) * 100) : null
+    };
+  }
+
+  function progressTableRows(cards: any[], snapshot: Record<string, CardState> = memory) {
     return cards
       .map((card: any) => {
-        const state = memory[stateKey(card)] ?? { correct: 0, wrong: 0 };
-        const attempts = state.correct + state.wrong;
-        const rate = attempts ? Math.round((state.correct / attempts) * 100) : null;
+        const stats = cardStats(card, snapshot);
 
         return {
           card,
           target: card.terms?.[language]?.display ?? "",
-          attempts,
-          correct: state.correct,
-          wrong: state.wrong,
-          rate,
-          sortScore: rate === null ? 50 : rate
+          ...stats,
+          sortScore: stats.rate === null ? 50 : stats.rate
         };
       })
       .sort((a: any, b: any) => a.sortScore - b.sortScore || b.attempts - a.attempts || a.card.concept.localeCompare(b.card.concept));
   }
 
-  function isMastered(card: any) {
-    const state = stateFor(card);
-    const attempts = state.correct + state.wrong;
-    return state.correct >= 2 && attempts > 0 && state.correct / attempts >= 0.67;
+  function isMastered(card: any, snapshot: Record<string, CardState> = memory) {
+    const stats = cardStats(card, snapshot);
+    return stats.correct >= 2 && stats.attempts > 0 && stats.correct / stats.attempts >= 0.67;
   }
 
-  function progressForCards(cards: any[]) {
+  function progressForCards(cards: any[], snapshot: Record<string, CardState> = memory) {
     let seen = 0;
     let mastered = 0;
     let correct = 0;
+    let wrong = 0;
     let attempts = 0;
 
     for (const card of cards) {
-      const state = stateFor(card);
-      const cardAttempts = state.correct + state.wrong;
-      if (cardAttempts > 0) seen += 1;
-      if (isMastered(card)) mastered += 1;
-      correct += state.correct;
-      attempts += cardAttempts;
+      const stats = cardStats(card, snapshot);
+      if (stats.attempts > 0) seen += 1;
+      if (isMastered(card, snapshot)) mastered += 1;
+      correct += stats.correct;
+      wrong += stats.wrong;
+      attempts += stats.attempts;
     }
 
     return {
       total: cards.length,
       seen,
       mastered,
-      accuracy: attempts ? Math.round((correct / attempts) * 100) : 0
+      correct,
+      wrong,
+      attempts,
+      accuracy: attempts ? Math.round((correct / attempts) * 100) : null
     };
   }
 
@@ -224,6 +236,7 @@
     revealed = false;
     feedback = "";
     feedbackTone = "neutral";
+    attemptedThisCard = false;
     if (answerInput) answerInput.value = "";
     focusAnswer();
   }
@@ -253,6 +266,7 @@
     revealed = false;
     feedback = "";
     feedbackTone = "neutral";
+    attemptedThisCard = false;
 
     if (answerInput) answerInput.value = "";
     focusAnswer();
@@ -279,12 +293,22 @@
       feedbackTone = "bad";
     }
 
+    attemptedThisCard = true;
     memory = { ...memory };
     saveProgress();
   }
 
   function revealAnswer() {
     if (!currentTerm) return;
+
+    if (!attemptedThisCard) {
+      const state = stateFor(currentCard);
+      state.wrong += 1;
+      attemptedThisCard = true;
+      memory = { ...memory };
+      saveProgress();
+    }
+
     revealed = true;
     feedback = currentTerm.display;
     feedbackTone = "neutral";
@@ -338,6 +362,7 @@
     revealed = false;
     feedback = "";
     feedbackTone = "neutral";
+    attemptedThisCard = false;
     progressOpen = false;
     if (answerInput) answerInput.value = "";
     focusAnswer();
@@ -442,10 +467,12 @@
         </div>
 
         <div class="progress-summary" aria-label="Learning progress">
-          <span><strong>{deckStats.seen}</strong>/{deckStats.total} seen</span>
-          <span><strong>{deckStats.mastered}</strong> mastered</span>
-          <span><strong>{deckStats.accuracy}%</strong> accuracy</span>
-          <button class="progress-link" onclick={() => progressOpen = true}>Progress</button>
+          <span><strong>{deckStats.seen}</strong>/{deckStats.total} tried</span>
+          <span><strong>{deckStats.correct}</strong> correct</span>
+          <span><strong>{deckStats.wrong}</strong> incorrect</span>
+          <span><strong>{deckStats.accuracy === null ? "—" : `${deckStats.accuracy}%`}</strong> accuracy</span>
+          <span><strong>{deckStats.mastered}</strong> secure</span>
+          <button class="progress-link" onclick={() => progressOpen = true}>Details</button>
         </div>
 
         <div class="learning-progress" aria-label={`${deckStats.seen} seen and ${deckStats.mastered} mastered out of ${deckStats.total}`}>
@@ -462,9 +489,16 @@
             <button class:active={studyThreshold === 90} onclick={() => setStudyThreshold(90)}>&lt;90%</button>
           </div>
           {#if studyThreshold !== null}
-            <small>{filteredCards.length} cards · weakest first</small>
+            <small>{filteredCards.length} cards · weakest first · refreshes next round</small>
           {/if}
         </div>
+
+        {#if currentCardStats.attempts > 0}
+          <div class="current-card-progress">
+            This card: <strong>{currentCardStats.correct}/{currentCardStats.attempts}</strong>
+            {#if currentCardStats.rate !== null}<span>· {currentCardStats.rate}%</span>{/if}
+          </div>
+        {/if}
 
         {#if focusMessage}
           <div class="focus-message">{focusMessage}</div>
@@ -507,7 +541,7 @@
           <div>
             <span class="eyebrow">{languages[language].name} · {currentDeck.name}</span>
             <h2>Card progress</h2>
-            <p>Attempts are counted when you press Check. Unseen cards are shown as New.</p>
+            <p>Check records the result immediately. Reveal counts as incorrect if you have not tried the card. Unseen cards are shown as New.</p>
           </div>
           <button class="modal-close" aria-label="Close progress" onclick={() => progressOpen = false}>×</button>
         </div>
