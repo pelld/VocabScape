@@ -1,9 +1,11 @@
 <script lang="ts">
   import { LANGUAGES } from "./data/languages.js";
   import { SCENES } from "./data/scenes.js";
+  import PolishIntro from "./lib/PolishIntro.svelte";
 
   type CardState = { correct: number; wrong: number };
   type Level = "ALL" | "A" | "B" | "C";
+  type View = "intro" | "study";
 
   const languages: Record<string, any> = LANGUAGES;
   const actionDecks: any[] = SCENES.filter((scene: any) => scene.kind === "action");
@@ -17,6 +19,7 @@
     memory = {};
   }
 
+  let view: View = "intro";
   let language = "fr";
 
   let deckIndex = 0;
@@ -237,19 +240,29 @@
     </a>
 
     <div class="top-actions">
-      <div class="language-switcher" aria-label="Target language">
-        {#each Object.entries(languages) as [code, config]}
-          {#if !currentDeck.languages || currentDeck.languages.includes(code)}
-            <button class:active={language === code} onclick={() => switchLanguage(code)}>
-              {config.nativeName}
-            </button>
-          {/if}
-        {/each}
+      <div class="view-switcher" aria-label="VocabScape area">
+        <button class:active={view === "intro"} onclick={() => view = "intro"}>Introduction</button>
+        <button class:active={view === "study"} onclick={() => view = "study"}>Flashcards</button>
       </div>
+
+      {#if view === "study"}
+        <div class="language-switcher" aria-label="Target language">
+          {#each Object.entries(languages) as [code, config]}
+            {#if !currentDeck.languages || currentDeck.languages.includes(code)}
+              <button class:active={language === code} onclick={() => switchLanguage(code)}>
+                {config.nativeName}
+              </button>
+            {/if}
+          {/each}
+        </div>
+      {/if}
     </div>
   </header>
 
-  <main class="card-page">
+  {#if view === "intro"}
+    <PolishIntro />
+  {:else}
+    <main class="card-page">
       <section class="flashcard">
         <div class="flashcard-media" class:text-only-media={currentDeck.textOnly}>
           {#if currentDeck.textOnly}
@@ -332,5 +345,6 @@
         </div>
       </section>
     </main>
+  {/if}
 
 </div>
