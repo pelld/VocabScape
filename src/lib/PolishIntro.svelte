@@ -1,60 +1,106 @@
 <script lang="ts">
-  type Phrase = {
-    polish: string;
-    english: string;
-    sound: string;
+  type Tone = "good" | "bad" | "neutral";
+  type DeckId = "basics" | "travel" | "sounds";
+
+  type Card = {
+    id: string;
+    prompt: string;
+    answer: string;
+    accepted?: string[];
+    sound?: string;
     note?: string;
-    answers?: string[];
+    speak?: string;
   };
 
-  const essentials: Phrase[] = [
-    { polish: "Dzień dobry", english: "Good morning / hello", sound: "jyen DOH-bri" },
-    { polish: "Cześć", english: "Hi / bye", sound: "cheshch" },
-    { polish: "Dziękuję", english: "Thank you", sound: "jen-KOO-yeh" },
-    { polish: "Proszę", english: "Please / you're welcome / here you are", sound: "PROH-sheh" },
-    { polish: "Przepraszam", english: "Sorry / excuse me", sound: "psheh-PRAH-sham" },
-    { polish: "Nie mówię po polsku", english: "I don't speak Polish", sound: "nyeh MOO-vyeh poh POL-skoo" },
-    { polish: "Czy mówi pan po angielsku?", english: "Do you speak English?", sound: "chih MOO-vee pan poh an-GYEL-skoo", note: "Use pani instead of pan when speaking to a woman.", answers: ["Czy mówi pan po angielsku", "Czy mówi pani po angielsku"] },
-    { polish: "Poproszę…", english: "I'd like… / …please", sound: "poh-PROH-sheh" }
+  type Deck = {
+    id: DeckId;
+    name: string;
+    kicker: string;
+    title: string;
+    description: string;
+    cards: Card[];
+  };
+
+  type CardState = { correct: number; wrong: number };
+
+  const decks: Deck[] = [
+    {
+      id: "basics",
+      name: "First words",
+      kicker: "Polski · Start here",
+      title: "First words",
+      description: "The small set worth being able to produce without thinking.",
+      cards: [
+        { id: "dzien-dobry", prompt: "Good morning / hello", answer: "Dzień dobry", sound: "jyen DOH-bri", speak: "Dzień dobry" },
+        { id: "czesc", prompt: "Hi / bye", answer: "Cześć", sound: "cheshch", speak: "Cześć" },
+        { id: "dziekuje", prompt: "Thank you", answer: "Dziękuję", sound: "jen-KOO-yeh", speak: "Dziękuję" },
+        { id: "prosze", prompt: "Please / you're welcome / here you are", answer: "Proszę", sound: "PROH-sheh", speak: "Proszę" },
+        { id: "przepraszam", prompt: "Sorry / excuse me", answer: "Przepraszam", sound: "psheh-PRAH-sham", speak: "Przepraszam" },
+        { id: "nie-mowie", prompt: "I don't speak Polish", answer: "Nie mówię po polsku", sound: "nyeh MOO-vyeh poh POL-skoo", speak: "Nie mówię po polsku" },
+        { id: "english", prompt: "Do you speak English?", answer: "Czy mówi pan po angielsku?", accepted: ["Czy mówi pan po angielsku", "Czy mówi pani po angielsku"], sound: "chih MOO-vee pan poh an-GYEL-skoo", note: "Use pani instead of pan when speaking to a woman.", speak: "Czy mówi pan po angielsku?" },
+        { id: "poprosze", prompt: "I'd like… / …please", answer: "Poproszę…", accepted: ["Poproszę"], sound: "poh-PROH-sheh", speak: "Poproszę" }
+      ]
+    },
+    {
+      id: "travel",
+      name: "Out & about",
+      kicker: "Polski · Wrocław",
+      title: "Out & about",
+      description: "Cafés, tickets, paying and getting unstuck.",
+      cards: [
+        { id: "cost", prompt: "How much does it cost?", answer: "Ile to kosztuje?", sound: "EE-leh toh kosh-TOO-yeh", speak: "Ile to kosztuje?" },
+        { id: "toilet", prompt: "Where is the toilet?", answer: "Gdzie jest toaleta?", sound: "g-jyeh yest toh-ah-LEH-tah", speak: "Gdzie jest toaleta?" },
+        { id: "tickets", prompt: "Two tickets, please", answer: "Dwa bilety, proszę", sound: "dvah bee-LEH-tih PROH-sheh", speak: "Dwa bilety, proszę" },
+        { id: "here", prompt: "For here / eat in", answer: "Na miejscu", sound: "nah MYEY-stsoo", speak: "Na miejscu" },
+        { id: "takeaway", prompt: "Takeaway / to go", answer: "Na wynos", sound: "nah VIH-nos", speak: "Na wynos" },
+        { id: "card", prompt: "By card, please", answer: "Kartą, proszę", sound: "KAR-tohn PROH-sheh", speak: "Kartą, proszę" },
+        { id: "yes", prompt: "Yes", answer: "Tak", sound: "tahk", speak: "Tak" },
+        { id: "no", prompt: "No", answer: "Nie", sound: "nyeh", speak: "Nie" }
+      ]
+    },
+    {
+      id: "sounds",
+      name: "Polish sounds",
+      kicker: "Polski · Pronunciation",
+      title: "Decode the spelling",
+      description: "Learn the recurring sound rules rather than memorising phonetics for every word.",
+      cards: [
+        { id: "w", prompt: "How is Polish “w” pronounced?", answer: "v", accepted: ["v", "like v"], note: "Wrocław starts with a v sound." },
+        { id: "l-stroke", prompt: "How is “ł” pronounced?", answer: "like English w", accepted: ["w", "like w", "english w"], note: "In Wrocław, ł gives the 'w' sound." },
+        { id: "j", prompt: "How is Polish “j” pronounced?", answer: "y", accepted: ["y", "like y"], note: "jest ≈ yest." },
+        { id: "c", prompt: "How is Polish “c” pronounced?", answer: "ts", accepted: ["ts"], note: "The c in Wrocław is a ts sound." },
+        { id: "cz", prompt: "How is “cz” pronounced?", answer: "ch", accepted: ["ch", "like ch"], note: "As in English 'church'." },
+        { id: "sz", prompt: "How is “sz” pronounced?", answer: "sh", accepted: ["sh", "like sh"], note: "proszę contains this sound." },
+        { id: "rz", prompt: "How are “rz” and “ż” roughly pronounced?", answer: "zh", accepted: ["zh", "like zh"], note: "Like the middle sound in 'measure'." },
+        { id: "o-accent", prompt: "How is “ó” pronounced?", answer: "oo", accepted: ["oo", "u", "like oo"], note: "mówię begins roughly MOO…" }
+      ]
+    }
   ];
 
-  const useful: Phrase[] = [
-    { polish: "Ile to kosztuje?", english: "How much does it cost?", sound: "EE-leh toh kosh-TOO-yeh" },
-    { polish: "Gdzie jest toaleta?", english: "Where is the toilet?", sound: "g-jyeh yest toh-ah-LEH-tah" },
-    { polish: "Dwa bilety, proszę", english: "Two tickets, please", sound: "dvah bee-LEH-tih PROH-sheh" },
-    { polish: "Na miejscu", english: "Eat in / for here", sound: "nah MYEY-stsoo" },
-    { polish: "Na wynos", english: "Takeaway / to go", sound: "nah VIH-nos" },
-    { polish: "Kartą, proszę", english: "By card, please", sound: "KAR-tohn PROH-sheh" },
-    { polish: "Tak", english: "Yes", sound: "tahk" },
-    { polish: "Nie", english: "No", sound: "nyeh" }
-  ];
+  const progressKey = "vocabscape-polish-intro-v2";
+  let memory: Record<string, CardState> = {};
 
-  const sounds = [
-    { letters: "w", sound: "v", example: "Wrocław starts with a v sound" },
-    { letters: "ł", sound: "English w", example: "Wrocław: the ł is like w" },
-    { letters: "j", sound: "y", example: "jest ≈ yest" },
-    { letters: "c", sound: "ts", example: "Wrocław has ts before ł" },
-    { letters: "cz", sound: "ch", example: "cześć starts roughly ch…" },
-    { letters: "sz", sound: "sh", example: "proszę contains sh" },
-    { letters: "rz / ż", sound: "zh", example: "like the s in measure" },
-    { letters: "ó", sound: "oo", example: "mówię begins MOO…" }
-  ];
-
-  let practiceIndex = 0;
-  let practiceAnswer = "";
-  let practiceFeedback = "";
-  let practiceTone: "good" | "bad" | "neutral" = "neutral";
-
-  $: practicePhrase = essentials[practiceIndex];
-
-  function speak(text: string) {
-    if (!("speechSynthesis" in window)) return;
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text.replace("…", ""));
-    utterance.lang = "pl-PL";
-    utterance.rate = 0.82;
-    window.speechSynthesis.speak(utterance);
+  try {
+    memory = JSON.parse(localStorage.getItem(progressKey) || "{}");
+  } catch {
+    memory = {};
   }
+
+  let deckIndex = 0;
+  let currentIndex = 0;
+  let position = 1;
+  let round = 1;
+  let queue: number[] = [];
+  let answer = "";
+  let revealed = false;
+  let feedback = "";
+  let feedbackTone: Tone = "neutral";
+  let answerInput: HTMLInputElement;
+
+  $: currentDeck = decks[deckIndex];
+  $: currentCard = currentDeck.cards[currentIndex];
+  $: progress = Math.round((position / currentDeck.cards.length) * 100);
+  $: stats = deckStats(currentDeck);
 
   function normalise(value: string) {
     return value
@@ -63,167 +109,250 @@
       .replace(/[łŁ]/g, "l")
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[.!?,;:…]/g, "")
+      .replace(/[.!?,;:…“”"'’]/g, "")
       .replace(/\s+/g, " ");
   }
 
-  function checkPractice() {
-    if (!practiceAnswer.trim()) return;
-    const accepted = practicePhrase.answers ?? [practicePhrase.polish];
-    const correct = accepted.some((answer) => normalise(answer) === normalise(practiceAnswer));
+  function shuffledIndices(length: number, avoidFirst = -1) {
+    const indices = Array.from({ length }, (_, index) => index);
+
+    for (let i = indices.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+
+    if (indices.length > 1 && indices[0] === avoidFirst) {
+      [indices[0], indices[1]] = [indices[1], indices[0]];
+    }
+
+    return indices;
+  }
+
+  function stateFor(card: Card) {
+    if (!memory[card.id]) memory[card.id] = { correct: 0, wrong: 0 };
+    return memory[card.id];
+  }
+
+  function isMastered(card: Card) {
+    const state = stateFor(card);
+    const attempts = state.correct + state.wrong;
+    return state.correct >= 2 && attempts > 0 && state.correct / attempts >= 0.67;
+  }
+
+  function deckStats(deck: Deck) {
+    let seen = 0;
+    let mastered = 0;
+    let correct = 0;
+    let attempts = 0;
+
+    for (const card of deck.cards) {
+      const state = stateFor(card);
+      const cardAttempts = state.correct + state.wrong;
+      if (cardAttempts) seen += 1;
+      if (isMastered(card)) mastered += 1;
+      correct += state.correct;
+      attempts += cardAttempts;
+    }
+
+    return {
+      seen,
+      mastered,
+      accuracy: attempts ? Math.round((correct / attempts) * 100) : 0
+    };
+  }
+
+  function saveProgress() {
+    localStorage.setItem(progressKey, JSON.stringify(memory));
+  }
+
+  function focusAnswer() {
+    window.setTimeout(() => answerInput?.focus(), 0);
+  }
+
+  function resetDeck() {
+    const order = shuffledIndices(currentDeck.cards.length);
+    currentIndex = order.shift() ?? 0;
+    queue = order;
+    position = 1;
+    round = 1;
+    clearCard();
+  }
+
+  function clearCard() {
+    answer = "";
+    revealed = false;
+    feedback = "";
+    feedbackTone = "neutral";
+    focusAnswer();
+  }
+
+  function switchDeck(index: number) {
+    deckIndex = index;
+    resetDeck();
+  }
+
+  function checkAnswer() {
+    if (!answer.trim()) return;
+
+    const accepted = currentCard.accepted ?? [currentCard.answer];
+    const correct = accepted.some((candidate) => normalise(candidate) === normalise(answer));
+    const state = stateFor(currentCard);
 
     if (correct) {
-      practiceFeedback = practicePhrase.polish;
-      practiceTone = "good";
-      speak(practicePhrase.polish);
+      state.correct += 1;
+      feedback = currentCard.answer;
+      feedbackTone = "good";
+      revealed = true;
     } else {
-      practiceFeedback = "Not quite — try once more, or reveal it.";
-      practiceTone = "bad";
+      state.wrong += 1;
+      feedback = "Not quite.";
+      feedbackTone = "bad";
     }
+
+    memory = { ...memory };
+    saveProgress();
   }
 
-  function revealPractice() {
-    practiceFeedback = practicePhrase.polish;
-    practiceTone = "neutral";
-    speak(practicePhrase.polish);
+  function revealAnswer() {
+    revealed = true;
+    feedback = currentCard.answer;
+    feedbackTone = "neutral";
   }
 
-  function nextPractice() {
-    practiceIndex = (practiceIndex + 1) % essentials.length;
-    practiceAnswer = "";
-    practiceFeedback = "";
-    practiceTone = "neutral";
+  function nextCard() {
+    if (!queue.length) {
+      queue = shuffledIndices(currentDeck.cards.length, currentIndex);
+      position = 0;
+      round += 1;
+    }
+
+    currentIndex = queue.shift() ?? currentIndex;
+    position += 1;
+    clearCard();
   }
 
-  function handlePracticeKeydown(event: KeyboardEvent) {
+  function handleKeydown(event: KeyboardEvent) {
     if (event.key === "Enter") {
-      if (practiceTone === "good" || practiceTone === "neutral" && practiceFeedback) nextPractice();
-      else checkPractice();
+      if (revealed) nextCard();
+      else checkAnswer();
     }
   }
+
+  function bestPolishVoice() {
+    const voices = window.speechSynthesis.getVoices().filter((voice) => voice.lang.toLowerCase().startsWith("pl"));
+    if (!voices.length) return undefined;
+
+    const preferred = /(natural|online|google|zofia|marek)/i;
+    return voices.find((voice) => preferred.test(voice.name)) ?? voices[0];
+  }
+
+  function speakPolish() {
+    if (!currentCard.speak || !("speechSynthesis" in window)) return;
+
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(currentCard.speak);
+    const voice = bestPolishVoice();
+
+    if (voice) utterance.voice = voice;
+    utterance.lang = "pl-PL";
+    utterance.rate = 0.92;
+    utterance.pitch = 1;
+    window.speechSynthesis.speak(utterance);
+  }
+
+  resetDeck();
 </script>
 
-<section class="polish-intro">
-  <div class="polish-hero">
-    <div>
-      <span class="polish-kicker">Polski · Introduction</span>
-      <h1>Enough Polish to actually use it.</h1>
-      <p>Start with greetings, politeness and the phrases most likely to be useful in Wrocław. Listen, copy the sound, then test yourself.</p>
-    </div>
-    <div class="polish-place">
-      <span class="flag-pl" aria-hidden="true"><i></i></span>
-      <strong>Wrocław</strong>
-      <span>VROT-swahf</span>
-      <button class="sound-button hero-sound" onclick={() => speak("Wrocław")}>▶ Hear it</button>
-    </div>
-  </div>
+<main class="card-page polish-card-page">
+  <section class="flashcard polish-flashcard">
+    <div class="flashcard-media text-only-media polish-card-media">
+      <div class="text-deck-panel polish-deck-panel">
+        <span class="text-deck-kicker">{currentDeck.kicker}</span>
+        <h2>{currentDeck.title}</h2>
+        <p>{currentDeck.description}</p>
 
-  <div class="intro-grid">
-    <article class="intro-panel phrase-panel">
-      <div class="panel-heading">
-        <div>
-          <span class="section-number">01</span>
-          <h2>Say these first</h2>
-        </div>
-        <span class="panel-note">Tap ▶ to hear Polish</span>
-      </div>
-
-      <div class="phrase-list">
-        {#each essentials as phrase}
-          <div class="phrase-row">
-            <button class="sound-button compact" onclick={() => speak(phrase.polish)} aria-label="Hear Polish phrase">▶</button>
-            <div class="phrase-polish">
-              <strong>{phrase.polish}</strong>
-              <span>{phrase.sound}</span>
-            </div>
-            <div class="phrase-english">
-              <span>{phrase.english}</span>
-              {#if phrase.note}<small>{phrase.note}</small>{/if}
-            </div>
+        {#if currentDeck.id === "basics"}
+          <div class="polish-place-word">
+            <strong>Wrocław</strong>
+            <span>VROT-swahf</span>
           </div>
-        {/each}
-      </div>
-    </article>
-
-    <article class="intro-panel pronunciation-panel">
-      <div class="panel-heading">
-        <div>
-          <span class="section-number">02</span>
-          <h2>Decode the spelling</h2>
-        </div>
-      </div>
-      <p class="panel-copy">Polish looks harder than it sounds because the same letter combinations are very consistent. Learn these and a lot of signs become pronounceable.</p>
-
-      <div class="sound-grid">
-        {#each sounds as item}
-          <div class="sound-tile">
-            <strong>{item.letters}</strong>
-            <span>{item.sound}</span>
-            <small>{item.example}</small>
+        {:else if currentDeck.id === "travel"}
+          <div class="polish-place-word">
+            <strong>Poproszę…</strong>
+            <span>“I’d like… / …please”</span>
           </div>
-        {/each}
-      </div>
+        {:else}
+          <div class="polish-place-word sounds-word">
+            <strong>w · ł · j · c · cz · sz · rz · ó</strong>
+            <span>Small rules, lots of words.</span>
+          </div>
+        {/if}
 
-      <div class="wroclaw-breakdown">
-        <span>W</span><span>ro</span><span>c</span><span>ł</span><span>aw</span>
-        <small>v + ro + ts + w + ahf → <b>VROT-swahf</b></small>
+        <small>{currentDeck.cards.length} cards · Polish introduction</small>
       </div>
-    </article>
+    </div>
 
-    <article class="intro-panel useful-panel">
-      <div class="panel-heading">
-        <div>
-          <span class="section-number">03</span>
-          <h2>Café, tickets, getting unstuck</h2>
+    <div class="flashcard-body">
+      <div class="card-meta">
+        <div class="deck-switcher" aria-label="Polish topic">
+          {#each decks as deck, index}
+            <button class:active={index === deckIndex} onclick={() => switchDeck(index)}>{deck.name}</button>
+          {/each}
         </div>
+        <strong>Card {position} / {currentDeck.cards.length}</strong>
       </div>
 
-      <div class="useful-grid">
-        {#each useful as phrase}
-          <button class="useful-phrase" onclick={() => speak(phrase.polish)}>
-            <span class="mini-play">▶</span>
-            <strong>{phrase.polish}</strong>
-            <span>{phrase.english}</span>
-            <small>{phrase.sound}</small>
-          </button>
-        {/each}
-      </div>
-    </article>
-
-    <article class="intro-panel practice-panel">
-      <div class="panel-heading">
-        <div>
-          <span class="section-number">04</span>
-          <h2>Quick practice</h2>
-        </div>
-        <span class="panel-note">{practiceIndex + 1} / {essentials.length}</span>
+      <div class="study-toolbar">
+        <span class="round-label">Polish · Round {round}</span>
       </div>
 
-      <div class="practice-card">
-        <span class="practice-label">Say this in Polish</span>
-        <h3>{practicePhrase.english}</h3>
-
-        <div class="practice-answer">
-          <input
-            bind:value={practiceAnswer}
-            type="text"
-            autocomplete="off"
-            autocapitalize="off"
-            spellcheck="false"
-            placeholder="Type the Polish…"
-            onkeydown={handlePracticeKeydown}
-          />
-          <button class="primary" onclick={checkPractice}>Check</button>
-        </div>
-
-        <p class="practice-hint">Polish accents are optional when checking your answer.</p>
-        <div class="practice-feedback" class:good={practiceTone === "good"} class:bad={practiceTone === "bad"}>{practiceFeedback}</div>
-
-        <div class="practice-actions">
-          <button class="quiet" onclick={revealPractice}>Reveal + hear</button>
-          <button class="next-button" onclick={nextPractice}>Next</button>
-        </div>
+      <div class="progress-summary" aria-label="Learning progress">
+        <span><strong>{stats.seen}</strong>/{currentDeck.cards.length} seen</span>
+        <span><strong>{stats.mastered}</strong> mastered</span>
+        <span><strong>{stats.accuracy}%</strong> accuracy</span>
       </div>
-    </article>
-  </div>
-</section>
+
+      <div class="card-progress" aria-hidden="true">
+        <div class="card-progress-fill" style={`width:${progress}%`}></div>
+      </div>
+
+      <div class="card-prompt">
+        <span class="prompt-label">{currentDeck.id === "sounds" ? "Answer the pronunciation question" : "Translate into Polish"}</span>
+        <h1>{currentCard.prompt}</h1>
+
+        {#if revealed}
+          <div class="polish-reveal">
+            {#if currentCard.sound}<span class="pronunciation">{currentCard.sound}</span>{/if}
+            {#if currentCard.note}<p>{currentCard.note}</p>{/if}
+            {#if currentCard.speak}
+              <button class="polish-audio-button" onclick={speakPolish}>▶ Hear Polish <small>computer voice</small></button>
+            {/if}
+          </div>
+        {/if}
+      </div>
+
+      <div class="answer-row">
+        <input
+          bind:this={answerInput}
+          bind:value={answer}
+          type="text"
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+          placeholder={currentDeck.id === "sounds" ? "Type the sound…" : "Type the Polish…"}
+          onkeydown={handleKeydown}
+        />
+        <button class="primary" onclick={checkAnswer}>Check</button>
+      </div>
+
+      <div class="feedback" class:good={feedbackTone === "good"} class:bad={feedbackTone === "bad"}>
+        {feedback}
+      </div>
+
+      <div class="card-actions">
+        <button class="quiet" onclick={revealAnswer}>Reveal answer</button>
+        <button class="next-button" onclick={nextCard}>Next card</button>
+      </div>
+    </div>
+  </section>
+</main>
