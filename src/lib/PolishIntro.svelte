@@ -87,6 +87,7 @@
   }
 
   let deckIndex = 0;
+  let currentDeck = decks[deckIndex];
   let currentIndex = 0;
   let position = 1;
   let round = 1;
@@ -97,7 +98,6 @@
   let feedbackTone: Tone = "neutral";
   let answerInput: HTMLInputElement;
 
-  $: currentDeck = decks[deckIndex];
   $: currentCard = currentDeck.cards[currentIndex];
   $: progress = Math.round((position / currentDeck.cards.length) * 100);
   $: stats = deckStats(currentDeck);
@@ -188,6 +188,7 @@
 
   function switchDeck(index: number) {
     deckIndex = index;
+    currentDeck = decks[index];
     resetDeck();
   }
 
