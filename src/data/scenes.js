@@ -1742,13 +1742,30 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Elle arrose les fleurs.",
-            "strictAnswers": ["elle arrose les fleurs"],
-            "looseAnswers": ["elle arrose les fleurs"]
+            "strictAnswers": [
+              "elle arrose les fleurs"
+            ],
+            "looseAnswers": [
+              "elle arrose les fleurs"
+            ]
           },
           "es": {
             "display": "Ella riega las flores.",
-            "strictAnswers": ["ella riega las flores"],
-            "looseAnswers": ["ella riega las flores"]
+            "strictAnswers": [
+              "ella riega las flores"
+            ],
+            "looseAnswers": [
+              "ella riega las flores"
+            ]
+          },
+          "pl": {
+            "display": "Ona podlewa kwiaty.",
+            "strictAnswers": [
+              "ona podlewa kwiaty"
+            ],
+            "looseAnswers": [
+              "ona podlewa kwiaty"
+            ]
           }
         }
       },
@@ -1760,13 +1777,31 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il creuse un trou.",
-            "strictAnswers": ["il creuse un trou"],
-            "looseAnswers": ["il creuse un trou"]
+            "strictAnswers": [
+              "il creuse un trou"
+            ],
+            "looseAnswers": [
+              "il creuse un trou"
+            ]
           },
           "es": {
             "display": "Él cava un hoyo.",
-            "strictAnswers": ["él cava un hoyo"],
-            "looseAnswers": ["él cava un hoyo", "el cava un hoyo"]
+            "strictAnswers": [
+              "él cava un hoyo"
+            ],
+            "looseAnswers": [
+              "él cava un hoyo",
+              "el cava un hoyo"
+            ]
+          },
+          "pl": {
+            "display": "On kopie dół.",
+            "strictAnswers": [
+              "on kopie dół"
+            ],
+            "looseAnswers": [
+              "on kopie dół"
+            ]
           }
         }
       },
@@ -1778,13 +1813,31 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il pousse une brouette.",
-            "strictAnswers": ["il pousse une brouette"],
-            "looseAnswers": ["il pousse une brouette"]
+            "strictAnswers": [
+              "il pousse une brouette"
+            ],
+            "looseAnswers": [
+              "il pousse une brouette"
+            ]
           },
           "es": {
             "display": "Él empuja una carretilla.",
-            "strictAnswers": ["él empuja una carretilla"],
-            "looseAnswers": ["él empuja una carretilla", "el empuja una carretilla"]
+            "strictAnswers": [
+              "él empuja una carretilla"
+            ],
+            "looseAnswers": [
+              "él empuja una carretilla",
+              "el empuja una carretilla"
+            ]
+          },
+          "pl": {
+            "display": "On pcha taczkę.",
+            "strictAnswers": [
+              "on pcha taczkę"
+            ],
+            "looseAnswers": [
+              "on pcha taczkę"
+            ]
           }
         }
       },
@@ -1796,13 +1849,31 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il taille la haie.",
-            "strictAnswers": ["il taille la haie"],
-            "looseAnswers": ["il taille la haie"]
+            "strictAnswers": [
+              "il taille la haie"
+            ],
+            "looseAnswers": [
+              "il taille la haie"
+            ]
           },
           "es": {
             "display": "Él recorta el seto.",
-            "strictAnswers": ["él recorta el seto"],
-            "looseAnswers": ["él recorta el seto", "el recorta el seto"]
+            "strictAnswers": [
+              "él recorta el seto"
+            ],
+            "looseAnswers": [
+              "él recorta el seto",
+              "el recorta el seto"
+            ]
+          },
+          "pl": {
+            "display": "On przycina żywopłot.",
+            "strictAnswers": [
+              "on przycina żywopłot"
+            ],
+            "looseAnswers": [
+              "on przycina żywopłot"
+            ]
           }
         }
       },
@@ -1814,13 +1885,30 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Elle plante des fleurs.",
-            "strictAnswers": ["elle plante des fleurs"],
-            "looseAnswers": ["elle plante des fleurs"]
+            "strictAnswers": [
+              "elle plante des fleurs"
+            ],
+            "looseAnswers": [
+              "elle plante des fleurs"
+            ]
           },
           "es": {
             "display": "Ella planta flores.",
-            "strictAnswers": ["ella planta flores"],
-            "looseAnswers": ["ella planta flores"]
+            "strictAnswers": [
+              "ella planta flores"
+            ],
+            "looseAnswers": [
+              "ella planta flores"
+            ]
+          },
+          "pl": {
+            "display": "Ona sadzi kwiaty.",
+            "strictAnswers": [
+              "ona sadzi kwiaty"
+            ],
+            "looseAnswers": [
+              "ona sadzi kwiaty"
+            ]
           }
         }
       },
@@ -1832,13 +1920,30 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Elle ouvre le portail.",
-            "strictAnswers": ["elle ouvre le portail"],
-            "looseAnswers": ["elle ouvre le portail"]
+            "strictAnswers": [
+              "elle ouvre le portail"
+            ],
+            "looseAnswers": [
+              "elle ouvre le portail"
+            ]
           },
           "es": {
             "display": "Ella abre la puerta del jardín.",
-            "strictAnswers": ["ella abre la puerta del jardín"],
-            "looseAnswers": ["ella abre la puerta del jardín"]
+            "strictAnswers": [
+              "ella abre la puerta del jardín"
+            ],
+            "looseAnswers": [
+              "ella abre la puerta del jardín"
+            ]
+          },
+          "pl": {
+            "display": "Ona otwiera bramę.",
+            "strictAnswers": [
+              "ona otwiera bramę"
+            ],
+            "looseAnswers": [
+              "ona otwiera bramę"
+            ]
           }
         }
       },
@@ -1850,13 +1955,30 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Elle ratisse les feuilles.",
-            "strictAnswers": ["elle ratisse les feuilles"],
-            "looseAnswers": ["elle ratisse les feuilles"]
+            "strictAnswers": [
+              "elle ratisse les feuilles"
+            ],
+            "looseAnswers": [
+              "elle ratisse les feuilles"
+            ]
           },
           "es": {
             "display": "Ella rastrilla las hojas.",
-            "strictAnswers": ["ella rastrilla las hojas"],
-            "looseAnswers": ["ella rastrilla las hojas"]
+            "strictAnswers": [
+              "ella rastrilla las hojas"
+            ],
+            "looseAnswers": [
+              "ella rastrilla las hojas"
+            ]
+          },
+          "pl": {
+            "display": "Ona grabi liście.",
+            "strictAnswers": [
+              "ona grabi liście"
+            ],
+            "looseAnswers": [
+              "ona grabi liście"
+            ]
           }
         }
       },
@@ -1868,13 +1990,31 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il tond la pelouse.",
-            "strictAnswers": ["il tond la pelouse"],
-            "looseAnswers": ["il tond la pelouse"]
+            "strictAnswers": [
+              "il tond la pelouse"
+            ],
+            "looseAnswers": [
+              "il tond la pelouse"
+            ]
           },
           "es": {
             "display": "Él corta el césped.",
-            "strictAnswers": ["él corta el césped"],
-            "looseAnswers": ["él corta el césped", "el corta el cesped"]
+            "strictAnswers": [
+              "él corta el césped"
+            ],
+            "looseAnswers": [
+              "él corta el césped",
+              "el corta el cesped"
+            ]
+          },
+          "pl": {
+            "display": "On kosi trawnik.",
+            "strictAnswers": [
+              "on kosi trawnik"
+            ],
+            "looseAnswers": [
+              "on kosi trawnik"
+            ]
           }
         }
       },
@@ -1886,13 +2026,30 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Elle arrache les mauvaises herbes.",
-            "strictAnswers": ["elle arrache les mauvaises herbes"],
-            "looseAnswers": ["elle arrache les mauvaises herbes"]
+            "strictAnswers": [
+              "elle arrache les mauvaises herbes"
+            ],
+            "looseAnswers": [
+              "elle arrache les mauvaises herbes"
+            ]
           },
           "es": {
             "display": "Ella arranca las malas hierbas.",
-            "strictAnswers": ["ella arranca las malas hierbas"],
-            "looseAnswers": ["ella arranca las malas hierbas"]
+            "strictAnswers": [
+              "ella arranca las malas hierbas"
+            ],
+            "looseAnswers": [
+              "ella arranca las malas hierbas"
+            ]
+          },
+          "pl": {
+            "display": "Ona wyrywa chwasty.",
+            "strictAnswers": [
+              "ona wyrywa chwasty"
+            ],
+            "looseAnswers": [
+              "ona wyrywa chwasty"
+            ]
           }
         }
       },
@@ -1904,13 +2061,31 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il taille les rosiers.",
-            "strictAnswers": ["il taille les rosiers"],
-            "looseAnswers": ["il taille les rosiers"]
+            "strictAnswers": [
+              "il taille les rosiers"
+            ],
+            "looseAnswers": [
+              "il taille les rosiers"
+            ]
           },
           "es": {
             "display": "Él poda los rosales.",
-            "strictAnswers": ["él poda los rosales"],
-            "looseAnswers": ["él poda los rosales", "el poda los rosales"]
+            "strictAnswers": [
+              "él poda los rosales"
+            ],
+            "looseAnswers": [
+              "él poda los rosales",
+              "el poda los rosales"
+            ]
+          },
+          "pl": {
+            "display": "On przycina róże.",
+            "strictAnswers": [
+              "on przycina róże"
+            ],
+            "looseAnswers": [
+              "on przycina róże"
+            ]
           }
         }
       },
@@ -1922,13 +2097,30 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Elle cueille des pommes.",
-            "strictAnswers": ["elle cueille des pommes"],
-            "looseAnswers": ["elle cueille des pommes"]
+            "strictAnswers": [
+              "elle cueille des pommes"
+            ],
+            "looseAnswers": [
+              "elle cueille des pommes"
+            ]
           },
           "es": {
             "display": "Ella recoge manzanas.",
-            "strictAnswers": ["ella recoge manzanas"],
-            "looseAnswers": ["ella recoge manzanas"]
+            "strictAnswers": [
+              "ella recoge manzanas"
+            ],
+            "looseAnswers": [
+              "ella recoge manzanas"
+            ]
+          },
+          "pl": {
+            "display": "Ona zrywa jabłka.",
+            "strictAnswers": [
+              "ona zrywa jabłka"
+            ],
+            "looseAnswers": [
+              "ona zrywa jabłka"
+            ]
           }
         }
       },
@@ -1940,13 +2132,31 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il balaie le chemin.",
-            "strictAnswers": ["il balaie le chemin"],
-            "looseAnswers": ["il balaie le chemin"]
+            "strictAnswers": [
+              "il balaie le chemin"
+            ],
+            "looseAnswers": [
+              "il balaie le chemin"
+            ]
           },
           "es": {
             "display": "Él barre el camino.",
-            "strictAnswers": ["él barre el camino"],
-            "looseAnswers": ["él barre el camino", "el barre el camino"]
+            "strictAnswers": [
+              "él barre el camino"
+            ],
+            "looseAnswers": [
+              "él barre el camino",
+              "el barre el camino"
+            ]
+          },
+          "pl": {
+            "display": "On zamiata ścieżkę.",
+            "strictAnswers": [
+              "on zamiata ścieżkę"
+            ],
+            "looseAnswers": [
+              "on zamiata ścieżkę"
+            ]
           }
         }
       }
@@ -1966,13 +2176,30 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Elle coupe des légumes.",
-            "strictAnswers": ["elle coupe des légumes"],
-            "looseAnswers": ["elle coupe des légumes"]
+            "strictAnswers": [
+              "elle coupe des légumes"
+            ],
+            "looseAnswers": [
+              "elle coupe des légumes"
+            ]
           },
           "es": {
             "display": "Ella corta verduras.",
-            "strictAnswers": ["ella corta verduras"],
-            "looseAnswers": ["ella corta verduras"]
+            "strictAnswers": [
+              "ella corta verduras"
+            ],
+            "looseAnswers": [
+              "ella corta verduras"
+            ]
+          },
+          "pl": {
+            "display": "Ona kroi warzywa.",
+            "strictAnswers": [
+              "ona kroi warzywa"
+            ],
+            "looseAnswers": [
+              "ona kroi warzywa"
+            ]
           }
         }
       },
@@ -1984,13 +2211,30 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Elle remue la soupe.",
-            "strictAnswers": ["elle remue la soupe"],
-            "looseAnswers": ["elle remue la soupe"]
+            "strictAnswers": [
+              "elle remue la soupe"
+            ],
+            "looseAnswers": [
+              "elle remue la soupe"
+            ]
           },
           "es": {
             "display": "Ella remueve la sopa.",
-            "strictAnswers": ["ella remueve la sopa"],
-            "looseAnswers": ["ella remueve la sopa"]
+            "strictAnswers": [
+              "ella remueve la sopa"
+            ],
+            "looseAnswers": [
+              "ella remueve la sopa"
+            ]
+          },
+          "pl": {
+            "display": "Ona miesza zupę.",
+            "strictAnswers": [
+              "ona miesza zupę"
+            ],
+            "looseAnswers": [
+              "ona miesza zupę"
+            ]
           }
         }
       },
@@ -2002,13 +2246,31 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il fait la vaisselle.",
-            "strictAnswers": ["il fait la vaisselle"],
-            "looseAnswers": ["il fait la vaisselle"]
+            "strictAnswers": [
+              "il fait la vaisselle"
+            ],
+            "looseAnswers": [
+              "il fait la vaisselle"
+            ]
           },
           "es": {
             "display": "Él lava los platos.",
-            "strictAnswers": ["él lava los platos"],
-            "looseAnswers": ["él lava los platos", "el lava los platos"]
+            "strictAnswers": [
+              "él lava los platos"
+            ],
+            "looseAnswers": [
+              "él lava los platos",
+              "el lava los platos"
+            ]
+          },
+          "pl": {
+            "display": "On myje naczynia.",
+            "strictAnswers": [
+              "on myje naczynia"
+            ],
+            "looseAnswers": [
+              "on myje naczynia"
+            ]
           }
         }
       },
@@ -2020,13 +2282,31 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il verse de l'eau dans un verre.",
-            "strictAnswers": ["il verse de l'eau dans un verre"],
-            "looseAnswers": ["il verse de l'eau dans un verre"]
+            "strictAnswers": [
+              "il verse de l'eau dans un verre"
+            ],
+            "looseAnswers": [
+              "il verse de l'eau dans un verre"
+            ]
           },
           "es": {
             "display": "Él vierte agua en un vaso.",
-            "strictAnswers": ["él vierte agua en un vaso"],
-            "looseAnswers": ["él vierte agua en un vaso", "el vierte agua en un vaso"]
+            "strictAnswers": [
+              "él vierte agua en un vaso"
+            ],
+            "looseAnswers": [
+              "él vierte agua en un vaso",
+              "el vierte agua en un vaso"
+            ]
+          },
+          "pl": {
+            "display": "On nalewa wodę do szklanki.",
+            "strictAnswers": [
+              "on nalewa wodę do szklanki"
+            ],
+            "looseAnswers": [
+              "on nalewa wodę do szklanki"
+            ]
           }
         }
       },
@@ -2038,13 +2318,30 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Elle sort un plat du four.",
-            "strictAnswers": ["elle sort un plat du four"],
-            "looseAnswers": ["elle sort un plat du four"]
+            "strictAnswers": [
+              "elle sort un plat du four"
+            ],
+            "looseAnswers": [
+              "elle sort un plat du four"
+            ]
           },
           "es": {
             "display": "Ella saca una fuente del horno.",
-            "strictAnswers": ["ella saca una fuente del horno"],
-            "looseAnswers": ["ella saca una fuente del horno"]
+            "strictAnswers": [
+              "ella saca una fuente del horno"
+            ],
+            "looseAnswers": [
+              "ella saca una fuente del horno"
+            ]
+          },
+          "pl": {
+            "display": "Ona wyjmuje danie z piekarnika.",
+            "strictAnswers": [
+              "ona wyjmuje danie z piekarnika"
+            ],
+            "looseAnswers": [
+              "ona wyjmuje danie z piekarnika"
+            ]
           }
         }
       },
@@ -2056,13 +2353,32 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Elle ouvre le réfrigérateur.",
-            "strictAnswers": ["elle ouvre le réfrigérateur"],
-            "looseAnswers": ["elle ouvre le réfrigérateur", "elle ouvre le frigo"]
+            "strictAnswers": [
+              "elle ouvre le réfrigérateur"
+            ],
+            "looseAnswers": [
+              "elle ouvre le réfrigérateur",
+              "elle ouvre le frigo"
+            ]
           },
           "es": {
             "display": "Ella abre el frigorífico.",
-            "strictAnswers": ["ella abre el frigorífico"],
-            "looseAnswers": ["ella abre el frigorífico", "ella abre el frigorifico"]
+            "strictAnswers": [
+              "ella abre el frigorífico"
+            ],
+            "looseAnswers": [
+              "ella abre el frigorífico",
+              "ella abre el frigorifico"
+            ]
+          },
+          "pl": {
+            "display": "Ona otwiera lodówkę.",
+            "strictAnswers": [
+              "ona otwiera lodówkę"
+            ],
+            "looseAnswers": [
+              "ona otwiera lodówkę"
+            ]
           }
         }
       },
@@ -2074,13 +2390,30 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Elles épluchent des pommes de terre.",
-            "strictAnswers": ["elles épluchent des pommes de terre"],
-            "looseAnswers": ["elles épluchent des pommes de terre"]
+            "strictAnswers": [
+              "elles épluchent des pommes de terre"
+            ],
+            "looseAnswers": [
+              "elles épluchent des pommes de terre"
+            ]
           },
           "es": {
             "display": "Ellas pelan patatas.",
-            "strictAnswers": ["ellas pelan patatas"],
-            "looseAnswers": ["ellas pelan patatas"]
+            "strictAnswers": [
+              "ellas pelan patatas"
+            ],
+            "looseAnswers": [
+              "ellas pelan patatas"
+            ]
+          },
+          "pl": {
+            "display": "Oni obierają ziemniaki.",
+            "strictAnswers": [
+              "oni obierają ziemniaki"
+            ],
+            "looseAnswers": [
+              "oni obierają ziemniaki"
+            ]
           }
         }
       },
@@ -2092,13 +2425,30 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Elle met la table.",
-            "strictAnswers": ["elle met la table"],
-            "looseAnswers": ["elle met la table"]
+            "strictAnswers": [
+              "elle met la table"
+            ],
+            "looseAnswers": [
+              "elle met la table"
+            ]
           },
           "es": {
             "display": "Ella pone la mesa.",
-            "strictAnswers": ["ella pone la mesa"],
-            "looseAnswers": ["ella pone la mesa"]
+            "strictAnswers": [
+              "ella pone la mesa"
+            ],
+            "looseAnswers": [
+              "ella pone la mesa"
+            ]
+          },
+          "pl": {
+            "display": "Ona nakrywa do stołu.",
+            "strictAnswers": [
+              "ona nakrywa do stołu"
+            ],
+            "looseAnswers": [
+              "ona nakrywa do stołu"
+            ]
           }
         }
       },
@@ -2110,13 +2460,32 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Elle fait frire un œuf.",
-            "strictAnswers": ["elle fait frire un œuf"],
-            "looseAnswers": ["elle fait frire un œuf", "elle fait frire un oeuf"]
+            "strictAnswers": [
+              "elle fait frire un œuf"
+            ],
+            "looseAnswers": [
+              "elle fait frire un œuf",
+              "elle fait frire un oeuf"
+            ]
           },
           "es": {
             "display": "Ella fríe un huevo.",
-            "strictAnswers": ["ella fríe un huevo"],
-            "looseAnswers": ["ella fríe un huevo", "ella frie un huevo"]
+            "strictAnswers": [
+              "ella fríe un huevo"
+            ],
+            "looseAnswers": [
+              "ella fríe un huevo",
+              "ella frie un huevo"
+            ]
+          },
+          "pl": {
+            "display": "Ona smaży jajko.",
+            "strictAnswers": [
+              "ona smaży jajko"
+            ],
+            "looseAnswers": [
+              "ona smaży jajko"
+            ]
           }
         }
       },
@@ -2128,13 +2497,32 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il râpe du fromage.",
-            "strictAnswers": ["il râpe du fromage"],
-            "looseAnswers": ["il râpe du fromage", "il rape du fromage"]
+            "strictAnswers": [
+              "il râpe du fromage"
+            ],
+            "looseAnswers": [
+              "il râpe du fromage",
+              "il rape du fromage"
+            ]
           },
           "es": {
             "display": "Él ralla queso.",
-            "strictAnswers": ["él ralla queso"],
-            "looseAnswers": ["él ralla queso", "el ralla queso"]
+            "strictAnswers": [
+              "él ralla queso"
+            ],
+            "looseAnswers": [
+              "él ralla queso",
+              "el ralla queso"
+            ]
+          },
+          "pl": {
+            "display": "On trze ser.",
+            "strictAnswers": [
+              "on trze ser"
+            ],
+            "looseAnswers": [
+              "on trze ser"
+            ]
           }
         }
       },
@@ -2146,13 +2534,31 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Une personne pétrit la pâte.",
-            "strictAnswers": ["une personne pétrit la pâte"],
-            "looseAnswers": ["une personne pétrit la pâte", "une personne petrit la pate"]
+            "strictAnswers": [
+              "une personne pétrit la pâte"
+            ],
+            "looseAnswers": [
+              "une personne pétrit la pâte",
+              "une personne petrit la pate"
+            ]
           },
           "es": {
             "display": "Una persona amasa la masa.",
-            "strictAnswers": ["una persona amasa la masa"],
-            "looseAnswers": ["una persona amasa la masa"]
+            "strictAnswers": [
+              "una persona amasa la masa"
+            ],
+            "looseAnswers": [
+              "una persona amasa la masa"
+            ]
+          },
+          "pl": {
+            "display": "Ktoś wyrabia ciasto.",
+            "strictAnswers": [
+              "ktoś wyrabia ciasto"
+            ],
+            "looseAnswers": [
+              "ktoś wyrabia ciasto"
+            ]
           }
         }
       },
@@ -2164,13 +2570,32 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il prépare du café.",
-            "strictAnswers": ["il prépare du café"],
-            "looseAnswers": ["il prépare du café", "il prepare du cafe"]
+            "strictAnswers": [
+              "il prépare du café"
+            ],
+            "looseAnswers": [
+              "il prépare du café",
+              "il prepare du cafe"
+            ]
           },
           "es": {
             "display": "Él prepara café.",
-            "strictAnswers": ["él prepara café"],
-            "looseAnswers": ["él prepara café", "el prepara cafe"]
+            "strictAnswers": [
+              "él prepara café"
+            ],
+            "looseAnswers": [
+              "él prepara café",
+              "el prepara cafe"
+            ]
+          },
+          "pl": {
+            "display": "On robi kawę.",
+            "strictAnswers": [
+              "on robi kawę"
+            ],
+            "looseAnswers": [
+              "on robi kawę"
+            ]
           }
         }
       }
@@ -2190,13 +2615,31 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il met sa veste.",
-            "strictAnswers": ["il met sa veste"],
-            "looseAnswers": ["il met sa veste"]
+            "strictAnswers": [
+              "il met sa veste"
+            ],
+            "looseAnswers": [
+              "il met sa veste"
+            ]
           },
           "es": {
             "display": "Él se pone la chaqueta.",
-            "strictAnswers": ["él se pone la chaqueta"],
-            "looseAnswers": ["él se pone la chaqueta", "el se pone la chaqueta"]
+            "strictAnswers": [
+              "él se pone la chaqueta"
+            ],
+            "looseAnswers": [
+              "él se pone la chaqueta",
+              "el se pone la chaqueta"
+            ]
+          },
+          "pl": {
+            "display": "On zakłada kurtkę.",
+            "strictAnswers": [
+              "on zakłada kurtkę"
+            ],
+            "looseAnswers": [
+              "on zakłada kurtkę"
+            ]
           }
         }
       },
@@ -2208,13 +2651,30 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Elle se brosse les dents.",
-            "strictAnswers": ["elle se brosse les dents"],
-            "looseAnswers": ["elle se brosse les dents"]
+            "strictAnswers": [
+              "elle se brosse les dents"
+            ],
+            "looseAnswers": [
+              "elle se brosse les dents"
+            ]
           },
           "es": {
             "display": "Ella se cepilla los dientes.",
-            "strictAnswers": ["ella se cepilla los dientes"],
-            "looseAnswers": ["ella se cepilla los dientes"]
+            "strictAnswers": [
+              "ella se cepilla los dientes"
+            ],
+            "looseAnswers": [
+              "ella se cepilla los dientes"
+            ]
+          },
+          "pl": {
+            "display": "Ona myje zęby.",
+            "strictAnswers": [
+              "ona myje zęby"
+            ],
+            "looseAnswers": [
+              "ona myje zęby"
+            ]
           }
         }
       },
@@ -2226,13 +2686,30 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Elle se peigne les cheveux.",
-            "strictAnswers": ["elle se peigne les cheveux"],
-            "looseAnswers": ["elle se peigne les cheveux"]
+            "strictAnswers": [
+              "elle se peigne les cheveux"
+            ],
+            "looseAnswers": [
+              "elle se peigne les cheveux"
+            ]
           },
           "es": {
             "display": "Ella se peina.",
-            "strictAnswers": ["ella se peina"],
-            "looseAnswers": ["ella se peina"]
+            "strictAnswers": [
+              "ella se peina"
+            ],
+            "looseAnswers": [
+              "ella se peina"
+            ]
+          },
+          "pl": {
+            "display": "Ona czesze włosy.",
+            "strictAnswers": [
+              "ona czesze włosy"
+            ],
+            "looseAnswers": [
+              "ona czesze włosy"
+            ]
           }
         }
       },
@@ -2244,13 +2721,31 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il attache ses lacets.",
-            "strictAnswers": ["il attache ses lacets"],
-            "looseAnswers": ["il attache ses lacets"]
+            "strictAnswers": [
+              "il attache ses lacets"
+            ],
+            "looseAnswers": [
+              "il attache ses lacets"
+            ]
           },
           "es": {
             "display": "Él se ata los cordones.",
-            "strictAnswers": ["él se ata los cordones"],
-            "looseAnswers": ["él se ata los cordones", "el se ata los cordones"]
+            "strictAnswers": [
+              "él se ata los cordones"
+            ],
+            "looseAnswers": [
+              "él se ata los cordones",
+              "el se ata los cordones"
+            ]
+          },
+          "pl": {
+            "display": "On wiąże sznurówki.",
+            "strictAnswers": [
+              "on wiąże sznurówki"
+            ],
+            "looseAnswers": [
+              "on wiąże sznurówki"
+            ]
           }
         }
       },
@@ -2262,13 +2757,30 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Elle fait le lit.",
-            "strictAnswers": ["elle fait le lit"],
-            "looseAnswers": ["elle fait le lit"]
+            "strictAnswers": [
+              "elle fait le lit"
+            ],
+            "looseAnswers": [
+              "elle fait le lit"
+            ]
           },
           "es": {
             "display": "Ella hace la cama.",
-            "strictAnswers": ["ella hace la cama"],
-            "looseAnswers": ["ella hace la cama"]
+            "strictAnswers": [
+              "ella hace la cama"
+            ],
+            "looseAnswers": [
+              "ella hace la cama"
+            ]
+          },
+          "pl": {
+            "display": "Ona ścieli łóżko.",
+            "strictAnswers": [
+              "ona ścieli łóżko"
+            ],
+            "looseAnswers": [
+              "ona ścieli łóżko"
+            ]
           }
         }
       },
@@ -2280,13 +2792,32 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il prépare son sac à dos.",
-            "strictAnswers": ["il prépare son sac à dos"],
-            "looseAnswers": ["il prépare son sac à dos", "il prepare son sac a dos"]
+            "strictAnswers": [
+              "il prépare son sac à dos"
+            ],
+            "looseAnswers": [
+              "il prépare son sac à dos",
+              "il prepare son sac a dos"
+            ]
           },
           "es": {
             "display": "Él prepara su mochila.",
-            "strictAnswers": ["él prepara su mochila"],
-            "looseAnswers": ["él prepara su mochila", "el prepara su mochila"]
+            "strictAnswers": [
+              "él prepara su mochila"
+            ],
+            "looseAnswers": [
+              "él prepara su mochila",
+              "el prepara su mochila"
+            ]
+          },
+          "pl": {
+            "display": "On pakuje plecak.",
+            "strictAnswers": [
+              "on pakuje plecak"
+            ],
+            "looseAnswers": [
+              "on pakuje plecak"
+            ]
           }
         }
       },
@@ -2298,13 +2829,31 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Ils attendent le bus.",
-            "strictAnswers": ["ils attendent le bus"],
-            "looseAnswers": ["ils attendent le bus"]
+            "strictAnswers": [
+              "ils attendent le bus"
+            ],
+            "looseAnswers": [
+              "ils attendent le bus"
+            ]
           },
           "es": {
             "display": "Ellos esperan el autobús.",
-            "strictAnswers": ["ellos esperan el autobús"],
-            "looseAnswers": ["ellos esperan el autobús", "ellos esperan el autobus"]
+            "strictAnswers": [
+              "ellos esperan el autobús"
+            ],
+            "looseAnswers": [
+              "ellos esperan el autobús",
+              "ellos esperan el autobus"
+            ]
+          },
+          "pl": {
+            "display": "Oni czekają na autobus.",
+            "strictAnswers": [
+              "oni czekają na autobus"
+            ],
+            "looseAnswers": [
+              "oni czekają na autobus"
+            ]
           }
         }
       },
@@ -2316,13 +2865,31 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il regarde l'heure.",
-            "strictAnswers": ["il regarde l'heure"],
-            "looseAnswers": ["il regarde l'heure"]
+            "strictAnswers": [
+              "il regarde l'heure"
+            ],
+            "looseAnswers": [
+              "il regarde l'heure"
+            ]
           },
           "es": {
             "display": "Él mira la hora.",
-            "strictAnswers": ["él mira la hora"],
-            "looseAnswers": ["él mira la hora", "el mira la hora"]
+            "strictAnswers": [
+              "él mira la hora"
+            ],
+            "looseAnswers": [
+              "él mira la hora",
+              "el mira la hora"
+            ]
+          },
+          "pl": {
+            "display": "On sprawdza godzinę.",
+            "strictAnswers": [
+              "on sprawdza godzinę"
+            ],
+            "looseAnswers": [
+              "on sprawdza godzinę"
+            ]
           }
         }
       },
@@ -2334,13 +2901,32 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Elle parle au téléphone.",
-            "strictAnswers": ["elle parle au téléphone"],
-            "looseAnswers": ["elle parle au téléphone", "elle parle au telephone"]
+            "strictAnswers": [
+              "elle parle au téléphone"
+            ],
+            "looseAnswers": [
+              "elle parle au téléphone",
+              "elle parle au telephone"
+            ]
           },
           "es": {
             "display": "Ella habla por teléfono.",
-            "strictAnswers": ["ella habla por teléfono"],
-            "looseAnswers": ["ella habla por teléfono", "ella habla por telefono"]
+            "strictAnswers": [
+              "ella habla por teléfono"
+            ],
+            "looseAnswers": [
+              "ella habla por teléfono",
+              "ella habla por telefono"
+            ]
+          },
+          "pl": {
+            "display": "Ona rozmawia przez telefon.",
+            "strictAnswers": [
+              "ona rozmawia przez telefon"
+            ],
+            "looseAnswers": [
+              "ona rozmawia przez telefon"
+            ]
           }
         }
       },
@@ -2352,13 +2938,31 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il porte les courses.",
-            "strictAnswers": ["il porte les courses"],
-            "looseAnswers": ["il porte les courses"]
+            "strictAnswers": [
+              "il porte les courses"
+            ],
+            "looseAnswers": [
+              "il porte les courses"
+            ]
           },
           "es": {
             "display": "Él lleva la compra.",
-            "strictAnswers": ["él lleva la compra"],
-            "looseAnswers": ["él lleva la compra", "el lleva la compra"]
+            "strictAnswers": [
+              "él lleva la compra"
+            ],
+            "looseAnswers": [
+              "él lleva la compra",
+              "el lleva la compra"
+            ]
+          },
+          "pl": {
+            "display": "On niesie zakupy.",
+            "strictAnswers": [
+              "on niesie zakupy"
+            ],
+            "looseAnswers": [
+              "on niesie zakupy"
+            ]
           }
         }
       },
@@ -2370,13 +2974,32 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il est allongé dans son lit.",
-            "strictAnswers": ["il est allongé dans son lit"],
-            "looseAnswers": ["il est allongé dans son lit", "il est allonge dans son lit"]
+            "strictAnswers": [
+              "il est allongé dans son lit"
+            ],
+            "looseAnswers": [
+              "il est allongé dans son lit",
+              "il est allonge dans son lit"
+            ]
           },
           "es": {
             "display": "Él está acostado en la cama.",
-            "strictAnswers": ["él está acostado en la cama"],
-            "looseAnswers": ["él está acostado en la cama", "el esta acostado en la cama"]
+            "strictAnswers": [
+              "él está acostado en la cama"
+            ],
+            "looseAnswers": [
+              "él está acostado en la cama",
+              "el esta acostado en la cama"
+            ]
+          },
+          "pl": {
+            "display": "On leży w łóżku.",
+            "strictAnswers": [
+              "on leży w łóżku"
+            ],
+            "looseAnswers": [
+              "on leży w łóżku"
+            ]
           }
         }
       },
@@ -2388,13 +3011,32 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Elle boit du café.",
-            "strictAnswers": ["elle boit du café"],
-            "looseAnswers": ["elle boit du café", "elle boit du cafe"]
+            "strictAnswers": [
+              "elle boit du café"
+            ],
+            "looseAnswers": [
+              "elle boit du café",
+              "elle boit du cafe"
+            ]
           },
           "es": {
             "display": "Ella bebe café.",
-            "strictAnswers": ["ella bebe café"],
-            "looseAnswers": ["ella bebe café", "ella bebe cafe"]
+            "strictAnswers": [
+              "ella bebe café"
+            ],
+            "looseAnswers": [
+              "ella bebe café",
+              "ella bebe cafe"
+            ]
+          },
+          "pl": {
+            "display": "Ona pije kawę.",
+            "strictAnswers": [
+              "ona pije kawę"
+            ],
+            "looseAnswers": [
+              "ona pije kawę"
+            ]
           }
         }
       }
@@ -2414,13 +3056,30 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Un voyageur monte dans le train.",
-            "strictAnswers": ["un voyageur monte dans le train"],
-            "looseAnswers": ["un voyageur monte dans le train"]
+            "strictAnswers": [
+              "un voyageur monte dans le train"
+            ],
+            "looseAnswers": [
+              "un voyageur monte dans le train"
+            ]
           },
           "es": {
             "display": "Un viajero sube al tren.",
-            "strictAnswers": ["un viajero sube al tren"],
-            "looseAnswers": ["un viajero sube al tren"]
+            "strictAnswers": [
+              "un viajero sube al tren"
+            ],
+            "looseAnswers": [
+              "un viajero sube al tren"
+            ]
+          },
+          "pl": {
+            "display": "Podróżny wsiada do pociągu.",
+            "strictAnswers": [
+              "podróżny wsiada do pociągu"
+            ],
+            "looseAnswers": [
+              "podróżny wsiada do pociągu"
+            ]
           }
         }
       },
@@ -2432,13 +3091,32 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il achète un billet à la machine.",
-            "strictAnswers": ["il achète un billet à la machine"],
-            "looseAnswers": ["il achète un billet à la machine", "il achete un billet a la machine"]
+            "strictAnswers": [
+              "il achète un billet à la machine"
+            ],
+            "looseAnswers": [
+              "il achète un billet à la machine",
+              "il achete un billet a la machine"
+            ]
           },
           "es": {
             "display": "Él compra un billete en la máquina.",
-            "strictAnswers": ["él compra un billete en la máquina"],
-            "looseAnswers": ["él compra un billete en la máquina", "el compra un billete en la maquina"]
+            "strictAnswers": [
+              "él compra un billete en la máquina"
+            ],
+            "looseAnswers": [
+              "él compra un billete en la máquina",
+              "el compra un billete en la maquina"
+            ]
+          },
+          "pl": {
+            "display": "On kupuje bilet w automacie.",
+            "strictAnswers": [
+              "on kupuje bilet w automacie"
+            ],
+            "looseAnswers": [
+              "on kupuje bilet w automacie"
+            ]
           }
         }
       },
@@ -2450,13 +3128,31 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il attend le train.",
-            "strictAnswers": ["il attend le train"],
-            "looseAnswers": ["il attend le train"]
+            "strictAnswers": [
+              "il attend le train"
+            ],
+            "looseAnswers": [
+              "il attend le train"
+            ]
           },
           "es": {
             "display": "Él espera el tren.",
-            "strictAnswers": ["él espera el tren"],
-            "looseAnswers": ["él espera el tren", "el espera el tren"]
+            "strictAnswers": [
+              "él espera el tren"
+            ],
+            "looseAnswers": [
+              "él espera el tren",
+              "el espera el tren"
+            ]
+          },
+          "pl": {
+            "display": "On czeka na pociąg.",
+            "strictAnswers": [
+              "on czeka na pociąg"
+            ],
+            "looseAnswers": [
+              "on czeka na pociąg"
+            ]
           }
         }
       },
@@ -2468,13 +3164,31 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il marche sur le quai avec sa valise.",
-            "strictAnswers": ["il marche sur le quai avec sa valise"],
-            "looseAnswers": ["il marche sur le quai avec sa valise"]
+            "strictAnswers": [
+              "il marche sur le quai avec sa valise"
+            ],
+            "looseAnswers": [
+              "il marche sur le quai avec sa valise"
+            ]
           },
           "es": {
             "display": "Él camina por el andén con su maleta.",
-            "strictAnswers": ["él camina por el andén con su maleta"],
-            "looseAnswers": ["él camina por el andén con su maleta", "el camina por el anden con su maleta"]
+            "strictAnswers": [
+              "él camina por el andén con su maleta"
+            ],
+            "looseAnswers": [
+              "él camina por el andén con su maleta",
+              "el camina por el anden con su maleta"
+            ]
+          },
+          "pl": {
+            "display": "On idzie peronem z walizką.",
+            "strictAnswers": [
+              "on idzie peronem z walizką"
+            ],
+            "looseAnswers": [
+              "on idzie peronem z walizką"
+            ]
           }
         }
       },
@@ -2486,13 +3200,32 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Ils attendent à l'arrêt de bus.",
-            "strictAnswers": ["ils attendent à l'arrêt de bus"],
-            "looseAnswers": ["ils attendent à l'arrêt de bus", "ils attendent a l'arret de bus"]
+            "strictAnswers": [
+              "ils attendent à l'arrêt de bus"
+            ],
+            "looseAnswers": [
+              "ils attendent à l'arrêt de bus",
+              "ils attendent a l'arret de bus"
+            ]
           },
           "es": {
             "display": "Ellos esperan en la parada de autobús.",
-            "strictAnswers": ["ellos esperan en la parada de autobús"],
-            "looseAnswers": ["ellos esperan en la parada de autobús", "ellos esperan en la parada de autobus"]
+            "strictAnswers": [
+              "ellos esperan en la parada de autobús"
+            ],
+            "looseAnswers": [
+              "ellos esperan en la parada de autobús",
+              "ellos esperan en la parada de autobus"
+            ]
+          },
+          "pl": {
+            "display": "Oni czekają na przystanku autobusowym.",
+            "strictAnswers": [
+              "oni czekają na przystanku autobusowym"
+            ],
+            "looseAnswers": [
+              "oni czekają na przystanku autobusowym"
+            ]
           }
         }
       },
@@ -2504,13 +3237,31 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Elle hèle un taxi.",
-            "strictAnswers": ["elle hèle un taxi"],
-            "looseAnswers": ["elle hèle un taxi", "elle hele un taxi"]
+            "strictAnswers": [
+              "elle hèle un taxi"
+            ],
+            "looseAnswers": [
+              "elle hèle un taxi",
+              "elle hele un taxi"
+            ]
           },
           "es": {
             "display": "Ella para un taxi.",
-            "strictAnswers": ["ella para un taxi"],
-            "looseAnswers": ["ella para un taxi"]
+            "strictAnswers": [
+              "ella para un taxi"
+            ],
+            "looseAnswers": [
+              "ella para un taxi"
+            ]
+          },
+          "pl": {
+            "display": "Ona zatrzymuje taksówkę.",
+            "strictAnswers": [
+              "ona zatrzymuje taksówkę"
+            ],
+            "looseAnswers": [
+              "ona zatrzymuje taksówkę"
+            ]
           }
         }
       },
@@ -2522,13 +3273,31 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Les horaires des vols sont affichés sur le tableau des départs.",
-            "strictAnswers": ["les horaires des vols sont affichés sur le tableau des départs"],
-            "looseAnswers": ["les horaires des vols sont affichés sur le tableau des départs", "les horaires des vols sont affiches sur le tableau des departs"]
+            "strictAnswers": [
+              "les horaires des vols sont affichés sur le tableau des départs"
+            ],
+            "looseAnswers": [
+              "les horaires des vols sont affichés sur le tableau des départs",
+              "les horaires des vols sont affiches sur le tableau des departs"
+            ]
           },
           "es": {
             "display": "Los horarios de los vuelos aparecen en el panel de salidas.",
-            "strictAnswers": ["los horarios de los vuelos aparecen en el panel de salidas"],
-            "looseAnswers": ["los horarios de los vuelos aparecen en el panel de salidas"]
+            "strictAnswers": [
+              "los horarios de los vuelos aparecen en el panel de salidas"
+            ],
+            "looseAnswers": [
+              "los horarios de los vuelos aparecen en el panel de salidas"
+            ]
+          },
+          "pl": {
+            "display": "Godziny lotów są wyświetlane na tablicy odlotów.",
+            "strictAnswers": [
+              "godziny lotów są wyświetlane na tablicy odlotów"
+            ],
+            "looseAnswers": [
+              "godziny lotów są wyświetlane na tablicy odlotów"
+            ]
           }
         }
       },
@@ -2540,13 +3309,32 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il fait du vélo en ville.",
-            "strictAnswers": ["il fait du vélo en ville"],
-            "looseAnswers": ["il fait du vélo en ville", "il fait du velo en ville"]
+            "strictAnswers": [
+              "il fait du vélo en ville"
+            ],
+            "looseAnswers": [
+              "il fait du vélo en ville",
+              "il fait du velo en ville"
+            ]
           },
           "es": {
             "display": "Él va en bicicleta por la ciudad.",
-            "strictAnswers": ["él va en bicicleta por la ciudad"],
-            "looseAnswers": ["él va en bicicleta por la ciudad", "el va en bicicleta por la ciudad"]
+            "strictAnswers": [
+              "él va en bicicleta por la ciudad"
+            ],
+            "looseAnswers": [
+              "él va en bicicleta por la ciudad",
+              "el va en bicicleta por la ciudad"
+            ]
+          },
+          "pl": {
+            "display": "On jedzie rowerem przez miasto.",
+            "strictAnswers": [
+              "on jedzie rowerem przez miasto"
+            ],
+            "looseAnswers": [
+              "on jedzie rowerem przez miasto"
+            ]
           }
         }
       },
@@ -2558,13 +3346,31 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il conduit une voiture.",
-            "strictAnswers": ["il conduit une voiture"],
-            "looseAnswers": ["il conduit une voiture"]
+            "strictAnswers": [
+              "il conduit une voiture"
+            ],
+            "looseAnswers": [
+              "il conduit une voiture"
+            ]
           },
           "es": {
             "display": "Él conduce un coche.",
-            "strictAnswers": ["él conduce un coche"],
-            "looseAnswers": ["él conduce un coche", "el conduce un coche"]
+            "strictAnswers": [
+              "él conduce un coche"
+            ],
+            "looseAnswers": [
+              "él conduce un coche",
+              "el conduce un coche"
+            ]
+          },
+          "pl": {
+            "display": "On prowadzi samochód.",
+            "strictAnswers": [
+              "on prowadzi samochód"
+            ],
+            "looseAnswers": [
+              "on prowadzi samochód"
+            ]
           }
         }
       },
@@ -2576,13 +3382,30 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Elle lit une carte.",
-            "strictAnswers": ["elle lit une carte"],
-            "looseAnswers": ["elle lit une carte"]
+            "strictAnswers": [
+              "elle lit une carte"
+            ],
+            "looseAnswers": [
+              "elle lit une carte"
+            ]
           },
           "es": {
             "display": "Ella lee un mapa.",
-            "strictAnswers": ["ella lee un mapa"],
-            "looseAnswers": ["ella lee un mapa"]
+            "strictAnswers": [
+              "ella lee un mapa"
+            ],
+            "looseAnswers": [
+              "ella lee un mapa"
+            ]
+          },
+          "pl": {
+            "display": "Ona czyta mapę.",
+            "strictAnswers": [
+              "ona czyta mapę"
+            ],
+            "looseAnswers": [
+              "ona czyta mapę"
+            ]
           }
         }
       },
@@ -2594,13 +3417,31 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Un voyageur traverse l'aéroport avec une valise.",
-            "strictAnswers": ["un voyageur traverse l'aéroport avec une valise"],
-            "looseAnswers": ["un voyageur traverse l'aéroport avec une valise", "un voyageur traverse l'aeroport avec une valise"]
+            "strictAnswers": [
+              "un voyageur traverse l'aéroport avec une valise"
+            ],
+            "looseAnswers": [
+              "un voyageur traverse l'aéroport avec une valise",
+              "un voyageur traverse l'aeroport avec une valise"
+            ]
           },
           "es": {
             "display": "Un viajero atraviesa el aeropuerto con una maleta.",
-            "strictAnswers": ["un viajero atraviesa el aeropuerto con una maleta"],
-            "looseAnswers": ["un viajero atraviesa el aeropuerto con una maleta"]
+            "strictAnswers": [
+              "un viajero atraviesa el aeropuerto con una maleta"
+            ],
+            "looseAnswers": [
+              "un viajero atraviesa el aeropuerto con una maleta"
+            ]
+          },
+          "pl": {
+            "display": "Podróżny idzie przez lotnisko z walizką.",
+            "strictAnswers": [
+              "podróżny idzie przez lotnisko z walizką"
+            ],
+            "looseAnswers": [
+              "podróżny idzie przez lotnisko z walizką"
+            ]
           }
         }
       },
@@ -2612,13 +3453,32 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il pousse un chariot à bagages.",
-            "strictAnswers": ["il pousse un chariot à bagages"],
-            "looseAnswers": ["il pousse un chariot à bagages", "il pousse un chariot a bagages"]
+            "strictAnswers": [
+              "il pousse un chariot à bagages"
+            ],
+            "looseAnswers": [
+              "il pousse un chariot à bagages",
+              "il pousse un chariot a bagages"
+            ]
           },
           "es": {
             "display": "Él empuja un carrito de equipaje.",
-            "strictAnswers": ["él empuja un carrito de equipaje"],
-            "looseAnswers": ["él empuja un carrito de equipaje", "el empuja un carrito de equipaje"]
+            "strictAnswers": [
+              "él empuja un carrito de equipaje"
+            ],
+            "looseAnswers": [
+              "él empuja un carrito de equipaje",
+              "el empuja un carrito de equipaje"
+            ]
+          },
+          "pl": {
+            "display": "On pcha wózek bagażowy.",
+            "strictAnswers": [
+              "on pcha wózek bagażowy"
+            ],
+            "looseAnswers": [
+              "on pcha wózek bagażowy"
+            ]
           }
         }
       }
@@ -2628,7 +3488,9 @@ export const SCENES = [
     "id": "my-french",
     "name": "My French",
     "kind": "action",
-    "languages": ["fr"],
+    "languages": [
+      "fr"
+    ],
     "credit": "Built from recent French practice",
     "objects": [
       {
@@ -2639,13 +3501,21 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Je ne travaille de chez moi que le vendredi.",
-            "strictAnswers": ["je ne travaille de chez moi que le vendredi"],
-            "looseAnswers": ["je ne travaille de chez moi que le vendredi"]
+            "strictAnswers": [
+              "je ne travaille de chez moi que le vendredi"
+            ],
+            "looseAnswers": [
+              "je ne travaille de chez moi que le vendredi"
+            ]
           },
           "es": {
             "display": "Solo trabajo desde casa los viernes.",
-            "strictAnswers": ["solo trabajo desde casa los viernes"],
-            "looseAnswers": ["solo trabajo desde casa los viernes"]
+            "strictAnswers": [
+              "solo trabajo desde casa los viernes"
+            ],
+            "looseAnswers": [
+              "solo trabajo desde casa los viernes"
+            ]
           }
         }
       },
@@ -2657,13 +3527,21 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Je ne bois que du vin le soir.",
-            "strictAnswers": ["je ne bois que du vin le soir"],
-            "looseAnswers": ["je ne bois que du vin le soir"]
+            "strictAnswers": [
+              "je ne bois que du vin le soir"
+            ],
+            "looseAnswers": [
+              "je ne bois que du vin le soir"
+            ]
           },
           "es": {
             "display": "Solo bebo vino por la noche.",
-            "strictAnswers": ["solo bebo vino por la noche"],
-            "looseAnswers": ["solo bebo vino por la noche"]
+            "strictAnswers": [
+              "solo bebo vino por la noche"
+            ],
+            "looseAnswers": [
+              "solo bebo vino por la noche"
+            ]
           }
         }
       },
@@ -2675,13 +3553,21 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "J'ai l'habitude de travailler de chez moi.",
-            "strictAnswers": ["j'ai l'habitude de travailler de chez moi"],
-            "looseAnswers": ["j'ai l'habitude de travailler de chez moi"]
+            "strictAnswers": [
+              "j'ai l'habitude de travailler de chez moi"
+            ],
+            "looseAnswers": [
+              "j'ai l'habitude de travailler de chez moi"
+            ]
           },
           "es": {
             "display": "Estoy acostumbrado a trabajar desde casa.",
-            "strictAnswers": ["estoy acostumbrado a trabajar desde casa"],
-            "looseAnswers": ["estoy acostumbrado a trabajar desde casa"]
+            "strictAnswers": [
+              "estoy acostumbrado a trabajar desde casa"
+            ],
+            "looseAnswers": [
+              "estoy acostumbrado a trabajar desde casa"
+            ]
           }
         }
       },
@@ -2693,13 +3579,21 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Je viens de finir.",
-            "strictAnswers": ["je viens de finir"],
-            "looseAnswers": ["je viens de finir"]
+            "strictAnswers": [
+              "je viens de finir"
+            ],
+            "looseAnswers": [
+              "je viens de finir"
+            ]
           },
           "es": {
             "display": "Acabo de terminar.",
-            "strictAnswers": ["acabo de terminar"],
-            "looseAnswers": ["acabo de terminar"]
+            "strictAnswers": [
+              "acabo de terminar"
+            ],
+            "looseAnswers": [
+              "acabo de terminar"
+            ]
           }
         }
       },
@@ -2711,13 +3605,21 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "J'ai écouté de la musique pendant que je travaillais.",
-            "strictAnswers": ["j'ai écouté de la musique pendant que je travaillais"],
-            "looseAnswers": ["j'ai écouté de la musique pendant que je travaillais"]
+            "strictAnswers": [
+              "j'ai écouté de la musique pendant que je travaillais"
+            ],
+            "looseAnswers": [
+              "j'ai écouté de la musique pendant que je travaillais"
+            ]
           },
           "es": {
             "display": "Escuché música mientras trabajaba.",
-            "strictAnswers": ["escuché música mientras trabajaba"],
-            "looseAnswers": ["escuché música mientras trabajaba"]
+            "strictAnswers": [
+              "escuché música mientras trabajaba"
+            ],
+            "looseAnswers": [
+              "escuché música mientras trabajaba"
+            ]
           }
         }
       },
@@ -2729,13 +3631,22 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Même s'il pleut, j'irai.",
-            "strictAnswers": ["même s'il pleut, j'irai"],
-            "looseAnswers": ["même s'il pleut, j'irai", "meme s'il pleut j'irai"]
+            "strictAnswers": [
+              "même s'il pleut, j'irai"
+            ],
+            "looseAnswers": [
+              "même s'il pleut, j'irai",
+              "meme s'il pleut j'irai"
+            ]
           },
           "es": {
             "display": "Aunque llueva, iré.",
-            "strictAnswers": ["aunque llueva, iré"],
-            "looseAnswers": ["aunque llueva, iré"]
+            "strictAnswers": [
+              "aunque llueva, iré"
+            ],
+            "looseAnswers": [
+              "aunque llueva, iré"
+            ]
           }
         }
       },
@@ -2747,13 +3658,22 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Je me suis rendu compte que j'avais oublié mes clés.",
-            "strictAnswers": ["je me suis rendu compte que j'avais oublié mes clés"],
-            "looseAnswers": ["je me suis rendu compte que j'avais oublié mes clés", "je me suis rendu compte que j'avais oublie mes cles"]
+            "strictAnswers": [
+              "je me suis rendu compte que j'avais oublié mes clés"
+            ],
+            "looseAnswers": [
+              "je me suis rendu compte que j'avais oublié mes clés",
+              "je me suis rendu compte que j'avais oublie mes cles"
+            ]
           },
           "es": {
             "display": "Me di cuenta de que había olvidado mis llaves.",
-            "strictAnswers": ["me di cuenta de que había olvidado mis llaves"],
-            "looseAnswers": ["me di cuenta de que había olvidado mis llaves"]
+            "strictAnswers": [
+              "me di cuenta de que había olvidado mis llaves"
+            ],
+            "looseAnswers": [
+              "me di cuenta de que había olvidado mis llaves"
+            ]
           }
         }
       },
@@ -2765,13 +3685,21 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "J'ai failli rater le train.",
-            "strictAnswers": ["j'ai failli rater le train"],
-            "looseAnswers": ["j'ai failli rater le train"]
+            "strictAnswers": [
+              "j'ai failli rater le train"
+            ],
+            "looseAnswers": [
+              "j'ai failli rater le train"
+            ]
           },
           "es": {
             "display": "Casi pierdo el tren.",
-            "strictAnswers": ["casi pierdo el tren"],
-            "looseAnswers": ["casi pierdo el tren"]
+            "strictAnswers": [
+              "casi pierdo el tren"
+            ],
+            "looseAnswers": [
+              "casi pierdo el tren"
+            ]
           }
         }
       },
@@ -2783,13 +3711,22 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "J'étais fatigué, ce qui fait que je me suis couché tôt.",
-            "strictAnswers": ["j'étais fatigué, ce qui fait que je me suis couché tôt"],
-            "looseAnswers": ["j'étais fatigué ce qui fait que je me suis couché tôt", "j'etais fatigue ce qui fait que je me suis couche tot"]
+            "strictAnswers": [
+              "j'étais fatigué, ce qui fait que je me suis couché tôt"
+            ],
+            "looseAnswers": [
+              "j'étais fatigué ce qui fait que je me suis couché tôt",
+              "j'etais fatigue ce qui fait que je me suis couche tot"
+            ]
           },
           "es": {
             "display": "Estaba cansado, así que me acosté temprano.",
-            "strictAnswers": ["estaba cansado, así que me acosté temprano"],
-            "looseAnswers": ["estaba cansado, así que me acosté temprano"]
+            "strictAnswers": [
+              "estaba cansado, así que me acosté temprano"
+            ],
+            "looseAnswers": [
+              "estaba cansado, así que me acosté temprano"
+            ]
           }
         }
       },
@@ -2801,13 +3738,21 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Ce que j'aime, c'est l'ambiance.",
-            "strictAnswers": ["ce que j'aime, c'est l'ambiance"],
-            "looseAnswers": ["ce que j'aime c'est l'ambiance"]
+            "strictAnswers": [
+              "ce que j'aime, c'est l'ambiance"
+            ],
+            "looseAnswers": [
+              "ce que j'aime c'est l'ambiance"
+            ]
           },
           "es": {
             "display": "Lo que me gusta es el ambiente.",
-            "strictAnswers": ["lo que me gusta es el ambiente"],
-            "looseAnswers": ["lo que me gusta es el ambiente"]
+            "strictAnswers": [
+              "lo que me gusta es el ambiente"
+            ],
+            "looseAnswers": [
+              "lo que me gusta es el ambiente"
+            ]
           }
         }
       },
@@ -2819,13 +3764,21 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Ce qui me fait rire, c'est son accent.",
-            "strictAnswers": ["ce qui me fait rire, c'est son accent"],
-            "looseAnswers": ["ce qui me fait rire c'est son accent"]
+            "strictAnswers": [
+              "ce qui me fait rire, c'est son accent"
+            ],
+            "looseAnswers": [
+              "ce qui me fait rire c'est son accent"
+            ]
           },
           "es": {
             "display": "Lo que me hace reír es su acento.",
-            "strictAnswers": ["lo que me hace reír es su acento"],
-            "looseAnswers": ["lo que me hace reír es su acento"]
+            "strictAnswers": [
+              "lo que me hace reír es su acento"
+            ],
+            "looseAnswers": [
+              "lo que me hace reír es su acento"
+            ]
           }
         }
       },
@@ -2837,13 +3790,21 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "J'y vais toutes les semaines.",
-            "strictAnswers": ["j'y vais toutes les semaines"],
-            "looseAnswers": ["j'y vais toutes les semaines"]
+            "strictAnswers": [
+              "j'y vais toutes les semaines"
+            ],
+            "looseAnswers": [
+              "j'y vais toutes les semaines"
+            ]
           },
           "es": {
             "display": "Voy allí todas las semanas.",
-            "strictAnswers": ["voy allí todas las semanas"],
-            "looseAnswers": ["voy allí todas las semanas"]
+            "strictAnswers": [
+              "voy allí todas las semanas"
+            ],
+            "looseAnswers": [
+              "voy allí todas las semanas"
+            ]
           }
         }
       },
@@ -2855,13 +3816,21 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il faut que j'y aille.",
-            "strictAnswers": ["il faut que j'y aille"],
-            "looseAnswers": ["il faut que j'y aille"]
+            "strictAnswers": [
+              "il faut que j'y aille"
+            ],
+            "looseAnswers": [
+              "il faut que j'y aille"
+            ]
           },
           "es": {
             "display": "Tengo que ir allí.",
-            "strictAnswers": ["tengo que ir allí"],
-            "looseAnswers": ["tengo que ir allí"]
+            "strictAnswers": [
+              "tengo que ir allí"
+            ],
+            "looseAnswers": [
+              "tengo que ir allí"
+            ]
           }
         }
       },
@@ -2873,13 +3842,21 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Il faut que tu le fasses aujourd'hui.",
-            "strictAnswers": ["il faut que tu le fasses aujourd'hui"],
-            "looseAnswers": ["il faut que tu le fasses aujourd'hui"]
+            "strictAnswers": [
+              "il faut que tu le fasses aujourd'hui"
+            ],
+            "looseAnswers": [
+              "il faut que tu le fasses aujourd'hui"
+            ]
           },
           "es": {
             "display": "Tienes que hacerlo hoy.",
-            "strictAnswers": ["tienes que hacerlo hoy"],
-            "looseAnswers": ["tienes que hacerlo hoy"]
+            "strictAnswers": [
+              "tienes que hacerlo hoy"
+            ],
+            "looseAnswers": [
+              "tienes que hacerlo hoy"
+            ]
           }
         }
       },
@@ -2891,13 +3868,21 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Je la vois tous les dimanches.",
-            "strictAnswers": ["je la vois tous les dimanches"],
-            "looseAnswers": ["je la vois tous les dimanches"]
+            "strictAnswers": [
+              "je la vois tous les dimanches"
+            ],
+            "looseAnswers": [
+              "je la vois tous les dimanches"
+            ]
           },
           "es": {
             "display": "La veo todos los domingos.",
-            "strictAnswers": ["la veo todos los domingos"],
-            "looseAnswers": ["la veo todos los domingos"]
+            "strictAnswers": [
+              "la veo todos los domingos"
+            ],
+            "looseAnswers": [
+              "la veo todos los domingos"
+            ]
           }
         }
       },
@@ -2909,13 +3894,21 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Je lui parle toutes les semaines.",
-            "strictAnswers": ["je lui parle toutes les semaines"],
-            "looseAnswers": ["je lui parle toutes les semaines"]
+            "strictAnswers": [
+              "je lui parle toutes les semaines"
+            ],
+            "looseAnswers": [
+              "je lui parle toutes les semaines"
+            ]
           },
           "es": {
             "display": "Hablo con él todas las semanas.",
-            "strictAnswers": ["hablo con él todas las semanas"],
-            "looseAnswers": ["hablo con él todas las semanas"]
+            "strictAnswers": [
+              "hablo con él todas las semanas"
+            ],
+            "looseAnswers": [
+              "hablo con él todas las semanas"
+            ]
           }
         }
       },
@@ -2927,13 +3920,21 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Ils vont nous l'envoyer.",
-            "strictAnswers": ["ils vont nous l'envoyer"],
-            "looseAnswers": ["ils vont nous l'envoyer"]
+            "strictAnswers": [
+              "ils vont nous l'envoyer"
+            ],
+            "looseAnswers": [
+              "ils vont nous l'envoyer"
+            ]
           },
           "es": {
             "display": "Nos lo van a enviar.",
-            "strictAnswers": ["nos lo van a enviar"],
-            "looseAnswers": ["nos lo van a enviar"]
+            "strictAnswers": [
+              "nos lo van a enviar"
+            ],
+            "looseAnswers": [
+              "nos lo van a enviar"
+            ]
           }
         }
       },
@@ -2945,13 +3946,22 @@ export const SCENES = [
         "terms": {
           "fr": {
             "display": "Je n'y suis jamais allé.",
-            "strictAnswers": ["je n'y suis jamais allé"],
-            "looseAnswers": ["je n'y suis jamais allé", "je n'y suis jamais alle"]
+            "strictAnswers": [
+              "je n'y suis jamais allé"
+            ],
+            "looseAnswers": [
+              "je n'y suis jamais allé",
+              "je n'y suis jamais alle"
+            ]
           },
           "es": {
             "display": "Nunca he estado allí.",
-            "strictAnswers": ["nunca he estado allí"],
-            "looseAnswers": ["nunca he estado allí"]
+            "strictAnswers": [
+              "nunca he estado allí"
+            ],
+            "looseAnswers": [
+              "nunca he estado allí"
+            ]
           }
         }
       }
@@ -2961,8 +3971,9 @@ export const SCENES = [
     "id": "my-polish",
     "name": "My Polish",
     "kind": "action",
-    "languages": ["pl"],
-    "textOnly": true,
+    "languages": [
+      "pl"
+    ],
     "kicker": "Your Polish",
     "description": "Useful Polish for greetings, cafés, tickets and getting around.",
     "credit": "Built for introductory Polish practice",
@@ -2971,99 +3982,287 @@ export const SCENES = [
         "id": "polish_good_morning",
         "level": "A",
         "concept": "Good morning / hello",
-        "terms": { "pl": { "display": "Dzień dobry", "strictAnswers": ["dzień dobry"], "looseAnswers": ["dzień dobry", "dzien dobry"] } }
+        "terms": {
+          "pl": {
+            "display": "Dzień dobry",
+            "strictAnswers": [
+              "dzień dobry"
+            ],
+            "looseAnswers": [
+              "dzień dobry",
+              "dzien dobry"
+            ]
+          }
+        },
+        "asset": "https://images.pexels.com/photos/1117484/pexels-photo-1117484.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_hi_bye",
         "level": "A",
         "concept": "Hi / bye",
-        "terms": { "pl": { "display": "Cześć", "strictAnswers": ["cześć"], "looseAnswers": ["cześć", "czesc"] } }
+        "terms": {
+          "pl": {
+            "display": "Cześć",
+            "strictAnswers": [
+              "cześć"
+            ],
+            "looseAnswers": [
+              "cześć",
+              "czesc"
+            ]
+          }
+        },
+        "asset": "https://images.pexels.com/photos/30981181/pexels-photo-30981181.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_thank_you",
         "level": "A",
         "concept": "Thank you",
-        "terms": { "pl": { "display": "Dziękuję", "strictAnswers": ["dziękuję"], "looseAnswers": ["dziękuję", "dziekuje"] } }
+        "terms": {
+          "pl": {
+            "display": "Dziękuję",
+            "strictAnswers": [
+              "dziękuję"
+            ],
+            "looseAnswers": [
+              "dziękuję",
+              "dziekuje"
+            ]
+          }
+        },
+        "asset": "https://images.pexels.com/photos/17501680/pexels-photo-17501680.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_please",
         "level": "A",
         "concept": "Please / you're welcome",
-        "terms": { "pl": { "display": "Proszę", "strictAnswers": ["proszę"], "looseAnswers": ["proszę", "prosze"] } }
+        "terms": {
+          "pl": {
+            "display": "Proszę",
+            "strictAnswers": [
+              "proszę"
+            ],
+            "looseAnswers": [
+              "proszę",
+              "prosze"
+            ]
+          }
+        },
+        "asset": "https://images.pexels.com/photos/3951656/pexels-photo-3951656.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_excuse_me",
         "level": "A",
         "concept": "Sorry / excuse me",
-        "terms": { "pl": { "display": "Przepraszam", "strictAnswers": ["przepraszam"], "looseAnswers": ["przepraszam"] } }
+        "terms": {
+          "pl": {
+            "display": "Przepraszam",
+            "strictAnswers": [
+              "przepraszam"
+            ],
+            "looseAnswers": [
+              "przepraszam"
+            ]
+          }
+        },
+        "asset": "https://images.pexels.com/photos/31196457/pexels-photo-31196457.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_yes",
         "level": "A",
         "concept": "Yes",
-        "terms": { "pl": { "display": "Tak", "strictAnswers": ["tak"], "looseAnswers": ["tak"] } }
+        "terms": {
+          "pl": {
+            "display": "Tak",
+            "strictAnswers": [
+              "tak"
+            ],
+            "looseAnswers": [
+              "tak"
+            ]
+          }
+        },
+        "asset": "https://images.pexels.com/photos/7963831/pexels-photo-7963831.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_no",
         "level": "A",
         "concept": "No",
-        "terms": { "pl": { "display": "Nie", "strictAnswers": ["nie"], "looseAnswers": ["nie"] } }
+        "terms": {
+          "pl": {
+            "display": "Nie",
+            "strictAnswers": [
+              "nie"
+            ],
+            "looseAnswers": [
+              "nie"
+            ]
+          }
+        },
+        "asset": "https://images.pexels.com/photos/3783086/pexels-photo-3783086.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_dont_speak",
         "level": "A",
         "concept": "I don't speak Polish",
-        "terms": { "pl": { "display": "Nie mówię po polsku.", "strictAnswers": ["nie mówię po polsku"], "looseAnswers": ["nie mówię po polsku", "nie mowie po polsku"] } }
+        "terms": {
+          "pl": {
+            "display": "Nie mówię po polsku.",
+            "strictAnswers": [
+              "nie mówię po polsku"
+            ],
+            "looseAnswers": [
+              "nie mówię po polsku",
+              "nie mowie po polsku"
+            ]
+          }
+        },
+        "asset": "https://images.pexels.com/photos/30981181/pexels-photo-30981181.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_speak_english",
         "level": "B",
         "concept": "Do you speak English?",
-        "terms": { "pl": { "display": "Czy mówi pan po angielsku?", "strictAnswers": ["czy mówi pan po angielsku"], "looseAnswers": ["czy mówi pan po angielsku", "czy mowi pan po angielsku", "czy mówi pani po angielsku", "czy mowi pani po angielsku"] } }
+        "terms": {
+          "pl": {
+            "display": "Czy mówi pan po angielsku?",
+            "strictAnswers": [
+              "czy mówi pan po angielsku"
+            ],
+            "looseAnswers": [
+              "czy mówi pan po angielsku",
+              "czy mowi pan po angielsku",
+              "czy mówi pani po angielsku",
+              "czy mowi pani po angielsku"
+            ]
+          }
+        },
+        "asset": "https://images.pexels.com/photos/18427240/pexels-photo-18427240.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_id_like",
         "level": "B",
         "concept": "I'd like… / …please",
-        "terms": { "pl": { "display": "Poproszę…", "strictAnswers": ["poproszę"], "looseAnswers": ["poproszę", "poprosze"] } }
+        "terms": {
+          "pl": {
+            "display": "Poproszę…",
+            "strictAnswers": [
+              "poproszę"
+            ],
+            "looseAnswers": [
+              "poproszę",
+              "poprosze"
+            ]
+          }
+        },
+        "asset": "https://images.pexels.com/photos/17501680/pexels-photo-17501680.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_how_much",
         "level": "B",
         "concept": "How much does it cost?",
-        "terms": { "pl": { "display": "Ile to kosztuje?", "strictAnswers": ["ile to kosztuje"], "looseAnswers": ["ile to kosztuje"] } }
+        "terms": {
+          "pl": {
+            "display": "Ile to kosztuje?",
+            "strictAnswers": [
+              "ile to kosztuje"
+            ],
+            "looseAnswers": [
+              "ile to kosztuje"
+            ]
+          }
+        },
+        "asset": "https://images.pexels.com/photos/8554381/pexels-photo-8554381.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_toilet",
         "level": "B",
         "concept": "Where is the toilet?",
-        "terms": { "pl": { "display": "Gdzie jest toaleta?", "strictAnswers": ["gdzie jest toaleta"], "looseAnswers": ["gdzie jest toaleta"] } }
+        "terms": {
+          "pl": {
+            "display": "Gdzie jest toaleta?",
+            "strictAnswers": [
+              "gdzie jest toaleta"
+            ],
+            "looseAnswers": [
+              "gdzie jest toaleta"
+            ]
+          }
+        },
+        "asset": "https://images.pexels.com/photos/30981181/pexels-photo-30981181.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_two_tickets",
         "level": "B",
         "concept": "Two tickets, please",
-        "terms": { "pl": { "display": "Dwa bilety, proszę.", "strictAnswers": ["dwa bilety proszę"], "looseAnswers": ["dwa bilety proszę", "dwa bilety prosze"] } }
+        "terms": {
+          "pl": {
+            "display": "Dwa bilety, proszę.",
+            "strictAnswers": [
+              "dwa bilety proszę"
+            ],
+            "looseAnswers": [
+              "dwa bilety proszę",
+              "dwa bilety prosze"
+            ]
+          }
+        },
+        "asset": "https://images.pexels.com/photos/8554381/pexels-photo-8554381.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_for_here",
         "level": "B",
         "concept": "For here / eat in",
-        "terms": { "pl": { "display": "Na miejscu", "strictAnswers": ["na miejscu"], "looseAnswers": ["na miejscu"] } }
+        "terms": {
+          "pl": {
+            "display": "Na miejscu",
+            "strictAnswers": [
+              "na miejscu"
+            ],
+            "looseAnswers": [
+              "na miejscu"
+            ]
+          }
+        },
+        "asset": "https://images.pexels.com/photos/3951656/pexels-photo-3951656.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_takeaway",
         "level": "B",
         "concept": "Takeaway / to go",
-        "terms": { "pl": { "display": "Na wynos", "strictAnswers": ["na wynos"], "looseAnswers": ["na wynos"] } }
+        "terms": {
+          "pl": {
+            "display": "Na wynos",
+            "strictAnswers": [
+              "na wynos"
+            ],
+            "looseAnswers": [
+              "na wynos"
+            ]
+          }
+        },
+        "asset": "https://images.pexels.com/photos/7299877/pexels-photo-7299877.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_by_card",
         "level": "B",
         "concept": "By card, please",
-        "terms": { "pl": { "display": "Kartą, proszę.", "strictAnswers": ["kartą proszę"], "looseAnswers": ["kartą proszę", "karta prosze", "karta proszę", "kartą prosze"] } }
+        "terms": {
+          "pl": {
+            "display": "Kartą, proszę.",
+            "strictAnswers": [
+              "kartą proszę"
+            ],
+            "looseAnswers": [
+              "kartą proszę",
+              "karta prosze",
+              "karta proszę",
+              "kartą prosze"
+            ]
+          }
+        },
+        "asset": "https://images.pexels.com/photos/8554381/pexels-photo-8554381.jpeg?auto=compress&cs=tinysrgb&w=1200"
       }
     ]
   }
-
 ];
