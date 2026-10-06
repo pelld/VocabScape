@@ -3975,7 +3975,7 @@ export const SCENES = [
       "pl"
     ],
     "kicker": "Your Polish",
-    "description": "Useful Polish for greetings, cafés, tickets and getting around.",
+    "description": "A small, focused set of useful Polish for greetings, tickets, getting around and the drinks you will actually order.",
     "credit": "Built for introductory Polish practice",
     "objects": [
       {
@@ -3997,22 +3997,21 @@ export const SCENES = [
         "asset": "https://images.pexels.com/photos/16040173/pexels-photo-16040173.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
-        "id": "polish_hi_bye",
+        "id": "polish_goodbye",
         "level": "A",
-        "concept": "Hi / bye",
+        "concept": "Goodbye",
         "terms": {
           "pl": {
-            "display": "Cześć",
+            "display": "Do widzenia",
             "strictAnswers": [
-              "cześć"
+              "do widzenia"
             ],
             "looseAnswers": [
-              "cześć",
-              "czesc"
+              "do widzenia"
             ]
           }
         },
-        "asset": "https://images.pexels.com/photos/5957076/pexels-photo-5957076.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        "asset": "https://images.pexels.com/photos/5917845/pexels-photo-5917845.jpeg?auto=compress&dpr=1&h=750&w=1260"
       },
       {
         "id": "polish_thank_you",
@@ -4031,24 +4030,6 @@ export const SCENES = [
           }
         },
         "asset": "https://images.pexels.com/photos/6829507/pexels-photo-6829507.jpeg?auto=compress&cs=tinysrgb&w=1200"
-      },
-      {
-        "id": "polish_please",
-        "level": "A",
-        "concept": "Please / you're welcome",
-        "terms": {
-          "pl": {
-            "display": "Proszę",
-            "strictAnswers": [
-              "proszę"
-            ],
-            "looseAnswers": [
-              "proszę",
-              "prosze"
-            ]
-          }
-        },
-        "asset": "https://images.pexels.com/photos/4921164/pexels-photo-4921164.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_excuse_me",
@@ -4158,6 +4139,60 @@ export const SCENES = [
         "asset": "https://images.pexels.com/photos/13735959/pexels-photo-13735959.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
+        "id": "polish_tap_water",
+        "level": "B",
+        "concept": "Tap water, please",
+        "terms": {
+          "pl": {
+            "display": "Poproszę wodę z kranu.",
+            "strictAnswers": [
+              "poproszę wodę z kranu"
+            ],
+            "looseAnswers": [
+              "poproszę wodę z kranu",
+              "poprosze wode z kranu"
+            ]
+          }
+        },
+        "asset": "https://images.pexels.com/photos/14565726/pexels-photo-14565726.jpeg?auto=compress&dpr=1&h=750&w=1260"
+      },
+      {
+        "id": "polish_juice",
+        "level": "B",
+        "concept": "Juice, please",
+        "terms": {
+          "pl": {
+            "display": "Poproszę sok.",
+            "strictAnswers": [
+              "poproszę sok"
+            ],
+            "looseAnswers": [
+              "poproszę sok",
+              "poprosze sok"
+            ]
+          }
+        },
+        "asset": "https://images.pexels.com/photos/30371318/pexels-photo-30371318/free-photo-of-glass-of-orange-juice-on-cafe-table.jpeg?auto=compress&dpr=1&h=750&w=1260"
+      },
+      {
+        "id": "polish_tap_water_and_juice",
+        "level": "B",
+        "concept": "Tap water and a juice, please",
+        "terms": {
+          "pl": {
+            "display": "Poproszę wodę z kranu i sok.",
+            "strictAnswers": [
+              "poproszę wodę z kranu i sok"
+            ],
+            "looseAnswers": [
+              "poproszę wodę z kranu i sok",
+              "poprosze wode z kranu i sok"
+            ]
+          }
+        },
+        "asset": "https://images.pexels.com/photos/6331149/pexels-photo-6331149.jpeg?auto=compress&dpr=1&h=750&w=1260"
+      },
+      {
         "id": "polish_how_much",
         "level": "B",
         "concept": "How much does it cost?",
@@ -4208,40 +4243,6 @@ export const SCENES = [
           }
         },
         "asset": "https://images.pexels.com/photos/14344455/pexels-photo-14344455.jpeg?auto=compress&cs=tinysrgb&w=1200"
-      },
-      {
-        "id": "polish_for_here",
-        "level": "B",
-        "concept": "For here / eat in",
-        "terms": {
-          "pl": {
-            "display": "Na miejscu",
-            "strictAnswers": [
-              "na miejscu"
-            ],
-            "looseAnswers": [
-              "na miejscu"
-            ]
-          }
-        },
-        "asset": "https://images.pexels.com/photos/15098824/pexels-photo-15098824.jpeg?auto=compress&cs=tinysrgb&w=1200"
-      },
-      {
-        "id": "polish_takeaway",
-        "level": "B",
-        "concept": "Takeaway / to go",
-        "terms": {
-          "pl": {
-            "display": "Na wynos",
-            "strictAnswers": [
-              "na wynos"
-            ],
-            "looseAnswers": [
-              "na wynos"
-            ]
-          }
-        },
-        "asset": "https://images.pexels.com/photos/6684779/pexels-photo-6684779.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       {
         "id": "polish_by_card",
