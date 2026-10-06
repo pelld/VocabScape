@@ -225,7 +225,7 @@
   <title>VocabScape · Visual language cards</title>
   <meta
     name="description"
-    content="Learn French and Spanish from visual flashcards and vocabulary scenes."
+    content="Learn French, Spanish and introductory Polish with visual flashcards and vocabulary scenes."
   />
 </svelte:head>
 
