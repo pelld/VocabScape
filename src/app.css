@@ -1292,3 +1292,96 @@ button { color: inherit; }
     display: none;
   }
 }
+
+
+/* --------------------------------------------------------------------------
+   Custom card selection
+   -------------------------------------------------------------------------- */
+
+.progress-selection-bar {
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--line);
+  background: white;
+  color: #6f7f91;
+  font-size: 0.74rem;
+  font-weight: 750;
+}
+
+.progress-selection-bar span {
+  margin-right: auto;
+}
+
+.progress-selection-bar button,
+.clear-selection-link {
+  border: 1px solid #d7e0e8;
+  border-radius: 8px;
+  padding: 5px 9px;
+  background: white;
+  color: #405267;
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-weight: 850;
+}
+
+.progress-selection-bar .study-selected-button {
+  border-color: #315fae;
+  background: var(--blue);
+  color: white;
+}
+
+.progress-selection-bar .study-selected-button:disabled {
+  border-color: #d7e0e8;
+  background: #eef3f6;
+  color: #9aa6b3;
+  cursor: not-allowed;
+}
+
+.card-selection {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.card-selection input {
+  width: 16px;
+  height: 16px;
+  margin: 2px 0 0;
+  flex: 0 0 auto;
+  accent-color: var(--blue);
+}
+
+.card-selection span {
+  min-width: 0;
+}
+
+.custom-selection-note {
+  color: #426999 !important;
+  font-weight: 850;
+}
+
+.clear-selection-link {
+  padding: 3px 7px;
+  border: 0;
+  background: transparent;
+  color: #4078d8;
+}
+
+.clear-selection-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 820px) {
+  .progress-selection-bar {
+    padding: 9px 16px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .progress-selection-bar span {
+    margin-right: 4px;
+  }
+}
