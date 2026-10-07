@@ -35,6 +35,8 @@
   let progressOpen = false;
   let focusMessage = "";
   let attemptedThisCard = false;
+  let selectedCardIds: string[] = [];
+  let activeSelectionIds: string[] | null = null;
 
   $: currentCard = filteredCards[currentIndex] ?? filteredCards[0];
   $: currentTerm = currentCard?.terms?.[language];
@@ -80,8 +82,16 @@
     return attempts ? Math.round((state.correct / attempts) * 100) : null;
   }
 
-  function cardsForStudy(deck: any, level: Level, threshold: StudyThreshold) {
+  function baseCardsForStudy(deck: any, level: Level) {
     const cards = cardsForLevel(deck, level);
+    if (!activeSelectionIds) return cards;
+
+    const selected = new Set(activeSelectionIds);
+    return cards.filter((card: any) => selected.has(card.id));
+  }
+
+  function cardsForStudy(deck: any, level: Level, threshold: StudyThreshold) {
+    const cards = baseCardsForStudy(deck, level);
     if (threshold === null) return cards;
 
     return cards.filter((card: any) => {
@@ -220,9 +230,11 @@
     const cards = cardsForStudy(currentDeck, selectedLevel, studyThreshold);
 
     if (cards.length === 0 && studyThreshold !== null) {
-      focusMessage = `No cards are currently below ${studyThreshold}% in this level, so all cards are shown.`;
+      focusMessage = activeSelectionIds
+        ? `No selected cards are currently below ${studyThreshold}%, so all selected cards are shown.`
+        : `No cards are currently below ${studyThreshold}% in this level, so all cards are shown.`;
       studyThreshold = null;
-      filteredCards = cardsForLevel(currentDeck, selectedLevel);
+      filteredCards = baseCardsForStudy(currentDeck, selectedLevel);
     } else {
       focusMessage = "";
       filteredCards = cards;
@@ -248,9 +260,11 @@
       if (refreshed.length) {
         filteredCards = refreshed;
       } else if (studyThreshold !== null) {
-        focusMessage = `No cards remain below ${studyThreshold}% — switching back to all cards.`;
+        focusMessage = activeSelectionIds
+          ? `No selected cards remain below ${studyThreshold}% — showing your full selection.`
+          : `No cards remain below ${studyThreshold}% — switching back to all cards.`;
         studyThreshold = null;
-        filteredCards = cardsForLevel(currentDeck, selectedLevel);
+        filteredCards = baseCardsForStudy(currentDeck, selectedLevel);
       }
 
       const order = orderedIndices(filteredCards, studyThreshold, currentIndex);
@@ -328,6 +342,8 @@
     currentDeck = availableDecks[deckIndex];
     selectedLevel = "ALL";
     studyThreshold = null;
+    selectedCardIds = [];
+    activeSelectionIds = null;
     progressOpen = false;
     resetDeck();
   }
@@ -337,12 +353,16 @@
     currentDeck = availableDecks[index];
     selectedLevel = "ALL";
     studyThreshold = null;
+    selectedCardIds = [];
+    activeSelectionIds = null;
     progressOpen = false;
     resetDeck();
   }
 
   function switchLevel(level: Level) {
     selectedLevel = level;
+    activeSelectionIds = null;
+    selectedCardIds = [];
     resetDeck();
   }
 
@@ -354,6 +374,8 @@
   function studyCard(card: any) {
     selectedLevel = "ALL";
     studyThreshold = null;
+    activeSelectionIds = null;
+    selectedCardIds = [];
     filteredCards = cardsForLevel(currentDeck, "ALL");
     currentIndex = Math.max(0, filteredCards.findIndex((item: any) => item.id === card.id));
     queue = shuffledIndices(filteredCards.length).filter((index: number) => index !== currentIndex);
@@ -366,6 +388,46 @@
     progressOpen = false;
     if (answerInput) answerInput.value = "";
     focusAnswer();
+  }
+
+  function openProgress() {
+    selectedCardIds = activeSelectionIds
+      ? [...activeSelectionIds]
+      : currentDeck.objects.map((card: any) => card.id);
+    progressOpen = true;
+  }
+
+  function toggleCardSelection(cardId: string) {
+    selectedCardIds = selectedCardIds.includes(cardId)
+      ? selectedCardIds.filter((id) => id !== cardId)
+      : [...selectedCardIds, cardId];
+  }
+
+  function selectAllCards() {
+    selectedCardIds = currentDeck.objects.map((card: any) => card.id);
+  }
+
+  function clearCardSelection() {
+    selectedCardIds = [];
+  }
+
+  function studySelectedCards() {
+    if (!selectedCardIds.length) return;
+
+    activeSelectionIds = [...selectedCardIds];
+    selectedLevel = "ALL";
+    studyThreshold = null;
+    progressOpen = false;
+    resetDeck();
+    focusMessage = `Studying ${activeSelectionIds.length} selected card${activeSelectionIds.length === 1 ? "" : "s"}.`;
+  }
+
+  function clearCustomSelection() {
+    activeSelectionIds = null;
+    selectedCardIds = [];
+    selectedLevel = "ALL";
+    studyThreshold = null;
+    resetDeck();
   }
 
   function handleWindowKeydown(event: KeyboardEvent) {
@@ -472,7 +534,7 @@
           <span><strong>{deckStats.wrong}</strong> incorrect</span>
           <span><strong>{deckStats.accuracy === null ? "—" : `${deckStats.accuracy}%`}</strong> accuracy</span>
           <span><strong>{deckStats.mastered}</strong> secure</span>
-          <button class="progress-link" onclick={() => progressOpen = true}>Details</button>
+          <button class="progress-link" onclick={openProgress}>Details</button>
         </div>
 
         <div class="learning-progress" aria-label={`${deckStats.seen} seen and ${deckStats.mastered} mastered out of ${deckStats.total}`}>
@@ -488,7 +550,10 @@
             <button class:active={studyThreshold === 70} onclick={() => setStudyThreshold(70)}>&lt;70%</button>
             <button class:active={studyThreshold === 90} onclick={() => setStudyThreshold(90)}>&lt;90%</button>
           </div>
-          {#if studyThreshold !== null}
+          {#if activeSelectionIds}
+            <small class="custom-selection-note">{activeSelectionIds.length} selected</small>
+            <button class="clear-selection-link" onclick={clearCustomSelection}>All cards</button>
+          {:else if studyThreshold !== null}
             <small>{filteredCards.length} cards · weakest first · refreshes next round</small>
           {/if}
         </div>
@@ -553,6 +618,15 @@
           <button onclick={() => { setStudyThreshold(90); progressOpen = false; }}>&lt;90%</button>
         </div>
 
+        <div class="progress-selection-bar">
+          <span><strong>{selectedCardIds.length}</strong> of {currentDeck.objects.length} selected</span>
+          <button onclick={selectAllCards}>Select all</button>
+          <button onclick={clearCardSelection}>Clear</button>
+          <button class="study-selected-button" disabled={selectedCardIds.length === 0} onclick={studySelectedCards}>
+            Study selected
+          </button>
+        </div>
+
         <div class="progress-table-wrap">
           <table class="progress-table">
             <thead>
@@ -569,8 +643,17 @@
               {#each progressRows as row}
                 <tr>
                   <td>
-                    <strong>{row.card.concept}</strong>
-                    <small>{row.target}</small>
+                    <label class="card-selection">
+                      <input
+                        type="checkbox"
+                        checked={selectedCardIds.includes(row.card.id)}
+                        onchange={() => toggleCardSelection(row.card.id)}
+                      />
+                      <span>
+                        <strong>{row.card.concept}</strong>
+                        <small>{row.target}</small>
+                      </span>
+                    </label>
                   </td>
                   <td>{row.attempts}</td>
                   <td>{row.correct}</td>
