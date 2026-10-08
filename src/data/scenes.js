@@ -4267,6 +4267,6 @@ export const SCENES = [
         "asset": "https://images.pexels.com/photos/8475155/pexels-photo-8475155.jpeg?auto=compress&cs=tinysrgb&w=1200"
       }
     ]
-  }
+  },
   FAMILIAR_FRENCH_DECK
 ];
