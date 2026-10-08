@@ -1,3 +1,5 @@
+import { FAMILIAR_FRENCH_DECK } from "./familiarFrench.js";
+
 export const SCENES = [
   {
     "id": "garden",
@@ -4266,4 +4268,5 @@ export const SCENES = [
       }
     ]
   }
+  FAMILIAR_FRENCH_DECK
 ];
