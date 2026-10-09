@@ -434,11 +434,20 @@
     if (event.key === "Escape" && progressOpen) progressOpen = false;
   }
 
+  function answerKind() {
+    if (currentDeck.id === "polish-numbers") return "number";
+    const answer = (currentTerm?.display ?? "").trim().replace(/[.!?…]+$/, "");
+    return answer.split(/\s+/).length > 1 ? "phrase" : "word";
+  }
+
   function answerPlaceholder() {
-    if (language === "fr") return "Type the French sentence…";
-    if (language === "es") return "Type the Spanish sentence…";
-    if (language === "pl") return "Type the Polish sentence…";
-    return "Type your answer…";
+    const name = languages[language]?.name ?? "target language";
+    return `Type the ${name} ${answerKind()}…`;
+  }
+
+  function promptLabel() {
+    if (currentDeck.id === "polish-numbers") return "How many? Write the number in Polish";
+    return `Translate this ${answerKind() === "word" ? "word" : "phrase"}`;
   }
 
   resetDeck();
@@ -570,7 +579,7 @@
         {/if}
 
         <div class="card-prompt">
-          <span class="prompt-label">{currentDeck.id === "polish-numbers" ? "How many? Write the number in Polish" : "Translate this sentence"} <b class="level-badge">Level {currentCard.level ?? "A"}</b></span>
+          <span class="prompt-label">{promptLabel()} <b class="level-badge">Level {currentCard.level ?? "A"}</b></span>
           <h1>{currentCard.concept}</h1>
         </div>
 
@@ -581,7 +590,7 @@
             autocomplete="off"
             autocapitalize="off"
             spellcheck="false"
-            placeholder={currentDeck.id === "polish-numbers" ? "Type the Polish number…" : language === "pl" ? "Type the Polish sentence…" : answerPlaceholder()}
+            placeholder={answerPlaceholder()}
             onkeydown={handleKeydown}
           />
           <button class="primary" onclick={checkAnswer}>Check</button>
