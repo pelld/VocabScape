@@ -192,7 +192,6 @@ export const FAMILIAR_FRENCH_DECK = {
     },
     {
       "id": "familiar_10",
-      "asset": "https://images.pexels.com/photos/20241142/pexels-photo-20241142.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "concept": "a mess",
       "level": "A",
       "terms": {
