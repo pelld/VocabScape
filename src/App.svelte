@@ -434,21 +434,9 @@
     if (event.key === "Escape" && progressOpen) progressOpen = false;
   }
 
-  function answerKind() {
-    if (currentDeck.id === "polish-numbers") return "number";
-    const answer = (currentTerm?.display ?? "").trim().replace(/[.!?…]+$/, "");
-    return answer.split(/\s+/).length > 1 ? "phrase" : "word";
-  }
-
-  function answerPlaceholder() {
-    const name = languages[language]?.name ?? "target language";
-    return `Type the ${name} ${answerKind()}…`;
-  }
-
-  function promptLabel() {
-    if (currentDeck.id === "polish-numbers") return "How many? Write the number in Polish";
-    return `Translate this ${answerKind() === "word" ? "word" : "phrase"}`;
-  }
+  $: answerKind = currentDeck.id === "polish-numbers" ? "number" : (currentTerm?.display ?? "").trim().replace(/[.!?…]+$/, "").split(/\s+/).length > 1 ? "phrase" : "word";
+  $: placeholderText = `Type the ${languages[language]?.name ?? "target language"} ${answerKind}…`;
+  $: promptText = currentDeck.id === "polish-numbers" ? "How many? Write the number in Polish" : `Translate this ${answerKind === "word" ? "word" : "phrase"}`;
 
   resetDeck();
 </script>
@@ -579,7 +567,7 @@
         {/if}
 
         <div class="card-prompt">
-          <span class="prompt-label">{promptLabel()} <b class="level-badge">Level {currentCard.level ?? "A"}</b></span>
+          <span class="prompt-label">{promptText} <b class="level-badge">Level {currentCard.level ?? "A"}</b></span>
           <h1>{currentCard.concept}</h1>
         </div>
 
@@ -590,7 +578,7 @@
             autocomplete="off"
             autocapitalize="off"
             spellcheck="false"
-            placeholder={answerPlaceholder()}
+            placeholder={placeholderText}
             onkeydown={handleKeydown}
           />
           <button class="primary" onclick={checkAnswer}>Check</button>
