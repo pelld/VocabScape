@@ -5,13 +5,14 @@ export const FAMILIAR_FRENCH_DECK = {
   "languages": [
     "fr"
   ],
-  "textOnly": true,
+  "textOnly": false,
   "kicker": "Le registre familier · B1",
   "description": "Everyday informal French vocabulary from your lesson. Translate the English meaning into French.",
   "credit": "Registre familier lesson (9-page PDF)",
   "objects": [
     {
       "id": "familiar_0",
+      "asset": "https://images.pexels.com/photos/9718897/pexels-photo-9718897.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "concept": "a car",
       "level": "A",
       "terms": {
@@ -30,6 +31,7 @@ export const FAMILIAR_FRENCH_DECK = {
     },
     {
       "id": "familiar_1",
+      "asset": "https://images.pexels.com/photos/9718897/pexels-photo-9718897.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "concept": "a car",
       "level": "A",
       "terms": {
@@ -48,6 +50,7 @@ export const FAMILIAR_FRENCH_DECK = {
     },
     {
       "id": "familiar_2",
+      "asset": "https://images.pexels.com/photos/6762869/pexels-photo-6762869.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "concept": "a doctor",
       "level": "A",
       "terms": {
@@ -64,6 +67,7 @@ export const FAMILIAR_FRENCH_DECK = {
     },
     {
       "id": "familiar_3",
+      "asset": "https://images.pexels.com/photos/10376035/pexels-photo-10376035.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "concept": "work / a job",
       "level": "A",
       "terms": {
@@ -82,6 +86,7 @@ export const FAMILIAR_FRENCH_DECK = {
     },
     {
       "id": "familiar_4",
+      "asset": "https://images.pexels.com/photos/10376035/pexels-photo-10376035.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "concept": "work / a job",
       "level": "A",
       "terms": {
@@ -100,6 +105,7 @@ export const FAMILIAR_FRENCH_DECK = {
     },
     {
       "id": "familiar_5",
+      "asset": "https://images.pexels.com/photos/7031404/pexels-photo-7031404.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "concept": "a house",
       "level": "A",
       "terms": {
@@ -116,6 +122,7 @@ export const FAMILIAR_FRENCH_DECK = {
     },
     {
       "id": "familiar_6",
+      "asset": "https://images.pexels.com/photos/15086603/pexels-photo-15086603.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "concept": "a restaurant",
       "level": "A",
       "terms": {
@@ -132,6 +139,7 @@ export const FAMILIAR_FRENCH_DECK = {
     },
     {
       "id": "familiar_7",
+      "asset": "https://images.pexels.com/photos/15559786/pexels-photo-15559786.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "concept": "a book",
       "level": "A",
       "terms": {
@@ -148,6 +156,7 @@ export const FAMILIAR_FRENCH_DECK = {
     },
     {
       "id": "familiar_8",
+      "asset": "https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "concept": "ten euros",
       "level": "A",
       "terms": {
@@ -166,6 +175,7 @@ export const FAMILIAR_FRENCH_DECK = {
     },
     {
       "id": "familiar_9",
+      "asset": "https://images.pexels.com/photos/3371398/pexels-photo-3371398.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "concept": "water",
       "level": "A",
       "terms": {
@@ -182,6 +192,7 @@ export const FAMILIAR_FRENCH_DECK = {
     },
     {
       "id": "familiar_10",
+      "asset": "https://images.pexels.com/photos/20241142/pexels-photo-20241142.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "concept": "a mess",
       "level": "A",
       "terms": {
@@ -198,6 +209,7 @@ export const FAMILIAR_FRENCH_DECK = {
     },
     {
       "id": "familiar_11",
+      "asset": "https://images.pexels.com/photos/3756513/pexels-photo-3756513.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "concept": "money",
       "level": "A",
       "terms": {
@@ -230,6 +242,7 @@ export const FAMILIAR_FRENCH_DECK = {
     },
     {
       "id": "familiar_13",
+      "asset": "https://images.pexels.com/photos/32187165/pexels-photo-32187165.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "concept": "a police officer",
       "level": "A",
       "terms": {
@@ -246,6 +259,7 @@ export const FAMILIAR_FRENCH_DECK = {
     },
     {
       "id": "familiar_14",
+      "asset": "https://images.pexels.com/photos/9255726/pexels-photo-9255726.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "concept": "friends",
       "level": "A",
       "terms": {
