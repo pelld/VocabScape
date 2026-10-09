@@ -570,7 +570,7 @@
         {/if}
 
         <div class="card-prompt">
-          <span class="prompt-label">Translate this sentence <b class="level-badge">Level {currentCard.level ?? "A"}</b></span>
+          <span class="prompt-label">{currentDeck.id === "polish-numbers" ? "How many? Write the number in Polish" : "Translate this sentence"} <b class="level-badge">Level {currentCard.level ?? "A"}</b></span>
           <h1>{currentCard.concept}</h1>
         </div>
 
@@ -581,7 +581,7 @@
             autocomplete="off"
             autocapitalize="off"
             spellcheck="false"
-            placeholder={answerPlaceholder()}
+            placeholder={currentDeck.id === "polish-numbers" ? "Type the Polish number…" : language === "pl" ? "Type the Polish sentence…" : answerPlaceholder()}
             onkeydown={handleKeydown}
           />
           <button class="primary" onclick={checkAnswer}>Check</button>
