@@ -209,7 +209,7 @@ export const FAMILIAR_FRENCH_DECK = {
     },
     {
       "id": "familiar_11",
-      "asset": "https://images.pexels.com/photos/3756513/pexels-photo-3756513.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "asset": "fric-money.svg",
       "concept": "money",
       "level": "A",
       "terms": {
