@@ -4268,5 +4268,198 @@ export const SCENES = [
       }
     ]
   },
+  {
+    "id": "polish-numbers",
+    "name": "Polish Numbers",
+    "kind": "action",
+    "languages": [
+      "pl"
+    ],
+    "kicker": "Numbers 1–10",
+    "description": "Recognise the number and type its Polish name. Accents are optional in loose-answer mode.",
+    "credit": "Number recognition practice",
+    "objects": [
+      {
+        "id": "polish_number_1",
+        "level": "A",
+        "concept": "1",
+        "terms": {
+          "pl": {
+            "display": "Jeden",
+            "strictAnswers": [
+              "jeden"
+            ],
+            "looseAnswers": [
+              "jeden",
+              "jeden"
+            ]
+          }
+        },
+        "asset": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%20750%22%3E%3Crect%20width%3D%221200%22%20height%3D%22750%22%20fill%3D%22%2310243e%22%2F%3E%3Ccircle%20cx%3D%22600%22%20cy%3D%22375%22%20r%3D%22270%22%20fill%3D%22%231e3a5b%22%2F%3E%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%22330%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%23ffffff%22%3E1%3C%2Ftext%3E%3C%2Fsvg%3E"
+      },
+      {
+        "id": "polish_number_2",
+        "level": "A",
+        "concept": "2",
+        "terms": {
+          "pl": {
+            "display": "Dwa",
+            "strictAnswers": [
+              "dwa"
+            ],
+            "looseAnswers": [
+              "dwa",
+              "dwa"
+            ]
+          }
+        },
+        "asset": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%20750%22%3E%3Crect%20width%3D%221200%22%20height%3D%22750%22%20fill%3D%22%2310243e%22%2F%3E%3Ccircle%20cx%3D%22600%22%20cy%3D%22375%22%20r%3D%22270%22%20fill%3D%22%231e3a5b%22%2F%3E%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%22330%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%23ffffff%22%3E2%3C%2Ftext%3E%3C%2Fsvg%3E"
+      },
+      {
+        "id": "polish_number_3",
+        "level": "A",
+        "concept": "3",
+        "terms": {
+          "pl": {
+            "display": "Trzy",
+            "strictAnswers": [
+              "trzy"
+            ],
+            "looseAnswers": [
+              "trzy",
+              "trzy"
+            ]
+          }
+        },
+        "asset": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%20750%22%3E%3Crect%20width%3D%221200%22%20height%3D%22750%22%20fill%3D%22%2310243e%22%2F%3E%3Ccircle%20cx%3D%22600%22%20cy%3D%22375%22%20r%3D%22270%22%20fill%3D%22%231e3a5b%22%2F%3E%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%22330%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%23ffffff%22%3E3%3C%2Ftext%3E%3C%2Fsvg%3E"
+      },
+      {
+        "id": "polish_number_4",
+        "level": "A",
+        "concept": "4",
+        "terms": {
+          "pl": {
+            "display": "Cztery",
+            "strictAnswers": [
+              "cztery"
+            ],
+            "looseAnswers": [
+              "cztery",
+              "cztery"
+            ]
+          }
+        },
+        "asset": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%20750%22%3E%3Crect%20width%3D%221200%22%20height%3D%22750%22%20fill%3D%22%2310243e%22%2F%3E%3Ccircle%20cx%3D%22600%22%20cy%3D%22375%22%20r%3D%22270%22%20fill%3D%22%231e3a5b%22%2F%3E%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%22330%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%23ffffff%22%3E4%3C%2Ftext%3E%3C%2Fsvg%3E"
+      },
+      {
+        "id": "polish_number_5",
+        "level": "A",
+        "concept": "5",
+        "terms": {
+          "pl": {
+            "display": "Pięć",
+            "strictAnswers": [
+              "pięć"
+            ],
+            "looseAnswers": [
+              "pięć",
+              "piec"
+            ]
+          }
+        },
+        "asset": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%20750%22%3E%3Crect%20width%3D%221200%22%20height%3D%22750%22%20fill%3D%22%2310243e%22%2F%3E%3Ccircle%20cx%3D%22600%22%20cy%3D%22375%22%20r%3D%22270%22%20fill%3D%22%231e3a5b%22%2F%3E%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%22330%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%23ffffff%22%3E5%3C%2Ftext%3E%3C%2Fsvg%3E"
+      },
+      {
+        "id": "polish_number_6",
+        "level": "A",
+        "concept": "6",
+        "terms": {
+          "pl": {
+            "display": "Sześć",
+            "strictAnswers": [
+              "sześć"
+            ],
+            "looseAnswers": [
+              "sześć",
+              "szesc"
+            ]
+          }
+        },
+        "asset": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%20750%22%3E%3Crect%20width%3D%221200%22%20height%3D%22750%22%20fill%3D%22%2310243e%22%2F%3E%3Ccircle%20cx%3D%22600%22%20cy%3D%22375%22%20r%3D%22270%22%20fill%3D%22%231e3a5b%22%2F%3E%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%22330%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%23ffffff%22%3E6%3C%2Ftext%3E%3C%2Fsvg%3E"
+      },
+      {
+        "id": "polish_number_7",
+        "level": "A",
+        "concept": "7",
+        "terms": {
+          "pl": {
+            "display": "Siedem",
+            "strictAnswers": [
+              "siedem"
+            ],
+            "looseAnswers": [
+              "siedem",
+              "siedem"
+            ]
+          }
+        },
+        "asset": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%20750%22%3E%3Crect%20width%3D%221200%22%20height%3D%22750%22%20fill%3D%22%2310243e%22%2F%3E%3Ccircle%20cx%3D%22600%22%20cy%3D%22375%22%20r%3D%22270%22%20fill%3D%22%231e3a5b%22%2F%3E%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%22330%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%23ffffff%22%3E7%3C%2Ftext%3E%3C%2Fsvg%3E"
+      },
+      {
+        "id": "polish_number_8",
+        "level": "A",
+        "concept": "8",
+        "terms": {
+          "pl": {
+            "display": "Osiem",
+            "strictAnswers": [
+              "osiem"
+            ],
+            "looseAnswers": [
+              "osiem",
+              "osiem"
+            ]
+          }
+        },
+        "asset": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%20750%22%3E%3Crect%20width%3D%221200%22%20height%3D%22750%22%20fill%3D%22%2310243e%22%2F%3E%3Ccircle%20cx%3D%22600%22%20cy%3D%22375%22%20r%3D%22270%22%20fill%3D%22%231e3a5b%22%2F%3E%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%22330%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%23ffffff%22%3E8%3C%2Ftext%3E%3C%2Fsvg%3E"
+      },
+      {
+        "id": "polish_number_9",
+        "level": "A",
+        "concept": "9",
+        "terms": {
+          "pl": {
+            "display": "Dziewięć",
+            "strictAnswers": [
+              "dziewięć"
+            ],
+            "looseAnswers": [
+              "dziewięć",
+              "dziewiec"
+            ]
+          }
+        },
+        "asset": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%20750%22%3E%3Crect%20width%3D%221200%22%20height%3D%22750%22%20fill%3D%22%2310243e%22%2F%3E%3Ccircle%20cx%3D%22600%22%20cy%3D%22375%22%20r%3D%22270%22%20fill%3D%22%231e3a5b%22%2F%3E%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%22330%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%23ffffff%22%3E9%3C%2Ftext%3E%3C%2Fsvg%3E"
+      },
+      {
+        "id": "polish_number_10",
+        "level": "A",
+        "concept": "10",
+        "terms": {
+          "pl": {
+            "display": "Dziesięć",
+            "strictAnswers": [
+              "dziesięć"
+            ],
+            "looseAnswers": [
+              "dziesięć",
+              "dziesiec"
+            ]
+          }
+        },
+        "asset": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%20750%22%3E%3Crect%20width%3D%221200%22%20height%3D%22750%22%20fill%3D%22%2310243e%22%2F%3E%3Ccircle%20cx%3D%22600%22%20cy%3D%22375%22%20r%3D%22270%22%20fill%3D%22%231e3a5b%22%2F%3E%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%22330%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%23ffffff%22%3E10%3C%2Ftext%3E%3C%2Fsvg%3E"
+      }
+    ]
+  },
   FAMILIAR_FRENCH_DECK
 ];
