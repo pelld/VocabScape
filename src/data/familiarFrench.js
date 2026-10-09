@@ -156,7 +156,7 @@ export const FAMILIAR_FRENCH_DECK = {
     },
     {
       "id": "familiar_8",
-      "asset": "https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "asset": "https://images.pexels.com/photos/4201343/pexels-photo-4201343.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "concept": "ten euros",
       "level": "A",
       "terms": {
