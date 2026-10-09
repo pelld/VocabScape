@@ -52,7 +52,7 @@
   };
 
   const asset = (file?: string) =>
-    !file ? "" : file.startsWith("http") ? file : `${import.meta.env.BASE_URL}${currentDeck.id}/${file}`;
+    !file ? "" : /^(https?:|data:)/.test(file) ? file : `${import.meta.env.BASE_URL}${currentDeck.id}/${file}`;
 
   function decksForLanguage(code: string) {
     return actionDecks.filter((deck: any) => {
