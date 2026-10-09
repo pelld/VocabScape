@@ -481,7 +481,7 @@
   <main class="card-page">
     <section class="flashcard">
       <div class="flashcard-media" class:text-only-media={currentDeck.textOnly}>
-        {#if currentDeck.textOnly}
+        {#if currentDeck.textOnly || !currentCard?.asset}
           <div class="text-deck-panel">
             <span class="text-deck-kicker">{currentDeck.kicker ?? `${languages[language].name} practice`}</span>
             <h2>{currentDeck.name}</h2>
