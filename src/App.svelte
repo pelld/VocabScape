@@ -291,7 +291,7 @@
   }
 
   function checkAnswer() {
-    if (!answerInput?.value.trim() || !currentTerm) return;
+    if (revealed || !answerInput?.value.trim() || !currentTerm) return;
 
     const state = stateFor(currentCard);
     const correct = acceptedAnswers().includes(normalise(answerInput.value));
@@ -581,7 +581,7 @@
             placeholder={placeholderText}
             onkeydown={handleKeydown}
           />
-          <button class="primary" onclick={checkAnswer}>Check</button>
+          <button class="primary" onclick={checkAnswer} disabled={revealed}>Check</button>
         </div>
 
         <div class="feedback" class:good={feedbackTone === "good"} class:bad={feedbackTone === "bad"}>
