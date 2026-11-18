@@ -2,6 +2,7 @@
   import { LANGUAGES } from "./data/languages.js";
   import { SCENES } from "./data/scenes.js";
   import Lessons from "./Lessons.svelte";
+  import Home from "./Home.svelte";
 
   type CardState = { correct: number; wrong: number };
   type Level = "ALL" | "A" | "B" | "C";
@@ -19,7 +20,7 @@
   }
 
   let language = "fr";
-  let view: "cards" | "lessons" = "cards";
+  let view: "home" | "cards" | "lessons" = "home";
   let availableDecks = decksForLanguage(language);
   let deckIndex = preferredDeckIndex(language, availableDecks);
   let currentDeck = availableDecks[deckIndex];
@@ -39,6 +40,19 @@
   let attemptedThisCard = false;
   let selectedCardIds: string[] = [];
   let activeSelectionIds: string[] | null = null;
+  let completedLessons: string[] = [];
+  function refreshLessonProgress() {
+    try {
+      const stored = JSON.parse(localStorage.getItem("vocabscape-lessons-v1") || "[]");
+      completedLessons = Array.isArray(stored) ? stored : [];
+    } catch {
+      completedLessons = [];
+    }
+  }
+  refreshLessonProgress();
+  $: languageCards = availableDecks.flatMap((deck: any) => deck.objects);
+  $: languageStats = progressForCards(languageCards, memory);
+  $: frenchLessonsFinished = completedLessons.filter(id => ["ne-que", "venir-de", "meme-si"].includes(id)).length;
 
   $: currentCard = filteredCards[currentIndex] ?? filteredCards[0];
   $: currentTerm = currentCard?.terms?.[language];
@@ -337,6 +351,14 @@
     }
   }
 
+  function navigate(destination: "home" | "cards" | "lessons") {
+    view = destination;
+    progressOpen = false;
+    if (destination === "home") refreshLessonProgress();
+    if (destination === "cards") focusAnswer();
+    window.scrollTo(0, 0);
+  }
+
   function switchLanguage(code: string) {
     language = code;
     availableDecks = decksForLanguage(code);
@@ -455,13 +477,13 @@
 
 <div class="app-shell">
   <header class="topbar">
-    <a class="brand" href={import.meta.env.BASE_URL} aria-label="VocabScape home">
+    <button class="brand home-brand" onclick={() => navigate("home")} aria-label="VocabScape home">
       <span class="brand-mark">V</span>
       <span>
         <strong>VocabScape</strong>
         <small>See it. Say it.</small>
       </span>
-    </a>
+    </button>
 
     <div class="top-actions">
       <div class="language-control">
@@ -478,11 +500,26 @@
   </header>
 
   <nav class="section-nav" aria-label="Learning section">
-    <button class:active={view === "cards"} onclick={() => view = "cards"}>Flashcards</button>
-    <button class:active={view === "lessons"} onclick={() => { view = "lessons"; progressOpen = false; }}>Lessons</button>
+    <button class:active={view === "home"} onclick={() => navigate("home")}>Home</button>
+    <button class:active={view === "lessons"} onclick={() => navigate("lessons")}>Lessons</button>
+    <button class:active={view === "cards"} onclick={() => navigate("cards")}>Flashcards</button>
   </nav>
 
-  {#if view === "cards"}
+  {#if view === "home"}
+    <Home
+      languageName={languages[language].name}
+      languageCode={language}
+      cardTotal={languageStats.total}
+      cardsSeen={languageStats.seen}
+      cardsMastered={languageStats.mastered}
+      accuracy={languageStats.accuracy}
+      deckCount={availableDecks.length}
+      lessonsFinished={frenchLessonsFinished}
+      openLessons={() => navigate("lessons")}
+      openCards={() => navigate("cards")}
+      openFrenchLessons={() => { if (language !== "fr") switchLanguage("fr"); navigate("lessons"); }}
+    />
+  {:else if view === "cards"}
   <main class="card-page">
     <section class="flashcard">
       <div class="flashcard-media" class:text-only-media={currentDeck.textOnly}>
@@ -685,6 +722,7 @@
 </div>
 
 <style>
+  .home-brand{font:inherit;text-align:left;border:0;padding:0;background:transparent;cursor:pointer}
   .section-nav{display:flex;gap:8px;justify-content:center;padding:14px 18px 4px}
   .section-nav button{border:1px solid #d6e3e8;border-radius:100px;padding:11px 22px;background:#fff;color:#395368;font:inherit;font-weight:750;cursor:pointer}
   .section-nav button.active{background:#246f72;color:white;border-color:#246f72}
