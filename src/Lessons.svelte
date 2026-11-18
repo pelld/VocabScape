@@ -752,7 +752,7 @@
   }
 </script>
 
-<section class="lesson-shell">
+<section class="lesson-shell" class:practice-screen={step === "practice" && !!active}>
   {#if language !== "fr"}
     <div class="lesson-empty">
       <span class="eyebrow">Lessons</span>
@@ -779,7 +779,7 @@
     </div>
   {:else}
     <button class="back-link" onclick={() => activeId = null}>← All lessons</button>
-    <div class="lesson-header">
+    <div class="lesson-header" class:question-header={step === "practice"}>
       <div><span class="eyebrow">French · {active.level} · {active.minutes} minutes</span><h1>{active.title}</h1><p>{active.objective}</p></div>
       <span class="lesson-stage">{step === "learn" ? "1 · Learn" : step === "practice" ? "2 · Practise" : "3 · Recap"}</span>
     </div>
@@ -810,7 +810,7 @@
         <button class="lesson-primary" onclick={() => { step = "practice"; questionIndex = 0; selected = null; correctCount = 0; }}>Practise what you've learned →</button>
       </div>
     {:else if step === "practice" && question}
-      <div class="lesson-panel">
+      <div class="lesson-panel question-panel">
         <div class="question-meta"><span>Question {questionIndex + 1} of {practiceQuestions.length}</span><span>{correctCount} correct so far</span></div>
         <div class="question-track"><div style:width={((questionIndex + 1) / practiceQuestions.length) * 100 + "%"}></div></div>
         <h2>{question.prompt}</h2>
@@ -829,10 +829,18 @@
           {/each}
         </div>
         {/if}
-        {#if selected !== null}
-          <div class="answer-feedback"><strong>{selected === question.correct ? "Correct!" : "Not quite."}</strong>{#if question.typed}<p>Suggested answer: <strong>{question.accepted?.[0]}</strong></p>{/if}<p>{question.why}</p></div>
-          <button class="lesson-primary" onclick={advance}>{questionIndex + 1 === practiceQuestions.length ? "See results →" : "Next question →"}</button>
-        {/if}
+        <div class="question-footer">
+          <div class="answer-feedback" class:feedback-pending={selected === null} aria-live="polite">
+            {#if selected !== null}
+              <strong>{selected === question.correct ? "Correct!" : "Not quite."}</strong>
+              {#if question.typed}<p>Suggested answer: <strong>{question.accepted?.[0]}</strong></p>{/if}
+              <p>{question.why}</p>
+            {:else}
+              <span class="feedback-placeholder">Choose an answer to see the explanation.</span>
+            {/if}
+          </div>
+          <button class="lesson-primary next-question" disabled={selected === null} onclick={advance}>{questionIndex + 1 === practiceQuestions.length ? "See results →" : "Next question →"}</button>
+        </div>
       </div>
     {:else if step === "finished"}
       <div class="lesson-panel recap">
@@ -887,5 +895,35 @@
   .choices button.right{background:#e9f7ef;border-color:#459b70}.choices button.wrong{background:#fff0ef;border-color:#d87474}
   .answer-feedback{padding:18px;background:#f1f6fa;border-radius:12px;margin-top:20px}.answer-feedback p{margin-top:6px}
   .recap{text-align:center}.recap h2{font-size:36px;margin:15px 0}.recap-actions{display:flex;justify-content:center;align-items:center;gap:15px;margin-top:22px}
+  /* Keep the complete question, feedback and Next action together on desktop. */
+  .practice-screen{padding-top:8px;padding-bottom:20px}
+  .practice-screen .back-link{padding:3px 0}
+  .practice-screen .question-header{margin:6px 0 12px;gap:12px}
+  .practice-screen .question-header h1{font-size:clamp(23px,2.6vw,30px);margin:3px 0 2px}
+  .practice-screen .question-header p{font-size:13px;line-height:1.3}
+  .practice-screen .lesson-stage{padding:7px 11px}
+  .question-panel{padding:clamp(15px,2vw,24px)}
+  .question-panel h2{font-size:clamp(18px,2vw,23px);line-height:1.25;margin:0 0 12px}
+  .question-panel .question-meta{margin-bottom:7px}
+  .question-panel .question-track{height:5px;margin-bottom:16px}
+  .question-panel .choices{gap:8px;margin:12px 0 0}
+  .question-panel .choices button{padding:10px 13px;min-height:45px;gap:12px;border-radius:11px;line-height:1.3}
+  .question-panel .choices button span{width:26px;height:26px;border-radius:7px}
+  .question-panel .typed-question{margin:12px 0 0;gap:8px}
+  .question-panel .typed-question input{padding:11px}
+  .question-panel .typed-question .lesson-primary{padding:10px 15px;margin:2px 0 0}
+  .question-footer{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:14px;margin-top:12px}
+  .question-footer .answer-feedback{margin:0;padding:11px 14px;min-height:54px;box-sizing:border-box;line-height:1.35}
+  .question-footer .answer-feedback p{font-size:13px;line-height:1.35;margin-top:3px}
+  .question-footer .feedback-pending{background:#f6f8fa;color:#738297}
+  .question-footer .feedback-placeholder{font-size:13px}
+  .question-footer .next-question{margin:0;min-width:145px;padding:12px 16px}
+  .question-footer .next-question:disabled{opacity:.4;cursor:not-allowed}
+  @media(max-width:700px){
+    .question-footer{grid-template-columns:1fr}
+    .question-footer .next-question{justify-self:stretch}
+    .practice-screen .question-header p{display:none}
+    .practice-screen .lesson-stage{white-space:normal;text-align:center}
+  }
   @media(max-width:600px){.lesson-header{align-items:flex-start}.lesson-total{padding:12px}.lesson-tile{gap:10px;padding:16px;flex-wrap:wrap}.lesson-action{margin-left:36px}.example-row{align-items:flex-start;flex-direction:column}.lesson-stage{font-size:11px}.recap-actions{flex-wrap:wrap}}
 </style>
