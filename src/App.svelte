@@ -1,6 +1,7 @@
 <script lang="ts">
   import { LANGUAGES } from "./data/languages.js";
   import { SCENES } from "./data/scenes.js";
+  import Lessons from "./Lessons.svelte";
 
   type CardState = { correct: number; wrong: number };
   type Level = "ALL" | "A" | "B" | "C";
@@ -18,6 +19,7 @@
   }
 
   let language = "fr";
+  let view: "cards" | "lessons" = "cards";
   let availableDecks = decksForLanguage(language);
   let deckIndex = preferredDeckIndex(language, availableDecks);
   let currentDeck = availableDecks[deckIndex];
@@ -475,6 +477,12 @@
     </div>
   </header>
 
+  <nav class="section-nav" aria-label="Learning section">
+    <button class:active={view === "cards"} onclick={() => view = "cards"}>Flashcards</button>
+    <button class:active={view === "lessons"} onclick={() => { view = "lessons"; progressOpen = false; }}>Lessons</button>
+  </nav>
+
+  {#if view === "cards"}
   <main class="card-page">
     <section class="flashcard">
       <div class="flashcard-media" class:text-only-media={currentDeck.textOnly}>
@@ -595,6 +603,9 @@
       </div>
     </section>
   </main>
+  {:else}
+    <Lessons {language} />
+  {/if}
 
   {#if progressOpen}
     <div class="progress-modal-backdrop" role="presentation" onclick={() => progressOpen = false}>
@@ -672,3 +683,10 @@
     </div>
   {/if}
 </div>
+
+<style>
+  .section-nav{display:flex;gap:8px;justify-content:center;padding:14px 18px 4px}
+  .section-nav button{border:1px solid #d6e3e8;border-radius:100px;padding:11px 22px;background:#fff;color:#395368;font:inherit;font-weight:750;cursor:pointer}
+  .section-nav button.active{background:#246f72;color:white;border-color:#246f72}
+  .section-nav button:not(.active):hover{border-color:#246f72}
+</style>
