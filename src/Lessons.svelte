@@ -171,13 +171,6 @@
     }
   };
 
-  const lessons: Lesson[] = baseLessons.map(lesson => ({
-    ...lesson,
-    minutes: lesson.id === "ne-que" ? 20 : 16,
-    sections: extensions[lesson.id].sections,
-    questions: [...lesson.questions, ...extensions[lesson.id].extraQuestions]
-  }));
-
   const lessonAdditions: Record<string, { minutes: number; chapters: Chapter[]; questions: Question[] }> = {
   "ne-que": {
     "minutes": 20,
@@ -631,7 +624,13 @@
     ]
   }
 };
-  const lessons: Lesson[] = baseLessons.map(lesson => ({ ...lesson, minutes: lessonAdditions[lesson.id].minutes, chapters: lessonAdditions[lesson.id].chapters, questions: [...lesson.questions, ...lessonAdditions[lesson.id].questions] }));
+  const lessons: Lesson[] = baseLessons.map(lesson => ({
+    ...lesson,
+    minutes: lessonAdditions[lesson.id].minutes,
+    sections: extensions[lesson.id].sections,
+    chapters: lessonAdditions[lesson.id].chapters,
+    questions: [...lesson.questions, ...extensions[lesson.id].extraQuestions, ...lessonAdditions[lesson.id].questions]
+  }));
 
   const storageKey = "vocabscape-lessons-v1";
   let completed: string[] = [];
