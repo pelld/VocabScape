@@ -475,7 +475,7 @@
 
 <svelte:window onkeydown={handleWindowKeydown} />
 
-<div class="app-shell">
+<div class="app-shell" class:flashcards-active={view === "cards"}>
   <header class="topbar">
     <button class="brand home-brand" onclick={() => navigate("home")} aria-label="VocabScape home">
       <span class="brand-mark">V</span>
