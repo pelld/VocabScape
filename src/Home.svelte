@@ -10,106 +10,109 @@
   export let openLessons: () => void;
   export let openCards: () => void;
   export let openFrenchLessons: () => void;
-  $: mastery = cardTotal ? Math.round((cardsMastered / cardTotal) * 100) : 0;
+  $: mastery = cardTotal ? Math.round(cardsMastered / cardTotal * 100) : 0;
 </script>
 
 <main class="home">
-  <section class="hero">
-    <div class="hero-text">
-      <span class="eyebrow">YOUR LANGUAGE LEARNING SPACE</span>
-      <h1>Make a little progress <em>every day.</em></h1>
-      <p>Understand the rules, practise them in context and build confidence with each session. Choose the way you want to learn.</p>
-      <div class="hero-actions">
-        <button class="primary-action" onclick={languageCode === "fr" ? openLessons : openCards}>{languageCode === "fr" ? "Explore French lessons" : "Start practising"} <span>→</span></button>
-        <button class="secondary-action" onclick={openCards}>Practise flashcards</button>
-      </div>
+  <header class="home-heading">
+    <div>
+      <span class="overline">{languageName.toUpperCase()} / VOCABSCAPE</span>
+      <h1>Back to {languageName}.</h1>
+    </div>
+    <span class="heading-aside">Pick up a lesson, or test what you remember.</span>
+  </header>
+
+  <section class="home-grid" aria-label="Choose what to study">
+    <div class="study-stack">
+      <button class="study-tile lesson-tile" onclick={openLessons}>
+        <span class="tile-index">01 / LEARN</span>
+        <span class="tile-content">
+          <span class="tile-icon" aria-hidden="true">Aa</span>
+          <span>
+            <strong>Lessons</strong>
+            <small>Grammar that makes sense. Examples, explanations, then the tricky bits.</small>
+          </span>
+        </span>
+        <span class="tile-foot"><span>{languageCode === "fr" ? "3 French lessons · B1" : "French lessons available"}</span><span aria-hidden="true">↗</span></span>
+      </button>
+      <button class="study-tile cards-tile" onclick={openCards}>
+        <span class="tile-index">02 / RECALL</span>
+        <span class="tile-content">
+          <span class="tile-icon" aria-hidden="true">✳</span>
+          <span>
+            <strong>Flashcards</strong>
+            <small>Words and phrases. Fewer repeats of what you already know.</small>
+          </span>
+        </span>
+        <span class="tile-foot"><span>{cardTotal} cards · {deckCount} decks</span><span aria-hidden="true">↗</span></span>
+      </button>
     </div>
     <div class="feature">
-      <div class="feature-top"><span>FEATURED FRENCH LESSON</span><span class="pill">B1 GRAMMAR</span></div>
+      <div class="feature-top"><span>UNDER THE MICROSCOPE</span><span>FRENCH · B1</span></div>
       <div class="feature-body">
-        <span class="feature-tag">A small shift. A different meaning.</span>
-        <h2 lang="fr">Je ne mange <b>que</b> des légumes.</h2>
-        <p>I only eat vegetables.</p>
-        <div class="feature-rule"></div>
-        <h2 lang="fr">Je ne mange des légumes <b>que</b> le dimanche.</h2>
-        <p>I eat vegetables only on Sundays.</p>
+        <span class="feature-intro">One word. Two meanings.</span>
+        <div class="sentence" lang="fr">Je ne mange <b>que</b> des légumes.</div>
+        <div class="translation">I eat nothing but vegetables.</div>
+        <div class="rule"></div>
+        <div class="sentence" lang="fr">Je ne mange des légumes <b>que</b> le dimanche.</div>
+        <div class="translation">I eat vegetables only on Sundays.</div>
       </div>
-      <button class="feature-link" onclick={openFrenchLessons}>Understand the difference <span>→</span></button>
+      <button class="feature-link" onclick={openFrenchLessons}>Why does <i>que</i> move? <span aria-hidden="true">→</span></button>
     </div>
   </section>
 
-  <div class="section-heading"><div><span class="eyebrow">YOUR NEXT STEP</span><h2>Choose how to learn</h2></div><span>{languageName}</span></div>
-  <section class="path-grid" aria-label="Learning activities">
-    <button class="path" onclick={openLessons}>
-      <span class="path-icon lessons-icon">Aa</span>
-      <span class="eyebrow">UNDERSTAND</span>
-      <strong>Guided lessons</strong>
-      <p>Clear explanations, contrasting examples and varied practice that goes beyond memorising answers.</p>
-      <span class="path-footer"><span>{languageCode === "fr" ? "3 B1 lessons" : "French lessons available"}</span><span>↗</span></span>
-    </button>
-    <button class="path" onclick={openCards}>
-      <span class="path-icon cards-icon">✦</span>
-      <span class="eyebrow">REMEMBER</span>
-      <strong>Flashcard practice</strong>
-      <p>Build vocabulary with visual scenes, useful phrases and repeatable practice at your pace.</p>
-      <span class="path-footer"><span>{cardTotal} cards · {deckCount} decks</span><span>↗</span></span>
-    </button>
-  </section>
-
-  <div class="section-heading progress-heading"><div><span class="eyebrow">YOUR JOURNEY</span><h2>Learning progress</h2></div><span>Saved on this device</span></div>
-  <section class="stats" aria-label="Your learning progress">
-    <div class="stat"><span>Cards attempted</span><strong>{cardsSeen}<small> / {cardTotal}</small></strong><small>In {languageName}</small></div>
-    <div class="stat"><span>Cards mastered</span><strong>{cardsMastered}</strong><div class="meter"><div style:width={mastery + "%"}></div></div></div>
-    <div class="stat"><span>Flashcard accuracy</span><strong>{accuracy === null ? "—" : accuracy + "%"}</strong><small>Across attempts</small></div>
-    <div class="stat"><span>French lessons completed</span><strong>{lessonsFinished}<small> / 3</small></strong><small>Perfect-score rounds</small></div>
+  <section class="progress" aria-label="Learning progress">
+    <div class="progress-title"><strong>In the bank</strong><span>Progress on this device</span></div>
+    <div class="metrics">
+      <div class="metric"><span>Cards tried</span><strong>{cardsSeen}<small> / {cardTotal}</small></strong></div>
+      <div class="metric"><span>Cards secure</span><strong>{cardsMastered}</strong><div class="meter"><span style:width={mastery + "%"}></span></div></div>
+      <div class="metric"><span>Accuracy</span><strong>{accuracy === null ? "—" : accuracy + "%"}</strong></div>
+      <div class="metric"><span>French lessons</span><strong>{lessonsFinished}<small> / 3</small></strong></div>
+    </div>
   </section>
 </main>
 
 <style>
-  .home{width:min(1120px,calc(100% - 40px));margin:0 auto;padding:25px 0 52px;color:#17354b}
-  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:26px;align-items:stretch}
-  .hero-text{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:34px 12px 30px 3px}
-  .eyebrow{font-size:11px;letter-spacing:.14em;font-weight:850;color:#267976}
-  h1{font-size:clamp(36px,4.25vw,58px);line-height:1.06;letter-spacing:-.052em;margin:17px 0 17px;font-weight:850}
-  h1 em{color:#24817d;font-style:normal}
-  .hero-text p{font-size:16px;line-height:1.65;color:#5b7082;max-width:530px;margin:0}
-  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:29px}
-  .primary-action,.secondary-action{padding:15px 18px;border-radius:12px;font-size:14px;font-weight:800;cursor:pointer}
-  .primary-action{display:flex;gap:22px;align-items:center;background:#236f70;color:#fff;border:1px solid #236f70}
-  .primary-action:hover{background:#15595b}
-  .secondary-action{background:#fff;color:#24545e;border:1px solid #bed2d4}
-  .secondary-action:hover{border-color:#247e78}
-  .feature{background:#13384b;border-radius:23px;color:white;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 14px 34px #24415221}
-  .feature-top{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;gap:12px;font-size:10px;letter-spacing:.11em;font-weight:850;color:#b2d7da}
-  .pill{border:1px solid #638895;padding:7px 10px;border-radius:25px;white-space:nowrap}
-  .feature-body{padding:12px 26px 22px;flex:1}
-  .feature-tag{display:block;color:#9bd2cd;font-size:13px;margin-bottom:23px}
-  .feature-body h2{font-size:clamp(18px,2vw,22px);letter-spacing:-.025em;line-height:1.35;margin:0}
-  .feature-body h2 b{color:#ffca98}
-  .feature-body p{color:#bfd6dd;font-size:13px;margin:7px 0}
-  .feature-rule{height:1px;background:#446577;margin:22px 0}
-  .feature-link{display:flex;justify-content:space-between;gap:20px;background:#1a4d5d;color:white;border:0;border-top:1px solid #436678;padding:17px 24px;font:inherit;font-weight:750;cursor:pointer}
-  .feature-link:hover{background:#286475}
-  .section-heading{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:33px 0 15px}
-  .section-heading h2{font-size:24px;letter-spacing:-.035em;margin:7px 0 0}
-  .section-heading>span{color:#718593;font-size:13px;font-weight:650;padding-bottom:5px}
-  .path-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .path{display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:23px;border-radius:20px;border:1px solid #dce5eb;background:#fff;color:#1c354a;cursor:pointer}
-  .path:hover{border-color:#82adae;box-shadow:0 10px 25px #21435415;transform:translateY(-2px)}
-  .path-icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:22px;font-weight:850;margin-bottom:21px}
-  .lessons-icon{background:#e3f2ee;color:#257669}.cards-icon{background:#fff0e3;color:#c67a32}
-  .path strong{font-size:22px;letter-spacing:-.035em;margin:8px 0}
-  .path p{color:#657b8b;font-size:14px;line-height:1.55;margin:0;max-width:420px;min-height:44px}
-  .path-footer{border-top:1px solid #e6edf1;margin-top:22px;padding-top:15px;width:100%;display:flex;justify-content:space-between;color:#267976;font-size:13px;font-weight:750}
-  .progress-heading{margin-top:32px}
-  .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-  .stat{display:flex;flex-direction:column;align-items:flex-start;min-height:141px;padding:20px;border:1px solid #dce5eb;border-radius:17px;background:#fff}
-  .stat>span{color:#657f90;font-size:12px;font-weight:750}
-  .stat strong{font-size:37px;letter-spacing:-.04em;margin:15px 0 8px;line-height:1.1}
-  .stat strong small{font-size:15px;color:#7b8b99;font-weight:650;letter-spacing:0}
-  .stat>small{font-size:12px;color:#8a9ba4;margin-top:auto}
-  .meter{height:6px;width:100%;border-radius:20px;background:#e5efee;overflow:hidden;margin-top:auto}
-  .meter div{height:100%;background:#2e9d86;border-radius:20px}
-  @media(max-width:850px){.hero{grid-template-columns:1fr}.hero-text{padding:18px 0 8px}.feature{min-height:280px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
-  @media(max-width:560px){.home{width:calc(100% - 28px);padding-top:12px}.hero-text h1{font-size:38px}.hero-actions{width:100%}.primary-action,.secondary-action{flex:1;justify-content:center}.path-grid{grid-template-columns:1fr}.path{padding:20px}.stats{gap:9px}.stat{padding:15px;min-height:120px}.stat strong{font-size:30px}.section-heading>span{font-size:11px}.feature-top{padding:17px 20px}.feature-body{padding:12px 20px 25px}}
+  .home{width:min(1120px,calc(100% - 36px));margin:0 auto;height:calc(100dvh - 128px);min-height:0;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:clamp(12px,2vh,22px);padding:clamp(10px,2vh,19px) 0 15px;color:#17354b}
+  .home-heading{display:flex;align-items:end;justify-content:space-between;gap:16px}
+  .overline,.tile-index,.feature-top{font-size:10px;font-weight:850;letter-spacing:.13em}
+  .overline{color:#237974}
+  h1{font-size:clamp(28px,3.6vw,46px);letter-spacing:-.055em;line-height:1.1;margin:5px 0 0}
+  .heading-aside{color:#6b7e8d;font-size:13px;padding-bottom:5px}
+  .home-grid{min-height:0;display:grid;grid-template-columns:.9fr 1.1fr;gap:16px}
+  .study-stack{min-height:0;display:grid;grid-template-rows:1fr 1fr;gap:14px}
+  .study-tile{min-height:0;display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;text-align:left;border:1px solid #d7e2e7;border-radius:18px;background:#fff;padding:clamp(15px,2.2vh,23px);cursor:pointer;color:#17354b;transition:border-color .15s,background .15s}
+  .study-tile:hover{border-color:#5a9895;background:#fafdfe}
+  .tile-index{color:#56837f}
+  .tile-content{display:flex;align-items:center;gap:17px}
+  .tile-icon{display:grid;place-items:center;flex:0 0 52px;height:52px;border-radius:13px;background:#e4f1ec;color:#287c71;font-size:23px;font-weight:800}
+  .cards-tile .tile-icon{background:#faeee3;color:#ad692e}
+  .tile-content strong{display:block;font-size:clamp(20px,2.2vw,27px);letter-spacing:-.035em;margin-bottom:5px}
+  .tile-content small{display:block;color:#657b8a;font-size:13px;line-height:1.45;max-width:300px}
+  .tile-foot{display:flex;justify-content:space-between;border-top:1px solid #e6edef;padding-top:11px;color:#247974;font-size:12px;font-weight:800}
+  .tile-foot span:last-child{font-size:19px;line-height:.8}
+  .feature{min-height:0;background:#123748;color:white;border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+  .feature-top{display:flex;justify-content:space-between;gap:14px;padding:clamp(17px,2.5vh,25px) 25px;color:#9bc5c9}
+  .feature-body{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:0 25px 15px}
+  .feature-intro{color:#8ed1cc;font-size:14px;margin-bottom:clamp(15px,3vh,32px)}
+  .sentence{font-size:clamp(19px,2.2vw,29px);font-weight:700;line-height:1.2;letter-spacing:-.03em}
+  .sentence b{color:#f9bd86}
+  .translation{font-size:13px;color:#c4d8de;margin-top:8px}
+  .rule{height:1px;background:#436374;margin:clamp(15px,3vh,29px) 0}
+  .feature-link{display:flex;justify-content:space-between;align-items:center;text-align:left;border:0;border-top:1px solid #456978;background:#1b4a5b;color:#fff;padding:15px 25px;font:inherit;font-size:14px;font-weight:800;cursor:pointer}
+  .feature-link:hover{background:#246073}
+  .feature-link span{font-size:19px}
+  .progress{display:grid;grid-template-columns:160px 1fr;align-items:stretch;gap:16px;min-height:95px}
+  .progress-title{display:flex;flex-direction:column;justify-content:center}
+  .progress-title strong{font-size:17px;letter-spacing:-.025em}
+  .progress-title span{font-size:11px;color:#83919c;margin-top:7px}
+  .metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+  .metric{background:#fff;border:1px solid #dbe5e9;border-radius:13px;padding:13px 16px;display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+  .metric>span{font-size:11px;font-weight:700;color:#678192}
+  .metric strong{font-size:clamp(23px,2.6vw,32px);line-height:1.1;letter-spacing:-.045em;margin-top:8px}
+  .metric strong small{font-size:13px;color:#82919c;font-weight:650}
+  .meter{height:4px;border-radius:5px;background:#e8efee;margin-top:7px;overflow:hidden}.meter span{display:block;height:100%;background:#298979}
+  @media(max-height:700px) and (min-width:801px){.home{gap:10px;padding:7px 0 10px}.tile-content{gap:12px}.tile-icon{height:40px;flex-basis:40px}.tile-content small{font-size:12px}.feature-intro{margin-bottom:10px}.rule{margin:12px 0}.feature-top{padding:13px 22px}.progress{min-height:78px}.metric{padding:9px 14px}}
+  @media(max-width:800px){.home{height:auto;min-height:calc(100dvh - 128px);display:block;padding:20px 0 32px}.home-heading{margin-bottom:17px}.home-grid{grid-template-columns:1fr}.study-stack{grid-template-rows:auto auto}.study-tile{min-height:195px}.feature{min-height:310px;margin-top:14px}.progress{grid-template-columns:1fr;margin-top:22px}.progress-title{display:flex;flex-direction:row;justify-content:space-between}.metrics{margin-top:10px}}
+  @media(max-width:520px){.heading-aside{display:none}.home{width:calc(100% - 26px)}.metrics{grid-template-columns:repeat(2,1fr)}.study-tile{min-height:180px}.tile-icon{flex-basis:43px;height:43px}.feature-body{padding:0 20px 18px}.feature-top,.feature-link{padding-left:20px;padding-right:20px}.progress-title{font-size:13px}}
 </style>
