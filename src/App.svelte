@@ -486,6 +486,7 @@
     </button>
 
     <div class="top-actions">
+      {#if view !== "home"}
       <div class="language-control">
         <span class="language-label">Language</span>
         <div class="language-switcher" aria-label="Target language">
@@ -496,6 +497,7 @@
           {/each}
         </div>
       </div>
+      {/if}
     </div>
   </header>
 
@@ -515,9 +517,9 @@
       accuracy={languageStats.accuracy}
       deckCount={availableDecks.length}
       lessonsFinished={frenchLessonsFinished}
+      chooseLanguage={(code) => switchLanguage(code)}
       openLessons={() => navigate("lessons")}
       openCards={() => navigate("cards")}
-      openFrenchLessons={() => { if (language !== "fr") switchLanguage("fr"); navigate("lessons"); }}
     />
   {:else if view === "cards"}
   <main class="card-page">
