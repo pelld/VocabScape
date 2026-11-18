@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   export let language = "fr";
 
   type Question = { prompt: string; choices: string[]; correct: number; why: string };
@@ -63,6 +64,8 @@
   let questionIndex = 0;
   let selected: number | null = null;
   let correctCount = 0;
+  let voiceStatus = "";
+  let frenchVoice: SpeechSynthesisVoice | null = null;
   $: active = lessons.find(lesson => lesson.id === activeId);
   $: question = active?.questions[questionIndex];
 
@@ -94,12 +97,40 @@
     }
   }
 
-  function speak(text: string) {
+  function updateFrenchVoice() {
     if (typeof speechSynthesis === "undefined") return;
+    const voices = speechSynthesis.getVoices();
+    // Prefer a French-from-France voice; never fall back to an English voice.
+    frenchVoice = voices.find(voice => voice.lang.toLowerCase().replace("_", "-") === "fr-fr")
+      ?? voices.find(voice => /^fr([-_]|$)/i.test(voice.lang))
+      ?? null;
+    if (frenchVoice) voiceStatus = "";
+  }
+
+  onMount(() => {
+    updateFrenchVoice();
+    if (typeof speechSynthesis === "undefined") return;
+    speechSynthesis.addEventListener("voiceschanged", updateFrenchVoice);
+    return () => speechSynthesis.removeEventListener("voiceschanged", updateFrenchVoice);
+  });
+
+  function speak(text: string) {
+    if (typeof speechSynthesis === "undefined") {
+      voiceStatus = "Speech playback isn't supported in this browser.";
+      return;
+    }
+    updateFrenchVoice();
+    if (!frenchVoice) {
+      voiceStatus = "No French text-to-speech voice is available in your browser. Install a French speech voice in your device's language settings, then reopen the browser.";
+      return;
+    }
     speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "fr-FR";
+    utterance.voice = frenchVoice;
+    utterance.lang = frenchVoice.lang;
     utterance.rate = 0.85;
+    utterance.onerror = () => { voiceStatus = "French audio couldn't play. Try again or check your device's speech settings."; };
+    voiceStatus = "";
     speechSynthesis.speak(utterance);
   }
 </script>
@@ -140,6 +171,7 @@
         <h2>How it works</h2>
         <p>{active.explanation}</p>
         <h3>Examples</h3>
+        {#if voiceStatus}<p class="voice-status" role="status">{voiceStatus}</p>{/if}
         {#each active.examples as example}
           <div class="example-row">
             <div><strong lang="fr">{example.fr}</strong><span>{example.en}</span></div>
@@ -204,6 +236,7 @@
   .example-row{display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid #e9eef2;padding:17px 0}
   .example-row div{display:grid;gap:7px}.example-row strong{font-size:19px}.example-row span{color:#65768b;font-size:14px}
   .audio-button,.lesson-secondary{border:1px solid #cedde5;background:#f8fbfc;color:#265f70;border-radius:10px;padding:10px 14px;cursor:pointer;font-weight:700;white-space:nowrap}
+  .voice-status{padding:12px 14px;margin:12px 0;background:#fff5e5;border:1px solid #ead5af;border-radius:10px;font-size:14px}
   .lesson-tip{background:#f0f7f5;border-left:4px solid #4c9b89;border-radius:9px;padding:18px;margin:20px 0 26px}.lesson-tip p{margin-top:5px}
   .lesson-primary{border:0;border-radius:12px;background:#246f72;color:white;padding:15px 22px;font-size:15px;font-weight:800;cursor:pointer;margin-top:18px}
   .lesson-primary:hover{background:#17585a}
