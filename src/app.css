@@ -1385,3 +1385,109 @@ button { color: inherit; }
     margin-right: 4px;
   }
 }
+
+
+/* Flashcards: the top bar AND navigation both consume viewport height.
+   Let flexbox allocate the remainder instead of subtracting only the top bar. */
+@media (min-width: 821px) {
+  .app-shell.flashcards-active {
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .app-shell.flashcards-active .card-page {
+    flex: 1 1 auto;
+    height: auto;
+    min-height: 0;
+    padding: 8px 14px 12px;
+    overflow: hidden;
+  }
+
+  .app-shell.flashcards-active .flashcard {
+    height: 100%;
+    min-height: 0;
+    max-height: 100%;
+    border-radius: 16px;
+    border: 1px solid var(--line);
+  }
+
+  .app-shell.flashcards-active .flashcard-body {
+    min-height: 0;
+    padding: clamp(14px, 2.3vh, 28px) clamp(20px, 3vw, 42px);
+    overflow: hidden;
+  }
+
+  .app-shell.flashcards-active .card-prompt {
+    min-height: 0;
+    margin: 6px 0;
+  }
+
+  .app-shell.flashcards-active .card-prompt h1 {
+    font-size: clamp(1.65rem, 3vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .app-shell.flashcards-active .progress-summary {
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 3px;
+  }
+
+  .app-shell.flashcards-active .answer-row input,
+  .app-shell.flashcards-active .primary,
+  .app-shell.flashcards-active .quiet,
+  .app-shell.flashcards-active .next-button {
+    min-height: 42px;
+    padding: 9px 12px;
+  }
+
+  .app-shell.flashcards-active .feedback {
+    min-height: 26px;
+    padding-top: 5px;
+    font-size: .88rem;
+  }
+
+  .app-shell.flashcards-active .card-actions { margin-top: 5px; }
+
+  .app-shell.flashcards-active .text-only-media {
+    padding: clamp(18px, 3vw, 40px);
+  }
+}
+
+@media (max-height: 700px) and (min-width: 821px) {
+  .app-shell.flashcards-active .flashcard-body {
+    padding: 10px 20px;
+  }
+  .app-shell.flashcards-active .study-toolbar,
+  .app-shell.flashcards-active .progress-summary,
+  .app-shell.flashcards-active .focus-row { margin-top: 4px; }
+  .app-shell.flashcards-active .learning-progress { margin-top: 5px; }
+  .app-shell.flashcards-active .card-prompt h1 { font-size: clamp(1.4rem, 2.5vw, 2.35rem); }
+  .app-shell.flashcards-active .prompt-label { margin-bottom: 4px; }
+  .app-shell.flashcards-active .card-actions { margin-top: 3px; }
+}
+
+/* On narrower screens keep every control accessible instead of clipping it. */
+@media (max-width: 820px) {
+  .app-shell.flashcards-active .card-page {
+    height: auto;
+    min-height: 0;
+    padding: 8px;
+    overflow: visible;
+    display: block;
+  }
+
+  .app-shell.flashcards-active .flashcard {
+    height: auto;
+    min-height: 0;
+    display: grid;
+    grid-template-rows: minmax(130px, 28dvh) auto;
+    overflow: visible;
+    margin: 0 auto;
+  }
+
+  .app-shell.flashcards-active .flashcard-body {
+    min-height: 0;
+  }
+}
