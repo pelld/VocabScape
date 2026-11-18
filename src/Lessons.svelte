@@ -2,9 +2,10 @@
   export let language = "fr";
 
   type Question = { prompt: string; choices: string[]; correct: number; why: string };
-  type Lesson = { id: string; title: string; level: string; minutes: number; objective: string; explanation: string; examples: { fr: string; en: string }[]; tip: string; questions: Question[] };
+  type LessonSection = { title: string; explanation: string; examples: { fr: string; en: string; note?: string }[] };
+  type Lesson = { sections?: LessonSection[]; id: string; title: string; level: string; minutes: number; objective: string; explanation: string; examples: { fr: string; en: string }[]; tip: string; questions: Question[] };
 
-  const lessons: Lesson[] = [
+  const baseLessons: Lesson[] = [
     {
       id: "ne-que", title: "Ne… que: only", level: "B1", minutes: 8,
       objective: "Say 'only' naturally without using seulement every time.",
@@ -54,6 +55,126 @@
       ]
     }
   ];
+
+  const extensions: Record<string, { sections: LessonSection[]; extraQuestions: Question[] }> = {
+    "ne-que": {
+      sections: [
+        {
+          title: "1. Start with the thing you're limiting",
+          explanation: "Imagine the word ONLY as a spotlight. In French, que sits just before whatever is under that spotlight. Ne goes before the conjugated verb. This is a restriction, not a negative statement.",
+          examples: [
+            { fr: "Je ne bois que de l'eau.", en: "I drink only water.", note: "Spotlight: WATER — not juice, coffee or tea." },
+            { fr: "Je ne bois de l'eau que le matin.", en: "I drink water only in the morning.", note: "Spotlight: THE MORNING — this doesn't tell you what you drink later." },
+            { fr: "Je ne vois que Marie.", en: "I only see Marie.", note: "Spotlight: MARIE — no one else." }
+          ]
+        },
+        {
+          title: "2. The Sunday puzzle: two different meanings",
+          explanation: "English 'I only eat vegetables on Sundays' can mean two different things. French can make the distinction clearer. Ask yourself: are we limiting the FOOD or the DAY?",
+          examples: [
+            { fr: "Je ne mange des légumes que le dimanche.", en: "I eat vegetables only on Sundays.", note: "Only when? On Sunday. You might eat other food any day." },
+            { fr: "Le dimanche, je ne mange que des légumes.", en: "On Sundays, I eat only vegetables.", note: "Only what? Vegetables. On Sunday you don't eat anything else." },
+            { fr: "Je ne mange que des légumes le dimanche.", en: "I only eat vegetables on Sundays.", note: "Usually understood as limiting what you eat on Sundays. To make the timing restriction unambiguous, place que before le dimanche." }
+          ]
+        },
+        {
+          title: "3. Change one word, change the focus",
+          explanation: "Try reading each sentence aloud and mentally putting a box around whatever follows que. If you're limiting a time, place que before the time. If you're limiting a person or thing, put it there instead.",
+          examples: [
+            { fr: "Elle ne travaille que le lundi.", en: "She works only on Mondays.", note: "Only the time: Monday." },
+            { fr: "Le lundi, elle ne travaille qu'avec Paul.", en: "On Mondays, she works only with Paul.", note: "Only the person: Paul." },
+            { fr: "Nous n'avons que dix minutes.", en: "We only have ten minutes.", note: "Only the amount: ten minutes. Que becomes qu' before a vowel." }
+          ]
+        },
+        {
+          title: "4. Compare it with a real negative",
+          explanation: "Ne… pas says something does NOT happen. Ne… que says something is LIMITED. They look similar but mean very different things. In everyday speech, French speakers often omit ne; the que still marks the restriction.",
+          examples: [
+            { fr: "Je ne mange pas de légumes.", en: "I don't eat vegetables.", note: "Negative: no vegetables." },
+            { fr: "Je ne mange que des légumes.", en: "I eat only vegetables.", note: "Restriction: vegetables and nothing else." },
+            { fr: "Je mange que des légumes.", en: "I only eat vegetables. (Informal speech)", note: "Spoken French may drop ne; keep it in standard written French." }
+          ]
+        }
+      ],
+      extraQuestions: [
+        { prompt: "You eat vegetables on Sundays, and no other food that day. Which sentence says this?", choices: ["Je ne mange des légumes que le dimanche.", "Le dimanche, je ne mange que des légumes.", "Je ne mange pas de légumes le dimanche."], correct: 1, why: "The restriction is on WHAT you eat, so que comes immediately before des légumes." },
+        { prompt: "You eat vegetables only on Sundays, but eat other food throughout the week. Choose the precise sentence.", choices: ["Je ne mange des légumes que le dimanche.", "Le dimanche, je ne mange que des légumes.", "Je ne mange jamais de légumes."], correct: 0, why: "The restriction is on WHEN you eat vegetables, so que comes before le dimanche." },
+        { prompt: "What does 'Elle ne travaille que le lundi' restrict?", choices: ["The person she works with", "The day she works", "The kind of work she does"], correct: 1, why: "Que le lundi means only on Monday." },
+        { prompt: "What is restricted in 'Elle ne travaille qu'avec Paul'?", choices: ["Who she works with", "When she works", "Where she works"], correct: 0, why: "Qu'avec Paul means only with Paul." },
+        { prompt: "Which says 'I don't drink water'?", choices: ["Je ne bois que de l'eau.", "Je ne bois pas d'eau.", "Je ne bois de l'eau que le matin."], correct: 1, why: "Ne… pas is negative. Ne… que means only." },
+        { prompt: "You want to say 'I only travel in July' (not other months).", choices: ["Je ne voyage qu'en juillet.", "En juillet, je ne voyage qu'en train.", "Je ne voyage pas en juillet."], correct: 0, why: "Qu'en juillet puts the restriction on the month." },
+        { prompt: "Meaning of 'En juillet, je ne voyage qu'en train'?", choices: ["I travel by train only in July.", "In July I travel only by train.", "I don't travel by train in July."], correct: 1, why: "The time is set first. Que restricts the transport: en train." },
+        { prompt: "Which French sentence means 'We have only two hours'?", choices: ["Nous n'avons pas deux heures.", "Nous n'avons que deux heures.", "Nous n'avons deux heures que demain."], correct: 1, why: "Que directly precedes deux heures, the limited amount." }
+      ]
+    },
+    "venir-de": {
+      sections: [
+        { title: "1. Think 'just now', not 'come from'", explanation: "Venir normally means 'to come', but venir de + infinitive is a special construction for something very recent. The second verb stays in its dictionary form.",
+          examples: [
+            { fr: "Je viens de courir.", en: "I've just been running.", note: "Je viens + de + courir." },
+            { fr: "Il vient de téléphoner.", en: "He's just phoned.", note: "Il vient, not il viens." },
+            { fr: "Nous venons de partir.", en: "We've just left.", note: "Nous venons + de + infinitive." }
+          ] },
+        { title: "2. Compare past, recent past, and future", explanation: "Put three phrases on a mental timeline. J'ai mangé describes a past event. Je viens de manger means it happened just now. Je vais manger means it hasn't happened yet.",
+          examples: [
+            { fr: "J'ai mangé.", en: "I ate / I've eaten.", note: "Past — not necessarily just now." },
+            { fr: "Je viens de manger.", en: "I've just eaten.", note: "Very recent past." },
+            { fr: "Je vais manger.", en: "I'm going to eat.", note: "Near future." }
+          ] },
+        { title: "3. Change the person, not the infinitive", explanation: "Conjugate venir to match the subject: je viens, tu viens, il/elle vient, nous venons, vous venez, ils/elles viennent. Keep de + infinitive unchanged. Before a vowel, de becomes d'.",
+          examples: [
+            { fr: "Tu viens d'arriver ?", en: "Have you just arrived?", note: "D'arriver because arriver begins with a vowel." },
+            { fr: "Vous venez de finir ?", en: "Have you just finished?", note: "Vous venez." },
+            { fr: "Elles viennent de rentrer.", en: "They've just got back.", note: "Elles viennent." }
+          ] }
+      ],
+      extraQuestions: [
+        { prompt: "Which sentence means 'I'm about to leave'?", choices: ["Je viens de partir.", "Je vais partir.", "Je suis parti."], correct: 1, why: "Je vais partir is near future; je viens de partir is just left." },
+        { prompt: "Which expresses the most recent completed action?", choices: ["Je viens de finir.", "J'ai fini hier.", "Je vais finir."], correct: 0, why: "Venir de highlights the recent past." },
+        { prompt: "We have just arrived.", choices: ["Nous venons d'arriver.", "Nous vient d'arriver.", "Nous allons arriver."], correct: 0, why: "Nous venons d'arriver: venir is conjugated; arriver remains infinitive." },
+        { prompt: "You (plural/formal) have just called.", choices: ["Vous venez d'appeler.", "Vous viens d'appeler.", "Vous allez appeler."], correct: 0, why: "Vous takes venez, and de contracts to d'." },
+        { prompt: "Which verb changes for the subject in venir de + infinitive?", choices: ["The second verb", "Both verbs", "Venir"], correct: 2, why: "Conjugate venir; retain the second verb as an infinitive." },
+        { prompt: "What does 'Elle vient de sortir' mean?", choices: ["She has just gone out.", "She is going out tomorrow.", "She comes from outside."], correct: 0, why: "Vient de + infinitive signals a very recent action." }
+      ]
+    },
+    "meme-si": {
+      sections: [
+        { title: "1. A result that doesn't change", explanation: "Même si means that one fact or possibility doesn't stop another action. Think: 'That may be true, BUT the outcome stays the same.'",
+          examples: [
+            { fr: "Même s'il pleut, je cours.", en: "Even if it's raining, I run.", note: "Rain doesn't change the decision." },
+            { fr: "Même si c'est cher, je l'achète.", en: "Even if it's expensive, I'm buying it.", note: "Price doesn't change the decision." },
+            { fr: "Je continue même si c'est difficile.", en: "I carry on even though it's difficult.", note: "Difficulty doesn't stop me." }
+          ] },
+        { title: "2. Possibility or fact?", explanation: "English often distinguishes 'even if' (hypothetical) from 'even though' (actual). French uses même si for both. Context and tense help you decide which translation fits.",
+          examples: [
+            { fr: "Même s'il neige demain, j'irai.", en: "Even if it snows tomorrow, I'll go.", note: "The snow is a possibility." },
+            { fr: "Même s'il neige aujourd'hui, je sors.", en: "Even though it's snowing today, I'm going out.", note: "Context can make the snow an existing fact." },
+            { fr: "Même si elle était fatiguée, elle a terminé.", en: "Even though she was tired, she finished.", note: "A real past contrast." }
+          ] },
+        { title: "3. Don't confuse it with malgré", explanation: "Même si introduces a clause with a verb. Malgré is followed by a noun or noun phrase. In standard French, même si normally uses the indicative, not the subjunctive.",
+          examples: [
+            { fr: "Même si je suis fatigué, je viens.", en: "Even though I'm tired, I'm coming.", note: "Même si + je suis (indicative)." },
+            { fr: "Malgré la fatigue, je viens.", en: "Despite the tiredness, I'm coming.", note: "Malgré + a noun." },
+            { fr: "Même s'il est tard, on continue.", en: "Even though it's late, we're continuing.", note: "Si contracts to s' before il." }
+          ] }
+      ],
+      extraQuestions: [
+        { prompt: "Even if it rains tomorrow, I'll run.", choices: ["Même s'il pleut demain, je courrai.", "Malgré il pleut demain, je courrai.", "Même s'il pleuve demain, je courrai."], correct: 0, why: "Même si + indicative: il pleut. Future in the main clause: je courrai." },
+        { prompt: "Choose the correct version of 'Despite the rain, I run'.", choices: ["Malgré il pleut, je cours.", "Malgré la pluie, je cours.", "Même si la pluie, je cours."], correct: 1, why: "Malgré is followed by a noun; même si needs a clause." },
+        { prompt: "In 'Même si c'est difficile, je continue', what stays the same?", choices: ["The difficulty", "My decision to continue", "The time of day"], correct: 1, why: "The obstacle doesn't change the outcome." },
+        { prompt: "Even though she was tired, she came.", choices: ["Même si elle était fatiguée, elle est venue.", "Même si elle soit fatiguée, elle est venue.", "Malgré elle était fatiguée, elle est venue."], correct: 0, why: "Même si + indicative (était) expresses a genuine contrast." },
+        { prompt: "Which phrase is written correctly?", choices: ["Même si il arrive", "Même s'il arrive", "Même qu'il arrive"], correct: 1, why: "Si contracts before il." },
+        { prompt: "Does même si always describe something hypothetical?", choices: ["Yes", "No, it can refer to an actual fact too", "Only with future tense"], correct: 1, why: "Même si can mean even if or even though, depending on context." }
+      ]
+    }
+  };
+
+  const lessons: Lesson[] = baseLessons.map(lesson => ({
+    ...lesson,
+    minutes: lesson.id === "ne-que" ? 20 : 16,
+    sections: extensions[lesson.id].sections,
+    questions: [...lesson.questions, ...extensions[lesson.id].extraQuestions]
+  }));
 
   const storageKey = "vocabscape-lessons-v1";
   let completed: string[] = [];
@@ -139,7 +260,19 @@
       <div class="lesson-panel">
         <h2>How it works</h2>
         <p>{active.explanation}</p>
-        <h3>Examples</h3>
+        {#each active.sections ?? [] as section}
+          <div class="lesson-chapter">
+            <h3>{section.title}</h3>
+            <p>{section.explanation}</p>
+            {#each section.examples as example}
+              <div class="example-row">
+                <div><strong lang="fr">{example.fr}</strong><span>{example.en}</span>{#if example.note}<small class="example-note">{example.note}</small>{/if}</div>
+                <button class="audio-button" aria-label="Listen to French example" onclick={() => speak(example.fr)}>▶ Listen</button>
+              </div>
+            {/each}
+          </div>
+        {/each}
+        <h3>More examples</h3>
         {#each active.examples as example}
           <div class="example-row">
             <div><strong lang="fr">{example.fr}</strong><span>{example.en}</span></div>
@@ -204,6 +337,7 @@
   .example-row{display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid #e9eef2;padding:17px 0}
   .example-row div{display:grid;gap:7px}.example-row strong{font-size:19px}.example-row span{color:#65768b;font-size:14px}
   .audio-button,.lesson-secondary{border:1px solid #cedde5;background:#f8fbfc;color:#265f70;border-radius:10px;padding:10px 14px;cursor:pointer;font-weight:700;white-space:nowrap}
+  .lesson-chapter{padding:20px 0;border-bottom:1px solid #e2eaf0}.lesson-chapter h3{font-size:22px;margin:0 0 12px}.lesson-chapter>p{margin-bottom:18px}.example-note{font-size:13px;color:#3f7980;line-height:1.5}
   .lesson-tip{background:#f0f7f5;border-left:4px solid #4c9b89;border-radius:9px;padding:18px;margin:20px 0 26px}.lesson-tip p{margin-top:5px}
   .lesson-primary{border:0;border-radius:12px;background:#246f72;color:white;padding:15px 22px;font-size:15px;font-weight:800;cursor:pointer;margin-top:18px}
   .lesson-primary:hover{background:#17585a}
