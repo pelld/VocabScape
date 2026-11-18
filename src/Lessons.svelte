@@ -657,7 +657,7 @@
 
   function normaliseFrench(value: string): string {
     return value.trim().toLowerCase().replace(/[’‘]/g, "'").normalize("NFD")
-      .replace(/[\\u0300-\\u036f]/g, "").replace(/[.!?;,]+$/g, "").replace(/\\s+/g, " ");
+      .replace(/[\u0300-\u036f]/g, "").replace(/[.!?;,]+$/g, "").replace(/\s+/g, " ");
   }
 
   function variedNeQue(): Question[] {
