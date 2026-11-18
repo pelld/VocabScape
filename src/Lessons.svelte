@@ -1,7 +1,7 @@
 <script lang="ts">
   export let language = "fr";
 
-  type Question = { prompt: string; choices: string[]; correct: number; why: string };
+  type Question = { prompt: string; choices: string[]; correct: number; why: string; typed?: boolean; accepted?: string[] };
   type LessonSection = { title: string; explanation: string; examples: { fr: string; en: string; note?: string }[] };
   type Chapter = { heading: string; explanation: string; examples: { fr: string; en: string; note: string }[] };
   type Lesson = { chapters?: Chapter[]; sections?: LessonSection[]; id: string; title: string; level: string; minutes: number; objective: string; explanation: string; examples: { fr: string; en: string }[]; tip: string; questions: Question[] };
@@ -640,11 +640,81 @@
   let questionIndex = 0;
   let selected: number | null = null;
   let correctCount = 0;
+  let practiceQuestions: Question[] = [];
+  let typedAnswer = '';
   $: active = lessons.find(lesson => lesson.id === activeId);
-  $: question = active?.questions[questionIndex];
+  $: question = practiceQuestions[questionIndex];
+
+
+  function shuffle<T>(array: T[]): T[] {
+    const values = [...array];
+    for (let i = values.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [values[i], values[j]] = [values[j], values[i]];
+    }
+    return values;
+  }
+
+  function normaliseFrench(value: string): string {
+    return value.trim().toLowerCase().replace(/[’‘]/g, "'").normalize("NFD")
+      .replace(/[\\u0300-\\u036f]/g, "").replace(/[.!?;,]+$/g, "").replace(/\\s+/g, " ");
+  }
+
+  function variedNeQue(): Question[] {
+    const foods = [
+      ["cheese", "du fromage"], ["bread", "du pain"], ["vegetables", "des légumes"],
+      ["fruit", "des fruits"], ["rice", "du riz"], ["soup", "de la soupe"]
+    ];
+    const days = [
+      ["Mondays", "le lundi"], ["Tuesdays", "le mardi"], ["Wednesdays", "le mercredi"],
+      ["Thursdays", "le jeudi"], ["Fridays", "le vendredi"], ["Saturdays", "le samedi"], ["Sundays", "le dimanche"]
+    ];
+    const usedFoods = shuffle(foods).slice(0, 4);
+    const usedDays = shuffle(days).slice(0, 4);
+    const questions: Question[] = [];
+    for (let i = 0; i < usedFoods.length; i++) {
+      const [foodEn, foodFr] = usedFoods[i];
+      const [dayEn, dayFr] = usedDays[i];
+      const dayStart = dayFr.charAt(0).toUpperCase() + dayFr.slice(1);
+      const restrictTime = "Je ne mange " + foodFr + " que " + dayFr + ".";
+      const restrictFood = dayStart + ", je ne mange que " + foodFr + ".";
+      const negative = dayStart + ", je ne mange pas " + foodFr + ".";
+      for (const timeFocus of [true, false]) {
+        const correctText = timeFocus ? restrictTime : restrictFood;
+        const prompt = timeFocus
+          ? "I eat " + foodEn + " only on " + dayEn + " (not on other days)."
+          : "On " + dayEn + ", I eat nothing but " + foodEn + ".";
+        const why = timeFocus
+          ? "The restriction is WHEN: que " + dayFr + ". This does not say " + foodEn + " is the only food on that day."
+          : "The restriction is WHAT: que " + foodFr + ". The day sets the context.";
+        if (i % 2 === 0) {
+          const options = shuffle([correctText, timeFocus ? restrictFood : restrictTime, negative]);
+          questions.push({ prompt: "Choose: " + prompt, choices: options, correct: options.indexOf(correctText), why });
+        } else {
+          questions.push({ prompt: "Write in French: " + prompt, choices: [], correct: 0, why, typed: true, accepted: [correctText] });
+        }
+      }
+    }
+    return shuffle(questions);
+  }
+
+  function makePractice(lesson: Lesson): Question[] {
+    const guided = shuffle(lesson.questions).slice(0, lesson.id === "ne-que" ? 4 : 6);
+    return lesson.id === "ne-que" ? [...guided, ...variedNeQue()] : guided;
+  }
+
+  function checkTyped() {
+    if (!question?.typed || selected !== null || !typedAnswer.trim()) return;
+    const correct = (question.accepted ?? []).some(v => normaliseFrench(v) === normaliseFrench(typedAnswer));
+    selected = correct ? 0 : -1;
+    if (correct) correctCount++;
+  }
 
   function start(id: string) {
     activeId = id;
+    const lesson = lessons.find(l => l.id === id);
+    practiceQuestions = lesson ? makePractice(lesson) : [];
+    typedAnswer = '';
     step = "learn";
     questionIndex = 0;
     selected = null;
@@ -659,12 +729,13 @@
 
   function advance() {
     if (!active) return;
-    if (questionIndex + 1 < active.questions.length) {
+    if (questionIndex + 1 < practiceQuestions.length) {
       questionIndex += 1;
       selected = null;
+      typedAnswer = '';
     } else {
       step = "finished";
-      if (correctCount === active.questions.length && !completed.includes(active.id)) {
+      if (correctCount === practiceQuestions.length && !completed.includes(active.id)) {
         completed = [...completed, active.id];
         localStorage.setItem(storageKey, JSON.stringify(completed));
       }
@@ -701,7 +772,7 @@
       {#each lessons as lesson, i}
         <button class="lesson-tile" onclick={() => start(lesson.id)}>
           <span class="lesson-number">{String(i + 1).padStart(2, "0")}</span>
-          <span class="lesson-info"><strong>{lesson.title}</strong><small>{lesson.objective}</small><span class="lesson-meta">{lesson.level} · {lesson.minutes} min · {lesson.questions.length} practice questions</span></span>
+          <span class="lesson-info"><strong>{lesson.title}</strong><small>{lesson.objective}</small><span class="lesson-meta">{lesson.level} · {lesson.minutes} min · {lesson.id === "ne-que" ? "12 varied" : "6 shuffled"} practice questions</span></span>
           <span class="lesson-action">{completed.includes(lesson.id) ? "✓ Completed" : "Start →"}</span>
         </button>
       {/each}
@@ -740,9 +811,16 @@
       </div>
     {:else if step === "practice" && question}
       <div class="lesson-panel">
-        <div class="question-meta"><span>Question {questionIndex + 1} of {active.questions.length}</span><span>{correctCount} correct so far</span></div>
-        <div class="question-track"><div style:width={((questionIndex + 1) / active.questions.length) * 100 + "%"}></div></div>
+        <div class="question-meta"><span>Question {questionIndex + 1} of {practiceQuestions.length}</span><span>{correctCount} correct so far</span></div>
+        <div class="question-track"><div style:width={((questionIndex + 1) / practiceQuestions.length) * 100 + "%"}></div></div>
         <h2>{question.prompt}</h2>
+        {#if question.typed}
+          <div class="typed-question">
+            <label for="typed-french">Write the French sentence</label>
+            <input id="typed-french" bind:value={typedAnswer} autocomplete="off" spellcheck="false" disabled={selected !== null} onkeydown={(event) => { if (event.key === "Enter") checkTyped(); }} placeholder="Écrivez en français…" />
+            {#if selected === null}<button class="lesson-primary" disabled={!typedAnswer.trim()} onclick={checkTyped}>Check answer</button>{/if}
+          </div>
+        {:else}
         <div class="choices">
           {#each question.choices as choice, i}
             <button class:chosen={selected === i} class:right={selected !== null && question.correct === i} class:wrong={selected === i && i !== question.correct} disabled={selected !== null} onclick={() => answer(i)}>
@@ -750,15 +828,16 @@
             </button>
           {/each}
         </div>
+        {/if}
         {#if selected !== null}
-          <div class="answer-feedback"><strong>{selected === question.correct ? "Correct!" : "Not quite."}</strong><p>{question.why}</p></div>
-          <button class="lesson-primary" onclick={advance}>{questionIndex + 1 === active.questions.length ? "See results →" : "Next question →"}</button>
+          <div class="answer-feedback"><strong>{selected === question.correct ? "Correct!" : "Not quite."}</strong>{#if question.typed}<p>Suggested answer: <strong>{question.accepted?.[0]}</strong></p>{/if}<p>{question.why}</p></div>
+          <button class="lesson-primary" onclick={advance}>{questionIndex + 1 === practiceQuestions.length ? "See results →" : "Next question →"}</button>
         {/if}
       </div>
     {:else if step === "finished"}
       <div class="lesson-panel recap">
         <span class="eyebrow">Lesson recap</span>
-        <h2>{correctCount} out of {active.questions.length} correct</h2>
+        <h2>{correctCount} out of {practiceQuestions.length} correct</h2>
         <p>{correctCount === active.questions.length ? "Excellent — you got every question right. This lesson is marked complete." : "Good practice. Get all the questions right in a round to mark this lesson complete."}</p>
         <div class="recap-actions">
           <button class="lesson-primary" onclick={() => start(active.id)}>Try again</button>
@@ -795,6 +874,7 @@
   .audio-button,.lesson-secondary{border:1px solid #cedde5;background:#f8fbfc;color:#265f70;border-radius:10px;padding:10px 14px;cursor:pointer;font-weight:700;white-space:nowrap}
   .lesson-chapter{padding:20px 0;border-bottom:1px solid #e2eaf0}.lesson-chapter h3{font-size:22px;margin:0 0 12px}.lesson-chapter>p{margin-bottom:18px}.example-note{font-size:13px;color:#3f7980;line-height:1.5}
   .lesson-chapter{padding:20px 0;border-bottom:1px solid #e2eaf0}.lesson-chapter h3{font-size:22px;margin:0 0 12px}.lesson-chapter>p{margin-bottom:18px}.example-note{font-size:13px;color:#3f7980;line-height:1.5}
+  .typed-question{display:grid;gap:12px;margin:25px 0}.typed-question label{font-weight:700}.typed-question input{width:100%;box-sizing:border-box;padding:16px;border:2px solid #d5e3e9;border-radius:12px;font:inherit}.typed-question .lesson-primary{justify-self:start;margin-top:3px}.typed-question button:disabled{opacity:.5}
   .lesson-tip{background:#f0f7f5;border-left:4px solid #4c9b89;border-radius:9px;padding:18px;margin:20px 0 26px}.lesson-tip p{margin-top:5px}
   .lesson-primary{border:0;border-radius:12px;background:#246f72;color:white;padding:15px 22px;font-size:15px;font-weight:800;cursor:pointer;margin-top:18px}
   .lesson-primary:hover{background:#17585a}
